@@ -84,7 +84,7 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 			
 			
 			Ray3D ray;
-			// TODO: Convert ray to world space  
+			// TODO: Convert ray to world space  DONE
 			// Logan's contribution begins
 			ray.origin = viewToWorld * origin;
 			ray.dir = viewToWorld * (imagePlane - origin);

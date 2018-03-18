@@ -23,8 +23,36 @@ bool UnitSquare::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	// HINT: Remember to first transform the ray into object space  
 	// to simplify the intersection test.
 
+	// Logan's contrib begins
+	// Transforming ray into object space
+	Ray3D transformedRay (worldToModel * ray.origin, worldToModel * ray.dir);
+
+	// Computing point of itersection with xy plane means finding t 
+	// that satisfies the parametric equation
+	// 0 = origin + t * dir for the z coordinate
+	double t = - transformedRay.origin[2] / transformedRay.dir[2];
+
+	// if t is <= 0, return false because ray is shooting in wrong direction
+	if (t <= 0) return false;
+
+	double x = transformedRay.origin[0] + t * transformedRay.dir[0];
+	double y = transformedRay.origin[1] + t * transformedRay.dir[1];
+
+	if (x>=-0.5 && x<=0.5 && y>=-0.5 && y<=0.5) {
+		if (!ray.intersection.none && ray.intersection.t_value < t) return false;
+		Vector3D normal = transNorm(worldToModel, Vector3D(0, 0, 1));
+		normal.normalize();
+
+		ray.intersection.point = modelToWorld * Point3D(x, y, 0);
+		ray.intersection.normal = normal;
+		ray.intersection.none = false;
+		ray.intersection.t_value = t;
+
+		return true;
+	}
 	return false;
 }
+// Logan's contrib ends
 
 bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 		const Matrix4x4& modelToWorld) {
