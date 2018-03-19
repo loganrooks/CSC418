@@ -23,10 +23,10 @@ void PointLight::shade(Ray3D& ray) {
 	Point3D point = ray.intersection.point;
 	Vector3D viewVec = -1.0 * ray.dir;
 
-	Color ambient = ray.intersection.mat.ambient;
-	Color diffuse = ray.intersection.mat.diffuse;
-	Color specular = ray.intersection.mat.specular;
-	double specular_exp = ray.intersection.mat.specular_exp;
+	Color ambient = ray.intersection.mat->ambient;
+	Color diffuse = ray.intersection.mat->diffuse;
+	Color specular = ray.intersection.mat->specular;
+	double specular_exp = ray.intersection->mat.specular_exp;
 
 	Point3D lightPos = get_position();
 
@@ -34,8 +34,8 @@ void PointLight::shade(Ray3D& ray) {
 	Color color = ambient;
 
 	//Diffuse
-	Vector3D lightVec = lightPos - point
-	lightVec.normalize()
+	Vector3D lightVec = lightPos - point;
+	lightVec.normalize();
 	color = color + max(0.0, normal.dot(viewVec));
 
 	//Specular
