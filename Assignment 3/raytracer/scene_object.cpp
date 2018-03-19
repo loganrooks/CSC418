@@ -65,8 +65,40 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	//
 	// HINT: Remember to first transform the ray into object space  
 	// to simplify the intersection test.
+	
+	//Chris's contribution begins
+	Ray3D transformedRay (worldToModel * ray.origin, worldToModel * ray.dir);
+	Vector3D eToC = transformedRay.origin - point3D(0.0,0.0,0.0);
 
-	return false;
+	double A = transformedRay.dir.dot(transformedRay.dir);
+	double B = 2.0 * transformedRay.dir.dot(eToC);
+	double C = eToC.dot(eToC) - 1.0;
+
+	double discr = B * B - 4.0 * A * C;
+
+	if (discr < 0.0){
+		return false;
+	}
+
+	else if (discr == 0){
+		double t = -B/(2.0 * A);
+	}
+
+	else {
+		double t = min( (-B + sqrt(discr))/(2.0 * A), (-B - sqrt(discr))/(2.0 * A) );
+	}
+
+	if (!ray.intersection.none && ray.intersection.t_value < t) return false;
+	Point3D point = modelToWorld * (transformedRay.origin + t * transformedRay.dir);
+	Vector3D normal = transNorm(worldToModel, point - Point3D(0.0, 0.0, 0.0));
+	normal.normalize();
+
+	ray.intersection.point = point;
+	ray.intersection.normal = normal;//ADD THIS
+	ray.intersection.none = false;
+	ray.intersection.t_value = t;
+	return true;
+	//Chris's contribution ends
 }
 
 void SceneNode::rotate(char axis, double angle) {
