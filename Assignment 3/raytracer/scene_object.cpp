@@ -69,33 +69,39 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	
 	//Chris's contribution begins
 	Ray3D transformedRay (worldToModel * ray.origin, worldToModel * ray.dir);
+	
 	Vector3D eToC = transformedRay.origin - Point3D(0.0,0.0,0.0);
+	
 	double t;
 	double A = transformedRay.dir.dot(transformedRay.dir);
-	double B = 2.0 * transformedRay.dir.dot(eToC);
+	double B = 2.0 * eToC.dot(transformedRay.dir);
 	double C = eToC.dot(eToC) - 1.0;
 
-	double discr = B * B - 4.0 * A * C;
+	double discr = B * B - 4*A * C;
 
 	if (discr < 0.0){
 		return false;
 	}
 
 	else if (discr == 0){
-		t = -B/(2.0 * A);
+		t = -B/(2.0*A);
 	}
 
 	else {
 		t = std::min( (-B + sqrt(discr))/(2.0 * A), (-B - sqrt(discr))/(2.0 * A) );
 	}
+	
+	if (t <= 0) return false;
 
 	if (!ray.intersection.none && ray.intersection.t_value < t) return false;
-	Point3D point = modelToWorld * (transformedRay.origin + t * transformedRay.dir);
-	Vector3D normal = transNorm(worldToModel, point - Point3D(0.0, 0.0, 0.0));
+
+	Point3D point = (transformedRay.origin + t * transformedRay.dir);
+	Vector3D normal = (point - Point3D(0.0, 0.0, 0.0));
 	normal.normalize();
 
-	ray.intersection.point = point;
-	ray.intersection.normal = normal;//ADD THIS
+	ray.intersection.point = modelToWorld * point;
+	ray.intersection.normal = transNorm(worldToModel, normal);
+	ray.intersection.normal.normalize();
 	ray.intersection.none = false;
 	ray.intersection.t_value = t;
 	return true;
