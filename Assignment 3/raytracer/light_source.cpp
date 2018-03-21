@@ -8,6 +8,7 @@
 
 #include <cmath>
 #include "light_source.h"
+#include <algorithm>  
 
 void PointLight::shade(Ray3D& ray) {
 	// TODO: implement this function to fill in values for ray.col 
@@ -26,7 +27,7 @@ void PointLight::shade(Ray3D& ray) {
 	Color ambient = ray.intersection.mat->ambient;
 	Color diffuse = ray.intersection.mat->diffuse;
 	Color specular = ray.intersection.mat->specular;
-	double specular_exp = ray.intersection->mat.specular_exp;
+	double specular_exp = ray.intersection.mat->specular_exp;
 
 	Point3D lightPos = get_position();
 
@@ -36,13 +37,13 @@ void PointLight::shade(Ray3D& ray) {
 	//Diffuse
 	Vector3D lightVec = lightPos - point;
 	lightVec.normalize();
-	color = color + max(0.0, normal.dot(viewVec));
+	color = color + std::max(0.0, normal.dot(viewVec)) * diffuse;
 
 	//Specular
 	Vector3D incVec = -1.0 * lightVec;
 	Vector3D refVec = 2.0 * normal.dot(lightVec)*normal - lightVec;
-	double cosTheta = max(0.0, viewVec.dot(refVec));
-	color = color + specular * pow(cosTheta, specular_exp);
+	double cosTheta = std::max(0.0, viewVec.dot(refVec));
+	color = color + pow(cosTheta, specular_exp) * specular;
 
 	ray.col = color;
 	//Chris's contribution ends

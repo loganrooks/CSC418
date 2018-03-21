@@ -8,6 +8,7 @@
 
 #include <cmath>
 #include "scene_object.h"
+#include <algorithm>
 
 bool UnitSquare::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 		const Matrix4x4& modelToWorld) {
@@ -68,8 +69,8 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	
 	//Chris's contribution begins
 	Ray3D transformedRay (worldToModel * ray.origin, worldToModel * ray.dir);
-	Vector3D eToC = transformedRay.origin - point3D(0.0,0.0,0.0);
-
+	Vector3D eToC = transformedRay.origin - Point3D(0.0,0.0,0.0);
+	double t;
 	double A = transformedRay.dir.dot(transformedRay.dir);
 	double B = 2.0 * transformedRay.dir.dot(eToC);
 	double C = eToC.dot(eToC) - 1.0;
@@ -81,11 +82,11 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	}
 
 	else if (discr == 0){
-		double t = -B/(2.0 * A);
+		t = -B/(2.0 * A);
 	}
 
 	else {
-		double t = min( (-B + sqrt(discr))/(2.0 * A), (-B - sqrt(discr))/(2.0 * A) );
+		t = std::min( (-B + sqrt(discr))/(2.0 * A), (-B - sqrt(discr))/(2.0 * A) );
 	}
 
 	if (!ray.intersection.none && ray.intersection.t_value < t) return false;
