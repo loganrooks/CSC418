@@ -25,30 +25,32 @@ int main(int argc, char* argv[])
 		width = atoi(argv[1]);
 		height = atoi(argv[2]);
 	}
-	
+	//Chris's Contribution begins
+
 	// Define materials for shading.
 	Material red(Color(0.39 , 0.0, 0.0), Color(0.784,0.0,0.0),
 		Color(0.7, 0.0, 0.0),
 		51.2);
+	Material mirror(Color(0, 0, 0), Color(0,0,0),
+		Color(0,0,0),
+		10, 1);
 	Material grey(Color(0, 0, 0), Color(0.784,0.784,0.784),
 		Color(0.7,0.7,0.7),
 		12.8);
-	Material white(Color(0,0,0), Color(0.9,0.9,0.9), 
-		Color(0.99,0.99,0.99), 
-		12.8, 0.5);
+	Material brownred(Color(0,0,0), Color(0.392,0.117,0.0), 
+		Color(0.45,0.14,0.0), 
+		12.8);
 
 	// Defines a point light source.
-	PointLight* pLight = new PointLight(Point3D(10,10,50), Color(0.9,0.9,0.9));
+	PointLight* pLight = new PointLight(Point3D(18,18,18), Color(0.9,0.9,0.9));
 	light_list.push_back(pLight);
 	
-	//Chris's Contribution begins
-
 	// Add a unit sphere into the scene with material mat.
 	SceneNode* sphere = new SceneNode(new UnitSphere(), &red);
 	scene.push_back(sphere);
 
 	// add unit planes to make into room
-	SceneNode* back = new SceneNode(new UnitSquare(), &grey);
+	SceneNode* back = new SceneNode(new UnitSquare(), &mirror);
 	scene.push_back(back);
 	SceneNode* front = new SceneNode(new UnitSquare(), &grey);
 	scene.push_back(front);
@@ -58,7 +60,7 @@ int main(int argc, char* argv[])
 	scene.push_back(right);
 	SceneNode* top = new SceneNode(new UnitSquare(), &grey);
 	scene.push_back(top);
-	SceneNode* bottom = new SceneNode(new UnitSquare(), &white);
+	SceneNode* bottom = new SceneNode(new UnitSquare(), &brownred);
 	scene.push_back(bottom);
 
 	// Apply some transformations to the sphere
@@ -96,13 +98,13 @@ int main(int argc, char* argv[])
 
 	// Render the scene, feel free to make the image smaller for
 	// testing purposes.	
-	Camera camera1(Point3D(18, 10, 5), Vector3D(-3, -1, 1), Vector3D(0, 1, 0), 60.0);
+	Camera camera1(Point3D(15, 10, 5), Vector3D(-3, -1, 1), Vector3D(0, 1, 0), 100.0);
 	Image image1(width, height);
 	raytracer.render(camera1, scene, light_list, image1); //render 3D scene to image
 	image1.flushPixelBuffer("view1.bmp"); //save rendered image to file
 
 	// Render it from a different point of view.
-	Camera camera2(Point3D(10, 5, 10), Vector3D(-1, 0, -1), Vector3D(0, 1, 0), 60.0);
+	Camera camera2(Point3D(10, 5, 10), Vector3D(-1, 0, -1), Vector3D(0, 1, 0), 100.0);
 	Image image2(width, height);
 	raytracer.render(camera2, scene, light_list, image2);
 	image2.flushPixelBuffer("view2.bmp");
