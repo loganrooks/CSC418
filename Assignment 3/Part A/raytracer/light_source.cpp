@@ -45,7 +45,7 @@ void PointLight::shade(Ray3D& ray) {
 	double cosTheta = std::max(0.0, viewVec.dot(refVec));
 	color = color + pow(cosTheta, specular_exp) * specular;
 	color.clamp();
-	ray.col = diffuse;
+	ray.col = color;
 	//Chris's contribution ends
 }
 
