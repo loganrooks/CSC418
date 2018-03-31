@@ -79,7 +79,7 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 			Color refCol = shadeRay(reflectRay, scene, light_list, depth + 1);
 
 			//return final color
-			return reflectIndex*refCol + (1-reflectIndex)*col
+			return reflectIndex*refCol + (1-reflectIndex)*col;
 		}
 	}
 	//Chris's contribution ends
