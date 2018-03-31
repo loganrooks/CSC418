@@ -2,3 +2,6 @@ Sources:
 
 Reflection vector equation
 https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+Material properties
+http://www.barradeau.com/nicoptere/dump/materials.html
