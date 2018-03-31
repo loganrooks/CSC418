@@ -61,18 +61,20 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 	// of course) here to implement reflection/refraction effects.  
 
 	//Chris's contribution begins
-	//reflection
-	int maxDepth = 1;
+	//recursive call:
+	float epsilon = 0.0001;
+	int maxDepth = 3;
 	float reflectIndex = ray.intersection.mat->reflectIndex;
 
 	if (!ray.intersection.none){
 		if(reflectIndex != 0 && depth < maxDepth){
 			//get reflection vector
-			Point3D point = ray.intersection.point;
 			Vector3D normal = ray.intersection.normal;
 			Vector3D incidentVec = ray.dir;
 			Vector3D reflectVec = incidentVec - 2 * incidentVec.dot(normal) * normal;
 			reflectVec.normalize();
+			Point3D point = ray.intersection.point;
+			point = point + epsilon*reflectVec;
 			Ray3D reflectRay = Ray3D(point, reflectVec);
 
 			//get reflection color
@@ -119,6 +121,12 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 			ray.dir = viewToWorld * (imagePlane - origin);
 			ray.dir.normalize();
 			// Logan's contribution ends
+			
+			//Chris's contribution begins
+			//Add Epsilon to reduce noise
+			float epsilon = 0.0001;
+			ray.origin = ray.origin + epsilon*ray.dir;
+			//Chris's contribution ends
 			Color col = shadeRay(ray, scene, light_list); 
 			image.setColorAtPixel(i, j, col);			
 		}
