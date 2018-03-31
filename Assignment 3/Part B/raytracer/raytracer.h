@@ -16,6 +16,10 @@ class Raytracer {
 public:
 	// Renders 3D scene to an image given camera and lights setup.
 	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image);
+
+	// Renders 3D scene to an image given camera and lights setup.
+	// Uses 4x antialiasing
+	void antiAliasRender4x(Camera& camera, Scene& scene, LightList& light_list, Image& image);
 		
 private:
 
