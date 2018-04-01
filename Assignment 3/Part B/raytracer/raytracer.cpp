@@ -131,11 +131,12 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 	}
 }
 
-void Raytracer::antiAliasrender4x(Camera& camera, Scene& scene, LightList& light_list, Image& image) {
+void Raytracer::antiAliasRender4x(Camera& camera, Scene& scene, LightList& light_list, Image& image) {
 	computeTransforms(scene);
 
 	Matrix4x4 viewToWorld;
-	double factor = (double(image.height)/2)/tan(camera.fov*M_PI/360.0);
+	double factor1 = (double(image.height)/2)/tan(camera.fov*M_PI/360.0);
+	double factor2 = (double(image.width)/2)/tan(camera.fov*M_PI/360);
 
 	viewToWorld = camera.initInvViewMatrix();
 
@@ -146,8 +147,8 @@ void Raytracer::antiAliasrender4x(Camera& camera, Scene& scene, LightList& light
 			// image plane is at z = -1.
 			Point3D origin(0, 0, 0);
 			Point3D imagePlane;
-			imagePlane[0] = (-double(image.width)/2 + 0.5 + j)/factor;
-			imagePlane[1] = (-double(image.height)/2 + 0.5 + i)/factor;
+			imagePlane[0] = (-double(image.width)/2 + 0.5 + j)/factor2;
+			imagePlane[1] = (-double(image.height)/2 + 0.5 + i)/factor1;
 			imagePlane[2] = -1;
 			
 			Ray3D ray;
