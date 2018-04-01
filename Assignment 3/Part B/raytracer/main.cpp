@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
 	LightList light_list;
 	Scene scene;   
 
-	int width = 320;
-	int height = 240;
+	int width = 1920;
+	int height = 1080;
 
 	if (argc == 3) {
 		width = atoi(argv[1]);
@@ -47,17 +47,13 @@ int main(int argc, char* argv[])
 	// Defines a point light source. (NEED TO MOVE THIS LIGHT SOURCE TO THE LAMP. NEED TO FIND LAMP COORDINATES)
 	PointLight* pLight = new PointLight(Point3D(18,18,18), Color(0.9,0.9,0.9));
 	light_list.push_back(pLight);
-	
-	//TEMP TEST SPHERE
-	//ceneNode* sphere1 = new SceneNode(new UnitSphere(), &copper);
-	//scene.push_back(sphere1);
-	//double factor6[3] = { 0.25, 0.25, 0.25 };
-	//sphere1->translate(Vector3D(15,19,13));
-	//sphere1->scale(Point3D(0,0,0), factor6);
 
-	// Add a unit sphere into the scene with material mat.
-	SceneNode* sphere = new SceneNode(new UnitSphere(), &copper);
-	scene.push_back(sphere);
+	// Add unit spheres into the scene.
+	SceneNode* sphere1 = new SceneNode(new UnitSphere(), &copper);
+	scene.push_back(sphere1);
+
+	SceneNode* sphere2 = new SceneNode(new UnitSphere(), &mirror);
+	scene.push_back(sphere2);
 
 	// add unit planes to make into room
 	SceneNode* back = new SceneNode(new UnitSquare(), &grey);
@@ -106,10 +102,15 @@ int main(int argc, char* argv[])
 	SceneNode* inRight = new SceneNode(new UnitSquare(), &obsidian);
 	scene.push_back(inRight);
 
-	// Apply some transformations to the sphereS
-	double factor1[3] = { 1.0, 1.0, 1.0 };
-	sphere->translate(Vector3D(5, 5, 10));
-	sphere->scale(Point3D(0, 0, 0), factor1);
+	// Apply some transformations to the spheres
+	double factorS1[3] = { 1.0, 1.0, 1.0 };
+	double factorS2[3] = { 1.5, 1.5, 1.5 };
+	sphere1->translate(Vector3D(5, 5, 10));
+	sphere1->scale(Point3D(0, 0, 0), factorS1);
+
+	sphere2->translate(Vector3D(12, 8, 10));
+	sphere2->scale(Point3D(0,0,0), factorS2);
+
 
 	// Apply transformations to make the room
 	double factor2[3] = {20, 20, 20 };
@@ -207,10 +208,21 @@ int main(int argc, char* argv[])
 	raytracer.render(camera2, scene, light_list, image2);
 	image2.flushPixelBuffer("recursiveRT2.bmp");
 
+	//Another point of view
 	Camera camera3(Point3D(18, 5, 9), Vector3D(-1, 0.2,0.05 ), Vector3D(0, 1, 0), 60.0);
 	Image image3(width, height);
 	raytracer.render(camera3, scene, light_list, image3);
 	image3.flushPixelBuffer("recursiveRT3.bmp");
+
+	// render all using 4x anti-aliasing
+	raytracer.antiAliasRender4x(camera1, scene, light_list, image1);
+	image1.flushPixelBuffer("antiAlias1.bmp");
+
+	raytracer.antiAliasRender4x(camera2, scene, light_list, image2);
+	image2.flushPixelBuffer("antiAlias2.bmp");
+
+	raytracer.antiAliasRender4x(camera3, scene, light_list, image3);
+	image3.flushPixelBuffer("antiAlias3.bmp");
 	//Chris's Contribution ends
 
 	// Free memory
