@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
 	LightList light_list;
 	Scene scene;   
 
-	int width = 1920;
-	int height = 1080;
+	int width = 320;
+	int height = 240;
 
 	if (argc == 3) {
 		width = atoi(argv[1]);
@@ -214,14 +214,14 @@ int main(int argc, char* argv[])
 	raytracer.render(camera3, scene, light_list, image3);
 	image3.flushPixelBuffer("recursiveRT3.bmp");
 
-	// render all using 4x anti-aliasing
-	raytracer.antiAliasRender4x(camera1, scene, light_list, image1);
+	// render all using 8x anti-aliasing
+	raytracer.antiAliasRender8x(camera1, scene, light_list, image1);
 	image1.flushPixelBuffer("antiAlias1.bmp");
 
-	raytracer.antiAliasRender4x(camera2, scene, light_list, image2);
+	raytracer.antiAliasRender8x(camera2, scene, light_list, image2);
 	image2.flushPixelBuffer("antiAlias2.bmp");
 
-	raytracer.antiAliasRender4x(camera3, scene, light_list, image3);
+	raytracer.antiAliasRender8x(camera3, scene, light_list, image3);
 	image3.flushPixelBuffer("antiAlias3.bmp");
 	//Chris's Contribution ends
 
