@@ -42,19 +42,30 @@ d) Phong illumination
 To compile the code you must be in a3/Part B/raytracer. Execute the command "make raytracer" and then call "./raytracer". Note that we have provided all images to demonstrate the working of our program, and running raytracer WILL generate that full set of images.
 
 **The code**
+To better demonstrate the techniques we implemented, we designed a new environment to render.
+The environment consists of a square room with a mirror or painting on one side, a light source in the back corner, and numerous objects floating in front of the mirror/painting. This was done by Christopher Sheedy in main.cpp
+
 i) Recursive Ray Tracing
 	For this section we needed to modify the Raytracer::shadeRay function. This was done by
-	Christopher Sheedy, and can be found in raytracer.cpp (note that this is in the Part B folder). To implement recursive ray tracing, we simply calculated the reflected ray, and
+	Christopher Sheedy, and can be found in raytracer.cpp (note that this is in the Part B folder). To implement recursive ray tracing, we simply calculated the reflected ray ([1] from stack-exchange), and
 	called shadeRay again on it. Then the two colors were combined, with the material property
-	reflectIndex (which we added in util.cpp) determining the linear combination. For example, a mirror would have a reflectIndex of 1.0. In addition, we added an epsilon term to the reflected ray to reduce noise/errors.
+	reflectIndex (which we added in util.cpp) determining the linear combination. For example, a mirror would have a reflectIndex of 1.0. In addition, we added an epsilon term to the reflected ray to reduce noise/errors. The demo images for this section are saved as recurseRT#.bmp
 
 ii) Hard Shadows
 	For this section we needed to... LOGAN ROOKS FILL THIS PART IN
+
+iii) Anti-Aliasing
+	For this section we implemented 8x anti-aliasing by creating a new function, Raytracer::antiAliasRender8x in raytracer.cpp. This was done by Christopher Sheedy. Much of the function is exactly the same as in Raytracer::render, except for the creation of rays. In render, each pixel gets a single ray through the center of that pixel on the image plane. In antiAliasRender8x, we split the pixel on the image plane into 8 quadrants, and then select two random points in each quadrant. The idea for this came from wikipedia, it is similar to "Jittering" from [2]. Each ray is shaded, and then the average of all 8 rays is computed.
+
+iv) Extended light sources
+	For this section we added an extended light source in main.cpp. This was done by Christopher Sheedy. We approximated the light source by adding a large number of point light sources.
 
 
 
 
 Sources:
 
-Reflection vector equation
+[1] Reflection vector equation
 https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+[2] https://en.wikipedia.org/wiki/Supersampling
