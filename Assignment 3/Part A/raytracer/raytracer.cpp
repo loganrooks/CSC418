@@ -116,6 +116,13 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 			ray.dir = viewToWorld * (imagePlane - origin);
 			ray.dir.normalize();
 			// Logan's contribution ends
+			
+			//Chris's contribution begins
+			//Add Epsilon to reduce noise
+			float epsilon = 0.0001;
+			ray.origin = ray.origin + epsilon*ray.dir;
+			//Chris's contribution ends
+			
 			Color col = shadeRay(ray, scene, light_list); 
 			image.setColorAtPixel(i, j, col);			
 		}
