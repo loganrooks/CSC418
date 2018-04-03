@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
 	LightList light_list;
 	Scene scene;   
 
-	int width = 320;
-	int height = 240;
+	int width = 720;
+	int height = 360;
 
 	if (argc == 3) {
 		width = atoi(argv[1]);
@@ -44,8 +44,8 @@ int main(int argc, char* argv[])
 		Color(0.45,0.14,0.0), 
 		12.8);
 
-	// Defines a point light source. (NEED TO MOVE THIS LIGHT SOURCE TO THE LAMP. NEED TO FIND LAMP COORDINATES)
-	PointLight* pLight = new PointLight(Point3D(18,18,18), Color(0.9,0.9,0.9));
+	// Defines a point light source. 
+	PointLight* pLight = new PointLight(Point3D(14,18,15), Color(0.9,0.9,0.9));
 	light_list.push_back(pLight);
 
 	// Add unit spheres into the scene.
@@ -55,6 +55,8 @@ int main(int argc, char* argv[])
 	SceneNode* sphere2 = new SceneNode(new UnitSphere(), &mirror);
 	scene.push_back(sphere2);
 
+	SceneNode* sphere3 = new SceneNode(new UnitSphere(), &obsidian);
+	scene.push_back(sphere3);
 	// add unit planes to make into room
 	SceneNode* back = new SceneNode(new UnitSquare(), &grey);
 	scene.push_back(back);
@@ -108,10 +110,12 @@ int main(int argc, char* argv[])
 	sphere1->translate(Vector3D(5, 5, 10));
 	sphere1->scale(Point3D(0, 0, 0), factorS1);
 
-	sphere2->translate(Vector3D(12, 8, 10));
+	sphere2->translate(Vector3D(10, 8, 12));
 	sphere2->scale(Point3D(0,0,0), factorS2);
 
-
+	sphere3->translate(Vector3D(3, 9, 8));
+	sphere3->scale(Point3D(0, 0, 0), factorS1);
+	
 	// Apply transformations to make the room
 	double factor2[3] = {20, 20, 20 };
 	back->translate(Vector3D(0, 10, 10));
@@ -209,7 +213,7 @@ int main(int argc, char* argv[])
 	image2.flushPixelBuffer("recursiveRT2.bmp");
 
 	//Another point of view
-	Camera camera3(Point3D(18, 5, 9), Vector3D(-1, 0.2,0.05 ), Vector3D(0, 1, 0), 60.0);
+	Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
 	Image image3(width, height);
 	raytracer.render(camera3, scene, light_list, image3);
 	image3.flushPixelBuffer("recursiveRT3.bmp");
@@ -223,6 +227,35 @@ int main(int argc, char* argv[])
 
 	raytracer.antiAliasRender8x(camera3, scene, light_list, image3);
 	image3.flushPixelBuffer("antiAlias3.bmp");
+	
+	// render all using extended lighting
+
+	//Add extended light sources
+	double x = 13.0;
+	double y = 18.0;
+	double z = 13.5;
+	double density = 10.0; //Number of lights per unit length
+	double xNum = 2.0 * density;
+	double yNum = 3.0 * density;
+	double dist = 1.0/density;
+
+	for (int i = 0; i < xNum; i++) {
+		for (int j = 0; j < yNum; j++) {
+			light_list.push_back(new PointLight(Point3D(x,y,z), Color(0.9,0.9,0.9)));
+			x += dist;
+			y += dist;
+		}	
+		
+	}
+	raytracer.render(camera1, scene, light_list, image1);
+	image1.flushPixelBuffer("extendedLights1.bmp");
+
+	raytracer.render(camera2, scene, light_list, image2);
+	image2.flushPixelBuffer("extendedLights2.bmp");
+
+	raytracer.render(camera3, scene, light_list, image3);
+	image3.flushPixelBuffer("extendedLights3.bmp");
+
 	//Chris's Contribution ends
 
 	// Free memory
