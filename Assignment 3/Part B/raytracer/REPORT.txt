@@ -1,7 +1,60 @@
+
+This Project is a collaboration between Logan Rooks and Christopher Sheedy. There are two
+parts to the project, Part A and Part B, which have been submitted in folders of the same 
+name. To access either part, change your folder to a3/Part A/raytracer, or a3/Part B/raytracer. 
+First we will describe Part A:
+
+#### PART A ####
+
+**Running the code**
+
+To compile the code you must be in a3/Part A/raytracer. Simply execute the command "make
+raytracer", and then call "./raytracer". Note that we have provided three images to 
+demonstrate the working of our program, but running raytracer will only generate the 
+image with all three terms of the phong model.
+
+**The code**
+
+We were provided with starter code for all aspects of the raytracer except for the following:
+
+a) Casting rays towards each pixel of the image plane
+	For this section we needed to convert the ray to world Space. This was done By Logan Rooks
+	in raytracer.cpp under Raytracer::render. Christopher Sheedy added an epsilon term to
+	eliminate noise/error in the image. The epsilon term was added using advice from the discussion board.
+
+b) ray-sphere intersection
+	For this section we needed to comnplete the UnitSphere::intersect function. This was done
+	by Christopher Sheedy, and can be found in scene_object.cpp. For both part b) and c) the 
+	course notes were used as reference.
+
+c) ray-unit square intersection
+	For this sections we needed to complete the UnitSquare::intersect function. This was done 
+	by Logan Rooks, and can be found in scene_object.cpp
+
+d) Phong illumination
+	For this section we needed to complete Phong illumination in the PointLight::shade 
+	function. This was done by Christopher Sheedy and can be found in light_source.cpp.
+
+#### PART B ####
+
+**Running the code**
+
+To compile the code you must be in a3/Part B/raytracer. Execute the command "make raytracer" and then call "./raytracer". Note that we have provided all images to demonstrate the working of our program, and running raytracer WILL generate that full set of images.
+
+**The code**
+i) Recursive Ray Tracing
+	For this section we needed to modify the Raytracer::shadeRay function. This was done by
+	Christopher Sheedy, and can be found in raytracer.cpp (note that this is in the Part B folder). To implement recursive ray tracing, we simply calculated the reflected ray, and
+	called shadeRay again on it. Then the two colors were combined, with the material property
+	reflectIndex (which we added in util.cpp) determining the linear combination. For example, a mirror would have a reflectIndex of 1.0. In addition, we added an epsilon term to the reflected ray to reduce noise/errors.
+
+ii) Hard Shadows
+	For this section we needed to... LOGAN ROOKS FILL THIS PART IN
+
+
+
+
 Sources:
 
 Reflection vector equation
 https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-
-Material properties
-http://www.barradeau.com/nicoptere/dump/materials.html
