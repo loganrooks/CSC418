@@ -13,6 +13,8 @@
 #include "scene_object.h"
 #include "light_source.h"
 
+#define NT 1.5
+
 class Raytracer {
 public:
 	// Renders 3D scene to an image given camera and lights setup.
@@ -37,5 +39,11 @@ private:
 	void computeTransforms(Scene& scene);
 
 
-	Ray3D* antiAlias(Matrix4x4 viewToWorld, Point3D imagePlane, Point3D origin, double factor);
+	std::vector<Ray3D> antiAlias(Matrix4x4 viewToWorld, Point3D imagePlane, Point3D origin, double factor);
+
+	Vector3D computeRefraction(Vector3D normal, Vector3D incident, double nt);
+
+	void computeShadow(Ray3D &ray, Scene &scene, LightSource *light);
+
+
 };

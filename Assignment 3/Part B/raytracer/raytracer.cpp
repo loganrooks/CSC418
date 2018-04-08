@@ -15,6 +15,8 @@
 #include <string>
 #include <curses.h>
 
+double EPSILON = 0.0001;
+
 void Raytracer::traverseScene(Scene& scene, Ray3D& ray)  {
 	for (size_t i = 0; i < scene.size(); ++i) {
 		SceneNode* node = scene[i];
@@ -37,10 +39,16 @@ void Raytracer::computeTransforms(Scene& scene) {
 	}
 }
 
+void Raytracer::computeShadow(Ray3D& ray, Scene& scene, LightSource* light) {
+
+}
+
 void Raytracer::computeShading(Ray3D& ray, Scene& scene, LightList& light_list, bool shadows) {
-	for (size_t  i = 0; i < light_list.size(); ++i) {
-		LightSource* light = light_list[i];
-		
+	int n_lights = light_list.size();
+	Color final_col(0.0,0.0,0.0);
+
+	for (size_t  i = 0; i < n_lights; ++i) {
+		LightSource *light = light_list[i];
 		// Each lightSource provides its own shading function.
 		// Implement shadows here if needed.
 		// Shadows - Logan's Contribution
@@ -52,65 +60,133 @@ void Raytracer::computeShading(Ray3D& ray, Scene& scene, LightList& light_list, 
 			// Shadow ray, begins at object of interest plus small EPSILON so it does not actually intersect
 			Ray3D shadow_ray(ray.intersection.point + EPSILON * light_direction, light_direction);
 			traverseScene(scene, shadow_ray);
+//			std::cout << "\nLight Distance: " << distance_to_light << std::endl;
+//			std::cout << "Shadow Ray Intercept Distance: " << shadow_ray.intersection.t_value << std::endl;
+//			std::cout << "Is there shadow?: " << (!shadow_ray.intersection.none && (shadow_ray.intersection.t_value <= distance_to_light)) << std::endl;
 			if (!shadow_ray.intersection.none && (shadow_ray.intersection.t_value <= distance_to_light)) {
-				ray.col = ray.intersection.mat->ambient;
-				ray.col.clamp();
-			} else {
-				light->shade(ray);
+				// Checking whether it intersects before it reaches the light and therefore is in shadow
+				ray.inShadow = true;
+			}
+			else {
+				ray.inShadow = false;
 			}
 		}
-		else {
-			light->shade(ray);
-		}
-
+//		if (shadows) std::cout << "inShadow: " << ray.inShadow << std::endl;
+		light->shade(ray);
+		final_col = final_col + ray.col;
+		final_col.clamp();
 	}
+
+	ray.col = final_col;
+}
+
+Vector3D Raytracer::computeRefraction(Vector3D normal, Vector3D incident, double nt)
+{
+	const double n = 1;
+	normal.normalize();
+	incident.normalize();
+	double cosA = normal.dot(incident);
+	Vector3D refract = (n / nt) * (incident - (cosA)* normal)
+					   - sqrt(1 - (n*n) / (nt*nt) * (1 - cosA * cosA)) * normal;
+	refract.normalize();
+
+	return refract;
 }
 
 Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int depth=0, bool shadows=FALSE, int max_depth=2) {
-	Color col(0.0, 0.0, 0.0); 
+	Color col(0.0, 0.0, 0.0);
 	traverseScene(scene, ray); 
-
-	// Don't bother shading if the ray didn't hit 
-	// anything.
-	if (!ray.intersection.none) {
-		computeShading(ray, scene, light_list, shadows);
-		col = ray.col;  
-		
-	}
 
 	// You'll want to call shadeRay recursively (with a different ray, 
 	// of course) here to implement reflection/refraction effects.  
 
 	//Chris's contribution begins
 	//recursive call:
-	float epsilon = 0.0001;
 
-	float reflectIndex = ray.intersection.mat->reflectIndex;
+
 
 	if (!ray.intersection.none){
-		if(reflectIndex != 0 && depth < max_depth){
-			//get reflection vector
-			Vector3D normal = ray.intersection.normal;
-			Vector3D incidentVec = ray.dir;
-			Vector3D reflectVec = incidentVec - 2 * incidentVec.dot(normal) * normal;
-			reflectVec.normalize();
-			Point3D point = ray.intersection.point;
-			point = point + epsilon*reflectVec;
-			Ray3D reflectRay = Ray3D(point, reflectVec);
+		computeShading(ray, scene, light_list, shadows);
+		//std::cout << "After shading: " << ray.col << std::endl;
+		auto reflect_col = Color(0,0,0);
+		auto refract_col = Color(0,0,0);
 
-			//get reflection color
-			Color refCol = shadeRay(reflectRay, scene, light_list, depth + 1, shadows, max_depth);
+		float reflectIndex = ray.intersection.mat->reflectIndex;
+		float refractIndex = ray.intersection.mat->refractIndex;
 
-			//return final color
-			Color finalCol = reflectIndex*refCol + (1-reflectIndex)*col;
-			//finalCol.clamp();
-			return finalCol;
+		Vector3D normal = ray.intersection.normal;
+		normal.normalize();
+		Vector3D incidentVec = ray.dir;
+		incidentVec.normalize();
+		double t_ray = ray.intersection.t_value;
+
+		if(depth < max_depth){
+			if (reflectIndex > 0) {
+				//get reflection vector
+				Vector3D reflectVec = incidentVec - 2 * incidentVec.dot(normal) * normal;
+				reflectVec.normalize();
+				Point3D point = ray.intersection.point;
+				point = point + EPSILON * reflectVec;
+				Ray3D reflect_ray = Ray3D(point, reflectVec);
+				reflect_ray.reflected = true;
+				reflect_ray.intersection.has_texture = false;
+				reflect_ray.intersection.t_value = std::numeric_limits<double>::max(); // assume it does not intersect
+
+				//get reflection color
+				Color reflect_col = shadeRay(reflect_ray, scene, light_list, depth + 1, shadows, max_depth);
+				ray.col = reflectIndex * reflect_col + (1 - reflectIndex) * ray.col;
+			}
+
+			if (refractIndex > 0) {
+				const double a0 = 0;
+				const double a1 = 0;
+				const double a2 = 0.4;
+				double cosA = incidentVec.dot(normal);
+				double k0;
+				double k1;
+				double k2;
+
+				Vector3D refract_dir;
+				double c;
+				if (cosA < 0)
+				{
+					refract_dir = computeRefraction(normal, incidentVec, NT);
+					c = -cosA;
+					k0 = 1;
+					k1 = 1;
+					k2 = 1;
+				}
+				else
+				{
+					refract_dir = computeRefraction(-normal, incidentVec, 1.0 / NT);
+					c = refract_dir.dot(normal);
+					k0 = exp(-a0*t_ray);
+					k1 = exp(-a1*t_ray);
+					k2 = exp(-a2*t_ray);
+				}
+
+				// refractRay
+				Ray3D refractRay;
+				refractRay.origin =ray.intersection.point + EPSILON * refract_dir; // acne
+				refractRay.dir = refract_dir;
+				refractRay.dir.normalize();
+
+				refract_col = shadeRay(refractRay, scene, light_list, depth + 1, shadows, max_depth);
+
+				double R0 = ((NT - 1) * (NT - 1)) / ((NT + 1) * (NT + 1));
+				double d = 1 - c;
+				double R = R0 + (1 - R0) * (d*d*d*d*d);
+
+				col = (R * reflect_col + (1 - R) * refract_col);
+				col[0] = k0 * col[0];
+				col[1] = k1 * col[1];
+				col[2] = k2 * col[2];
+				ray.col = col;
+			}
 		}
+		ray.col.clamp();
 	}
-	//Chris's contribution ends
-
-
-	return col; 
+	return ray.col;
 }	
 
 void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Image& image, bool shadows=FALSE, int max_depth=2, bool antialias=FALSE) {
@@ -131,9 +207,9 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 			imagePlane[0] = (-double(image.width)/2 + 0.5 + j)/factor;
 			imagePlane[1] = (-double(image.height)/2 + 0.5 + i)/factor;
 			imagePlane[2] = -1;
-			Color col(0,0,0);
+			Color col(0.0,0.0,0.0);
 			if (antialias) {
-				Ray3D* rays = antiAlias(viewToWorld, imagePlane, origin, factor);
+				std::vector<Ray3D> rays = antiAlias(viewToWorld, imagePlane, origin, factor);
 				col = (1.0/8.0) * (shadeRay(rays[0], scene, light_list, 0, shadows, max_depth) +
 										 shadeRay(rays[1], scene, light_list, 0, shadows, max_depth) +
 										 shadeRay(rays[2], scene, light_list, 0, shadows, max_depth) +
@@ -164,7 +240,7 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 	}
 }
 
-Ray3D* Raytracer::antiAlias(Matrix4x4 viewToWorld, Point3D imagePlane, Point3D origin, double factor) {
+std::vector<Ray3D> Raytracer::antiAlias(Matrix4x4 viewToWorld, Point3D imagePlane, Point3D origin, double factor) {
 
 	Point3D imagePlane1;
 	Point3D imagePlane11;
@@ -257,7 +333,8 @@ Ray3D* Raytracer::antiAlias(Matrix4x4 viewToWorld, Point3D imagePlane, Point3D o
 	ray4.origin = ray4.origin + EPSILON*ray4.dir;
 	ray44.origin = ray44.origin + EPSILON*ray44.dir;
 
-	Ray3D rays[] = {ray1, ray11, ray2, ray22, ray3, ray33, ray4, ray44};
+	std::vector<Ray3D> rays({ray1, ray11, ray2, ray22, ray3, ray33, ray4, ray44});
+
 	return rays;
 }
 

@@ -16,7 +16,6 @@
 #define M_PI	3.14159265358979323846
 #endif
 
-#define EPSILON	1e-6
 
 class Point3D {
 public:
@@ -133,6 +132,9 @@ struct Material {
 	Material(Color ambient, Color diffuse, Color specular, double exp, double ref) :
 		ambient(ambient), diffuse(diffuse), specular(specular), 
 		specular_exp(exp), reflectIndex(ref) {}
+	Material(Color ambient, Color diffuse, Color specular, double exp, double reflect, double refract) :
+			ambient(ambient), diffuse(diffuse), specular(specular),
+			specular_exp(exp), reflectIndex(reflect), refractIndex(refract) {}
 	
 	// Ambient components for Phong shading.
 	Color ambient; 
@@ -140,10 +142,12 @@ struct Material {
 	Color diffuse;
 	// Specular components for Phong shading.
 	Color specular;
-	// Specular expoent.
+	// Specular exponent.
 	double specular_exp;
 	//reflection Index.
 	double reflectIndex;
+	//refraction Index
+	double refractIndex;
 };
 
 struct Intersection {
@@ -160,15 +164,23 @@ struct Intersection {
 	double t_value;	
 	// Set to true when no intersection has occured.
 	bool none;
+
+	bool has_texture;
+	Point3D uv;
+	Color texture_col;
 };
 
 // Ray structure. 
 struct Ray3D {
 	Ray3D() {
-		intersection.none = true; 
-	}
-	Ray3D( Point3D p, Vector3D v ) : origin(p), dir(v) {
 		intersection.none = true;
+		reflected = false;
+		refracted = false;
+	}
+	Ray3D( Point3D p, Vector3D v ) : origin(p), dir(v), inShadow(false) {
+		intersection.none = true;
+		reflected = false;
+		refracted = false;
 	}
 	// Origin and direction of the ray.
 	Point3D origin;
@@ -179,6 +191,11 @@ struct Ray3D {
 	// Current colour of the ray, should be computed by the shading
 	// function.
 	Color col;
+
+	// Keep sense of recursive ray tracing;
+	bool inShadow;
+	bool reflected;
+	bool refracted;
 };
 
 struct Camera {    

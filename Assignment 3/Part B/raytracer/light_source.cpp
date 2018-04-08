@@ -8,7 +8,9 @@
 
 #include <cmath>
 #include "light_source.h"
-#include <algorithm>  
+#include <algorithm>
+#include <assert.h>
+
 
 void PointLight::shade(Ray3D& ray) {
 	// TODO: implement this function to fill in values for ray.col 
@@ -17,12 +19,11 @@ void PointLight::shade(Ray3D& ray) {
 	//
 	// It is assumed at this point that the intersection information in ray 
 	// is available.  So be sure that traverseScene() is called on the ray 
-	// before this function.  
-	
-	//Chris's contribution begins
+	// before this function.
+
 	Vector3D normal = ray.intersection.normal;
 	Point3D point = ray.intersection.point;
-	Vector3D viewVec = -1.0 * ray.dir;
+	Vector3D viewVec = -ray.dir;
 
 	Color ambient = ray.intersection.mat->ambient;
 	Color diffuse = ray.intersection.mat->diffuse;
@@ -31,21 +32,38 @@ void PointLight::shade(Ray3D& ray) {
 
 	Point3D lightPos = get_position();
 
-	//Ambient 
-	Color color = ambient;
+	//Ambient effect
+	Color ambient_col = col_ambient * ambient;
+	ambient_col.clamp();
 
-	//Diffuse
-	Vector3D lightVec = lightPos - point;
-	lightVec.normalize();
-	color = color + std::max(0.0, normal.dot(viewVec)) * diffuse;
+	// If the ray is in shadow, only add the ambient color
+	// and don't bother calculating other components, save some computation :)
+	if (ray.inShadow) {
+		ray.col = ambient_col;
+	}
+	else {
+		//Diffuse effect
+		Vector3D lightVec = lightPos - point;
+		lightVec.normalize();
 
-	//Specular
-	Vector3D incVec = -1.0 * lightVec;
-	Vector3D refVec = 2.0 * normal.dot(lightVec)*normal - lightVec;
-	double cosTheta = std::max(0.0, viewVec.dot(refVec));
-	color = color + pow(cosTheta, specular_exp) * specular;
-	color.clamp();
-	ray.col = color;
-	//Chris's contribution ends
+		double n_dot_l = std::max(0.0, normal.dot(lightVec));
+
+		Color diffuse_light = n_dot_l * col_diffuse;
+//		Color diffuse_col = ray.intersection.has_texture ? diffuse_light * ray.intersection.texture_col :
+//							diffuse_light * diffuse;
+		Color diffuse_col = diffuse_light * diffuse;
+		diffuse_col.clamp();
+
+		//Specular
+		Vector3D refVec = 2.0 * n_dot_l * normal - lightVec;
+		refVec.normalize();
+		double cosTheta = std::max(0.0, viewVec.dot(refVec));
+		Color specular_col = pow(cosTheta, specular_exp) * specular;
+		specular_col.clamp();
+
+		ray.col = ambient_col + diffuse_col + specular_col;
+	}
+	//std::cout << ray.col << std::endl;
+	ray.col.clamp();
 }
 

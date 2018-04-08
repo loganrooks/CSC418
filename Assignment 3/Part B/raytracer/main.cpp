@@ -19,8 +19,8 @@ int main(int argc, char* argv[])
 	LightList light_list;
 	Scene scene;   
 
-	int width = 480;
-	int height = 360;
+	int width = 300;
+	int height = 240;
 
 	if (argc == 3) {
 		width = atoi(argv[1]);
@@ -34,23 +34,33 @@ int main(int argc, char* argv[])
 		12.8);
 	Material obsidian(Color(0.05375, 0.05, 0.06625), Color(0.18275, 0.17, 0.22525),
 		Color(0.332741, 0.328634, 0.346435),
-		38.4);
+		38.4, 0, 0);
 	Material mirror(Color(0, 0, 0), Color(0,0,0),
 		Color(0,0,0),
-		12, 1);
-	Material grey(Color(0.02, 0.02, 0.02), Color(0.82745,0.82745,0.82745),
-		Color(0.2, 0.2, 0.2),
-		50);
+		12, 1, 0);
+	Material glass(Color(0, 0, 0), Color(0,0.1,0.2),
+					Color(1,1,1),
+					40, 1, 1);
+	Material grey(Color(0, 0, 0), Color(0.5, 0.5, 0.5),
+				  Color(0.3, 0.3, 0.3), 5, 0, 0);
+	Material black(Color(0, 0, 0), Color(0, 0, 0),
+				  Color(0.3, 0.3, 0.3), 5, 0, 0);
+	Material red(Color(0, 0, 0), Color(0.6, 0.3, 0.3),
+				 Color(0.3, 0.3, 0.3), 5, 0, 0);
+	Material blue(Color(0, 0, 0), Color(0.3, 0.3, 0.6),
+				  Color(0.3, 0.3, 0.3), 5, 0, 0);
+	Material green(Color(0, 0, 0), Color(0.3, 0.6, 0.3),
+				  Color(0.3, 0.3, 0.3), 5, 0, 0);
 	Material wood(Color(0,0,0), Color(0.392,0.117,0.0), 
 		Color(0.45,0.14,0.0), 
-		12.8);
+		12.8, 0, 0);
 
 	// Defines a point light source. 
-	PointLight* pLight = new PointLight(Point3D(14,18,15), Color(0.9,0.9,0.9));
+	PointLight* pLight = new PointLight(Point3D(14,18,15), Color(0.9, 0.9, 0.9));
 	light_list.push_back(pLight);
 
 	// Add unit spheres into the scene.
-	SceneNode* sphere1 = new SceneNode(new UnitSphere(), &copper);
+	SceneNode* sphere1 = new SceneNode(new UnitSphere(), &glass);
 	scene.push_back(sphere1);
 
 	SceneNode* sphere2 = new SceneNode(new UnitSphere(), &mirror);
@@ -61,13 +71,13 @@ int main(int argc, char* argv[])
 	// add unit planes to make into room
 	SceneNode* back = new SceneNode(new UnitSquare(), &grey);
 	scene.push_back(back);
-	SceneNode* front = new SceneNode(new UnitSquare(), &grey);
+	SceneNode* front = new SceneNode(new UnitSquare(), &red);
 	scene.push_back(front);
-	SceneNode* left = new SceneNode(new UnitSquare(), &grey);
+	SceneNode* left = new SceneNode(new UnitSquare(), &blue);
 	scene.push_back(left);
-	SceneNode* right = new SceneNode(new UnitSquare(), &grey);
+	SceneNode* right = new SceneNode(new UnitSquare(), &green);
 	scene.push_back(right);
-	SceneNode* top = new SceneNode(new UnitSquare(), &grey);
+	SceneNode* top = new SceneNode(new UnitSquare(), &black);
 	scene.push_back(top);
 	SceneNode* bottom = new SceneNode(new UnitSquare(), &wood);
 	scene.push_back(bottom);
@@ -86,7 +96,7 @@ int main(int argc, char* argv[])
 	SceneNode* bottomFrontM = new SceneNode(new UnitSquare(), &wood);
 	scene.push_back(bottomFrontM);
 
-	//add unit planes to make light source box
+/*	//add unit planes to make light source box
 	SceneNode* lightBack = new SceneNode(new UnitSquare(), &obsidian);
 	scene.push_back(lightBack);
 	SceneNode* lightFront= new SceneNode(new UnitSquare(), &obsidian);
@@ -95,7 +105,7 @@ int main(int argc, char* argv[])
 	scene.push_back(lightLeft);
 	SceneNode* lightRight = new SceneNode(new UnitSquare(), &obsidian);
 	scene.push_back(lightRight);
-	
+
 	SceneNode* inBack = new SceneNode(new UnitSquare(), &obsidian);
 	scene.push_back(inBack);
 	SceneNode* inFront= new SceneNode(new UnitSquare(), &obsidian);
@@ -103,7 +113,7 @@ int main(int argc, char* argv[])
 	SceneNode* inLeft = new SceneNode(new UnitSquare(), &obsidian);
 	scene.push_back(inLeft);
 	SceneNode* inRight = new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(inRight);
+	scene.push_back(inRight);*/
 
 	// Apply some transformations to the spheres
 	double factorS1[3] = { 1.0, 1.0, 1.0 };
@@ -171,7 +181,7 @@ int main(int argc, char* argv[])
 	
 	//bottomSideM
 
-	// Apply transformations to make the light box
+/*	// Apply transformations to make the light box
 	double factor3[3] = {2, 2, 1 };
 	double factor4[3] = {3, 2, 1 };
 	lightBack->translate(Vector3D(13, 20, 15));
@@ -198,36 +208,44 @@ int main(int argc, char* argv[])
 	lightRight->scale(Point3D(0,0,0), factor3);
 	inRight->translate(Vector3D(14, 20, 13.49));
 	inRight->rotate('y', 180);
-	inRight->scale(Point3D(0,0,0), factor3);
+	inRight->scale(Point3D(0,0,0), factor3);*/
 
 
 	// Render the scene, remember to increase resolution for actual project
 	Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
 	Image image1(width, height);
-	raytracer.render(camera1, scene, light_list, image1, FALSE, 5, FALSE); //render 3D scene to image
-	image1.flushPixelBuffer("recursiveRT1.bmp"); //save rendered image to file
-	std::cout << "Done: recursiveRT1" << std::endl;
-	//Render it from a different point of view.
+	//Different point of view
 	Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
 	Image image2(width, height);
-	raytracer.render(camera2, scene, light_list, image2, FALSE, 5, FALSE);
-	image2.flushPixelBuffer("recursiveRT2.bmp");
-	std::cout << "Done: recursiveRT2" << std::endl;
 	//Another point of view
 	Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
 	Image image3(width, height);
+
+	// Recursive Ray-Tracing
+
+/*
+	raytracer.render(camera1, scene, light_list, image1, FALSE, 5, FALSE); //render 3D scene to image
+	image1.flushPixelBuffer("recursiveRT1.bmp"); //save rendered image to file
+	std::cout << "Done: recursiveRT1" << std::endl;
+
+	raytracer.render(camera2, scene, light_list, image2, FALSE, 5, FALSE);
+	image2.flushPixelBuffer("recursiveRT2.bmp");
+	std::cout << "Done: recursiveRT2" << std::endl;
+
 	raytracer.render(camera3, scene, light_list, image3, FALSE, 5, FALSE);
 	image3.flushPixelBuffer("recursiveRT3.bmp");
 	std::cout << "Done: recursiveRT3" << std::endl;
+*/
+
 	// render all using 8x anti-aliasing
 	/*
-	raytracer.render(camera1, scene, light_list, image1, FALSE, 2, TRUE);
+	raytracer.render(camera1, scene, light_list, image1, FALSE, 1, TRUE);
 	image1.flushPixelBuffer("antiAlias1.bmp");
 	std::cout << "Done: antiAlias1" << std::endl;
-	raytracer.render(camera2, scene, light_list, image2, FALSE, 2, TRUE);
+	raytracer.render(camera2, scene, light_list, image2, FALSE, 1, TRUE);
 	image2.flushPixelBuffer("antiAlias2.bmp");
 	std::cout << "Done: antiAlias2" << std::endl;
-	raytracer.render(camera3, scene, light_list, image3, FALSE, 2, TRUE);
+	raytracer.render(camera3, scene, light_list, image3, FALSE, 1, TRUE);
 	image3.flushPixelBuffer("antiAlias3.bmp");
 	std::cout << "Done: antiAlias3" << std::endl;
 	*/
@@ -249,30 +267,30 @@ int main(int argc, char* argv[])
 
 	//Add extended light sources
 	double x = 13.0;
-	double y = 18.0;
-	double z = 13.5;
-	double density = 10.0; //Number of lights per unit length
-	double xNum = 1.0 * density;
-	double yNum = 1.0 * density;
+	double y = 17.9;
+	double z = 13.0;
+	double density = 3.0; //Number of lights per unit length
+	double xNum = 3 * density;
+	double zNum = 2 * density;
 	double dist = 1.0/density;
 
 	for (int i = 0; i < xNum; i++) {
-		for (int j = 0; j < yNum; j++) {
+		for (int j = 0; j < zNum; j++) {
 			light_list.push_back(new PointLight(Point3D(x,y,z), Color(0.9,0.9,0.9)));
 			x += dist;
-			y += dist;
+			z += dist;
 		}	
 		
 	}
-	raytracer.render(camera1, scene, light_list, image1, TRUE, 1, FALSE);
+	raytracer.render(camera1, scene, light_list, image1, TRUE, 2, FALSE);
 	image1.flushPixelBuffer("extendedLights1.bmp");
 	std::cout << "Done: extendedLights1" << std::endl;
 
-	raytracer.render(camera2, scene, light_list, image2, TRUE, 1, FALSE);
+	raytracer.render(camera2, scene, light_list, image2, TRUE, 2, FALSE);
 	image2.flushPixelBuffer("extendedLights2.bmp");
 	std::cout << "Done: extendedLights2" << std::endl;
 
-	raytracer.render(camera3, scene, light_list, image3, TRUE, 1, FALSE);
+	raytracer.render(camera3, scene, light_list, image3, TRUE, 2, FALSE);
 	image3.flushPixelBuffer("extendedLights3.bmp");
 	std::cout << "Done: extendedLights3" << std::endl;
 

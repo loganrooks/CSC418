@@ -29,6 +29,8 @@ light_source.h
 /Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.h
 algorithm
 -
+assert.h
+-
 
 /Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.h
 util.h
