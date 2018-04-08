@@ -1,0 +1,96 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp
+cstdlib
+-
+iostream
+-
+iomanip
+-
+fstream
+-
+bmp_io.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
+fstream
+-
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.cpp
+cmath
+-
+light_source.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.h
+algorithm
+-
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.h
+util.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.h
+vector
+-
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/main.cpp
+cstdlib
+-
+curses.h
+-
+raytracer.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.h
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp
+raytracer.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.h
+cmath
+-
+iostream
+-
+cstdlib
+-
+string
+-
+curses.h
+-
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.h
+curses.h
+-
+util.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.h
+scene_object.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+light_source.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.h
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp
+cmath
+-
+scene_object.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+algorithm
+-
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+util.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.h
+vector
+-
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.cpp
+util.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.h
+
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.h
+iostream
+-
+cmath
+-
+bmp_io.h
+/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
+

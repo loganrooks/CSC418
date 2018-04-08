@@ -5,6 +5,7 @@
 ***********************************************************/
 
 #include <cstdlib>
+#include <curses.h>
 #include "raytracer.h"
 
 int main(int argc, char* argv[])
@@ -18,7 +19,7 @@ int main(int argc, char* argv[])
 	LightList light_list;
 	Scene scene;   
 
-	int width = 720;
+	int width = 480;
 	int height = 360;
 
 	if (argc == 3) {
@@ -203,31 +204,47 @@ int main(int argc, char* argv[])
 	// Render the scene, remember to increase resolution for actual project
 	Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
 	Image image1(width, height);
-	raytracer.render(camera1, scene, light_list, image1); //render 3D scene to image
+	raytracer.render(camera1, scene, light_list, image1, FALSE, 5, FALSE); //render 3D scene to image
 	image1.flushPixelBuffer("recursiveRT1.bmp"); //save rendered image to file
-
+	std::cout << "Done: recursiveRT1" << std::endl;
 	//Render it from a different point of view.
 	Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
 	Image image2(width, height);
-	raytracer.render(camera2, scene, light_list, image2);
+	raytracer.render(camera2, scene, light_list, image2, FALSE, 5, FALSE);
 	image2.flushPixelBuffer("recursiveRT2.bmp");
-
+	std::cout << "Done: recursiveRT2" << std::endl;
 	//Another point of view
 	Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
 	Image image3(width, height);
-	raytracer.render(camera3, scene, light_list, image3);
+	raytracer.render(camera3, scene, light_list, image3, FALSE, 5, FALSE);
 	image3.flushPixelBuffer("recursiveRT3.bmp");
-
+	std::cout << "Done: recursiveRT3" << std::endl;
 	// render all using 8x anti-aliasing
-	raytracer.antiAliasRender8x(camera1, scene, light_list, image1);
+	/*
+	raytracer.render(camera1, scene, light_list, image1, FALSE, 2, TRUE);
 	image1.flushPixelBuffer("antiAlias1.bmp");
-
-	raytracer.antiAliasRender8x(camera2, scene, light_list, image2);
+	std::cout << "Done: antiAlias1" << std::endl;
+	raytracer.render(camera2, scene, light_list, image2, FALSE, 2, TRUE);
 	image2.flushPixelBuffer("antiAlias2.bmp");
-
-	raytracer.antiAliasRender8x(camera3, scene, light_list, image3);
+	std::cout << "Done: antiAlias2" << std::endl;
+	raytracer.render(camera3, scene, light_list, image3, FALSE, 2, TRUE);
 	image3.flushPixelBuffer("antiAlias3.bmp");
-	
+	std::cout << "Done: antiAlias3" << std::endl;
+	*/
+
+	// Hard shadows rendered
+	raytracer.render(camera1, scene, light_list, image1, TRUE, 2, FALSE);
+	image1.flushPixelBuffer("hardShadows1.bmp");
+	std::cout << "Done: hardShadows1" << std::endl;
+
+	raytracer.render(camera2, scene, light_list, image2, TRUE, 2, FALSE);
+	image2.flushPixelBuffer("hardShadows2.bmp");
+	std::cout << "Done: hardShadows2" << std::endl;
+
+	raytracer.render(camera3, scene, light_list, image3, TRUE, 2, FALSE);
+	image3.flushPixelBuffer("hardShadows3.bmp");
+	std::cout << "Done: hardShadows3" << std::endl;
+
 	// render all using extended lighting
 
 	//Add extended light sources
@@ -235,8 +252,8 @@ int main(int argc, char* argv[])
 	double y = 18.0;
 	double z = 13.5;
 	double density = 10.0; //Number of lights per unit length
-	double xNum = 2.0 * density;
-	double yNum = 3.0 * density;
+	double xNum = 1.0 * density;
+	double yNum = 1.0 * density;
 	double dist = 1.0/density;
 
 	for (int i = 0; i < xNum; i++) {
@@ -247,16 +264,21 @@ int main(int argc, char* argv[])
 		}	
 		
 	}
-	raytracer.render(camera1, scene, light_list, image1);
+	raytracer.render(camera1, scene, light_list, image1, TRUE, 1, FALSE);
 	image1.flushPixelBuffer("extendedLights1.bmp");
+	std::cout << "Done: extendedLights1" << std::endl;
 
-	raytracer.render(camera2, scene, light_list, image2);
+	raytracer.render(camera2, scene, light_list, image2, TRUE, 1, FALSE);
 	image2.flushPixelBuffer("extendedLights2.bmp");
+	std::cout << "Done: extendedLights2" << std::endl;
 
-	raytracer.render(camera3, scene, light_list, image3);
+	raytracer.render(camera3, scene, light_list, image3, TRUE, 1, FALSE);
 	image3.flushPixelBuffer("extendedLights3.bmp");
+	std::cout << "Done: extendedLights3" << std::endl;
 
 	//Chris's Contribution ends
+
+
 
 	// Free memory
 	for (size_t i = 0; i < scene.size(); ++i) {

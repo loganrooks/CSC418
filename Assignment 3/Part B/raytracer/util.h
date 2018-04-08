@@ -16,6 +16,8 @@
 #define M_PI	3.14159265358979323846
 #endif
 
+#define EPSILON	1e-6
+
 class Point3D {
 public:
 	Point3D(); 
