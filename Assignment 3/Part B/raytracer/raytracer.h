@@ -18,16 +18,18 @@
 class Raytracer {
 public:
 	// Renders 3D scene to an image given camera and lights setup.
-	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image);
-
-	Raytracer::Raytracer(bool shadows, bool max_depth, bool antialias, bool envmap) :
-			shadows(shadows), antialias(antialias), max_depth(max_depth), envmap(envmap) {}
 
 	bool shadows;
 	bool antialias;
 	bool max_depth;
 	bool envmap;
-		
+
+	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image);
+
+	Raytracer(bool shadows, bool max_depth, bool antialias, bool envmap) :
+			shadows(shadows), antialias(antialias), max_depth(max_depth), envmap(envmap) {}
+
+
 private:
 
 	// Return the color of the ray after intersection and shading, call 
