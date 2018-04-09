@@ -48,6 +48,55 @@ bool UnitSquare::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 		ray.intersection.normal = normal;
 		ray.intersection.none = false;
 		ray.intersection.t_value = t;
+		ray.intersection.uv = Point3D((x + 0.5), (1 - (y + 0.5)), 0);
+
+
+		return true;
+	}
+	return false;
+}
+
+bool UnitCircle::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
+						   const Matrix4x4& modelToWorld) {
+	// TODO: implement intersection code for UnitSquare, which is
+	// defined on the xy-plane, with vertices (0.5, 0.5, 0),
+	// (-0.5, 0.5, 0), (-0.5, -0.5, 0), (0.5, -0.5, 0), and normal
+	// (0, 0, 1).
+	//
+	// Your goal here is to fill ray.intersection with correct values
+	// should an intersection occur.  This includes intersection.point,
+	// intersection.normal, intersection.none, intersection.t_value.
+	//
+	// HINT: Remember to first transform the ray into object space
+	// to simplify the intersection test.
+
+	// Logan's contrib begins
+	// Transforming ray into object space
+	Ray3D transformedRay (worldToModel * ray.origin, worldToModel * ray.dir);
+
+	// Computing point of itersection with xy plane means finding t
+	// that satisfies the parametric equation
+	// 0 = origin + t * dir for the z coordinate
+	double t = - transformedRay.origin[2] / transformedRay.dir[2];
+
+	// if t is <= 0, return false because ray is shooting in wrong direction
+	if (t <= 0) return false;
+
+	double x = transformedRay.origin[0] + t * transformedRay.dir[0];
+	double y = transformedRay.origin[1] + t * transformedRay.dir[1];
+
+
+	if (pow(x, 2) + pow(y,2) <= 1) {
+		if (!ray.intersection.none && ray.intersection.t_value < t) return false;
+		Vector3D normal = transNorm(worldToModel, Vector3D(0, 0, 1));
+		normal.normalize();
+
+		ray.intersection.point = modelToWorld * Point3D(x, y, 0);
+		ray.intersection.normal = normal;
+		ray.intersection.none = false;
+		ray.intersection.t_value = t;
+		ray.intersection.uv = Point3D((x + 0.5), (1 - (y + 0.5)), 0);
+
 
 		return true;
 	}
@@ -104,6 +153,7 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	ray.intersection.normal.normalize();
 	ray.intersection.none = false;
 	ray.intersection.t_value = t;
+	ray.intersection.uv = Point3D(1 - (0.5 - asin(point[1]) / M_PI), 1 - (0.5 + atan2(point[2], point[0]) / (2 * M_PI)), 0 );
 	return true;
 	//Chris's contribution ends
 }

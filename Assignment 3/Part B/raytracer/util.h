@@ -288,6 +288,29 @@ private:
 	unsigned char* bbuffer; // blue channel
 };
 
+struct Texture {
+	// define the size of the .bmp file
+
+	Texture(int r_x, int r_y) : repeats_x(r_x), repeats_y(r_y) {}
+
+	unsigned long int x;
+	long int y;
+
+	int repeats_x;
+	int repeats_y;
+
+	// arrays of dimension (x,y)
+	// defining the RGB value of the texture
+	unsigned char* rarray = NULL;
+	unsigned char* garray = NULL;
+	unsigned char* barray = NULL;
+
+	// array of dimension (x,y) giving the heightmap value at that pixel
+	void makeCheckerboard();
+	void loadBitmap(const char* filename);
+
+	Color get_colour_at_uv(Point3D uv);
+};
 
 
 

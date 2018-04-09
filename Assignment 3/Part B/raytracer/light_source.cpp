@@ -31,7 +31,6 @@ void PointLight::shade(Ray3D& ray) {
 	double specular_exp = ray.intersection.mat->specular_exp;
 
 	Point3D lightPos = get_position();
-
 	//Ambient effect
 	Color ambient_col = col_ambient * ambient;
 	ambient_col.clamp();
@@ -39,7 +38,7 @@ void PointLight::shade(Ray3D& ray) {
 	// If the ray is in shadow, only add the ambient color
 	// and don't bother calculating other components, save some computation :)
 	if (ray.inShadow) {
-		ray.col = ambient_col;
+		ray.col = ray.col + ambient_col;
 	}
 	else {
 		//Diffuse effect
@@ -49,19 +48,19 @@ void PointLight::shade(Ray3D& ray) {
 		double n_dot_l = std::max(0.0, normal.dot(lightVec));
 
 		Color diffuse_light = n_dot_l * col_diffuse;
-//		Color diffuse_col = ray.intersection.has_texture ? diffuse_light * ray.intersection.texture_col :
-//							diffuse_light * diffuse;
-		Color diffuse_col = diffuse_light * diffuse;
+		Color diffuse_col = ray.intersection.has_texture ? diffuse_light * ray.intersection.texture_col :
+							diffuse_light * diffuse;
+//		Color diffuse_col = diffuse_light * diffuse;
 		diffuse_col.clamp();
 
 		//Specular
 		Vector3D refVec = 2.0 * n_dot_l * normal - lightVec;
 		refVec.normalize();
 		double cosTheta = std::max(0.0, viewVec.dot(refVec));
-		Color specular_col = pow(cosTheta, specular_exp) * specular;
+		Color specular_col = pow(cosTheta, specular_exp) * specular * col_specular;
 		specular_col.clamp();
 
-		ray.col = ambient_col + diffuse_col + specular_col;
+		ray.col = ray.col + ambient_col + diffuse_col + specular_col;
 	}
 	//std::cout << ray.col << std::endl;
 	ray.col.clamp();

@@ -17,12 +17,27 @@
 
 double EPSILON = 0.0001;
 
+
+
+void Raytracer::addTextureInfo(SceneNode* node, Ray3D& ray)
+{
+	ray.intersection.has_texture = true;
+	ray.intersection.texture_col = node->texture->get_colour_at_uv(ray.intersection.uv);
+	//ray.intersection.normal = ray.intersection.normal
+}
+
 void Raytracer::traverseScene(Scene& scene, Ray3D& ray)  {
 	for (size_t i = 0; i < scene.size(); ++i) {
 		SceneNode* node = scene[i];
 
 		if (node->obj->intersect(ray, node->worldToModel, node->modelToWorld)) {
 			ray.intersection.mat = node->mat;
+				if (node->has_texture) {
+					addTextureInfo(node, ray);
+				}
+				else {
+					ray.intersection.has_texture = false;
+				}
 		}
 	}
 }
@@ -39,13 +54,9 @@ void Raytracer::computeTransforms(Scene& scene) {
 	}
 }
 
-void Raytracer::computeShadow(Ray3D& ray, Scene& scene, LightSource* light) {
-
-}
 
 void Raytracer::computeShading(Ray3D& ray, Scene& scene, LightList& light_list, bool shadows) {
 	int n_lights = light_list.size();
-	Color final_col(0.0,0.0,0.0);
 
 	for (size_t  i = 0; i < n_lights; ++i) {
 		LightSource *light = light_list[i];
@@ -63,21 +74,12 @@ void Raytracer::computeShading(Ray3D& ray, Scene& scene, LightList& light_list, 
 //			std::cout << "\nLight Distance: " << distance_to_light << std::endl;
 //			std::cout << "Shadow Ray Intercept Distance: " << shadow_ray.intersection.t_value << std::endl;
 //			std::cout << "Is there shadow?: " << (!shadow_ray.intersection.none && (shadow_ray.intersection.t_value <= distance_to_light)) << std::endl;
-			if (!shadow_ray.intersection.none && (shadow_ray.intersection.t_value <= distance_to_light)) {
-				// Checking whether it intersects before it reaches the light and therefore is in shadow
-				ray.inShadow = true;
-			}
-			else {
-				ray.inShadow = false;
-			}
+			Intersection shadow_intersect = shadow_ray.intersection;
+			ray.inShadow = !shadow_intersect.none && shadow_intersect.t_value <= distance_to_light && shadow_intersect.mat->refractIndex < EPSILON;
 		}
 //		if (shadows) std::cout << "inShadow: " << ray.inShadow << std::endl;
 		light->shade(ray);
-		final_col = final_col + ray.col;
-		final_col.clamp();
 	}
-
-	ray.col = final_col;
 }
 
 Vector3D Raytracer::computeRefraction(Vector3D normal, Vector3D incident, double nt)
@@ -165,13 +167,14 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 					k2 = exp(-a2*t_ray);
 				}
 
-				// refractRay
-				Ray3D refractRay;
-				refractRay.origin =ray.intersection.point + EPSILON * refract_dir; // acne
-				refractRay.dir = refract_dir;
-				refractRay.dir.normalize();
+				// refract ray
+				Ray3D refract_ray;
+				refract_ray.origin =ray.intersection.point + EPSILON * refract_dir; // acne
+				refract_ray.dir = refract_dir;
+				refract_ray.dir.normalize();
+				refract_ray.refracted = true;
 
-				refract_col = shadeRay(refractRay, scene, light_list, depth + 1, shadows, max_depth);
+				refract_col = shadeRay(refract_ray, scene, light_list, depth + 1, shadows, max_depth);
 
 				double R0 = ((NT - 1) * (NT - 1)) / ((NT + 1) * (NT + 1));
 				double d = 1 - c;

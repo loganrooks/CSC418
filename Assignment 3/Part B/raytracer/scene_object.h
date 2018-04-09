@@ -58,6 +58,8 @@ struct SceneNode {
 	Matrix4x4 invtrans;
 	Matrix4x4 modelToWorld;
 	Matrix4x4 worldToModel;
+	Texture* texture;
+	bool has_texture;
 };
 
 // Scene is simply implemented as a list of nodes. Doesnt support hierarchy(scene graph).
@@ -69,6 +71,12 @@ class UnitSquare : public SceneObject {
 public:
 	bool intersect(Ray3D& ray, const Matrix4x4& worldToModel, 
 				const Matrix4x4& modelToWorld);
+};
+
+class UnitCircle : public SceneObject {
+public:
+    bool intersect(Ray3D& ray, const Matrix4x4& worldToModel,
+                   const Matrix4x4& modelToWorld);
 };
 
 class UnitSphere : public SceneObject {

@@ -43,7 +43,5 @@ private:
 
 	Vector3D computeRefraction(Vector3D normal, Vector3D incident, double nt);
 
-	void computeShadow(Ray3D &ray, Scene &scene, LightSource *light);
-
-
+	void addTextureInfo(SceneNode *node, Ray3D &ray);
 };

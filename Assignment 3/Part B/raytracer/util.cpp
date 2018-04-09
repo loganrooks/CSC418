@@ -384,5 +384,19 @@ std::ostream& operator <<(std::ostream& os, const Matrix4x4& M) {
 		<< M[3][2] << " " << M[3][3] << "]";
 }
 
+void Texture::loadBitmap(const char * filename){
+	bmp_read(filename, &x, &y, &rarray, &garray, &barray);
+}
 
+
+Color Texture::get_colour_at_uv(Point3D uv) {
+
+	int i = int(uv[0] * repeats_x * x) % int(x);
+	int j = int(uv[1] * repeats_y * y) % int(y);
+
+	// we need to divide by 255 since the texture is stored as an int from 0 to 255
+	Color col = Color (rarray[i *x + j]/255.0,garray[i *x + j]/255.0,barray[i* x + j]/255.0);
+
+	return col;
+}
 
