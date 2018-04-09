@@ -8,6 +8,7 @@
 
 #include "util.h"
 
+
 Point3D::Point3D() {
 	m_data[0] = 0.0;
 	m_data[1] = 0.0;
@@ -478,21 +479,22 @@ Point3D CubeMap::direction_to_cube_map_uv(Vector3D direction, int* face) {
 }
 
 
-void CubeMap::set_face_images() {
+void CubeMap::set_face_images(const char* env) {
 	// we store the cube map
 	// as six square .bmp images
+
 	face0 = new Texture(1,1);
-	face0->loadBitmap("side1.bmp"); // pos_x
+	face0->loadBitmap("environments/dark/pos_x.bmp"); // pos_x
 	face1 = new Texture(1,1);
-	face1->loadBitmap("side3.bmp"); // neg_x
+	face1->loadBitmap("environments/dark/neg_x.bmp"); // neg_x
 	face2 = new Texture(1,1);
-	face2->loadBitmap("side6.bmp"); // pos_y
+	face2->loadBitmap("environments/dark/pos_y.bmp"); // pos_y
 	face3 = new Texture(1,1);
-	face3->loadBitmap("side5.bmp"); // neg_y
+	face3->loadBitmap("environments/dark/neg_y.bmp"); // neg_y
 	face4 = new Texture(1,1);
-	face4->loadBitmap("side2.bmp"); // pos_z
+	face4->loadBitmap("environments/dark/pos_z.bmp"); // pos_z
 	face5 = new Texture(1,1);
-	face5->loadBitmap("side4.bmp"); // neg_z
+	face5->loadBitmap("environments/dark/neg_z.bmp"); // neg_z
 }
 
 Color CubeMap::query_bmp_cube_map(Vector3D direction)

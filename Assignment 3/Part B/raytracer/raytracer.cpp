@@ -186,8 +186,15 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 			}
 		}
 		ray.col.clamp();
+		col = ray.col;
 	}
-	return ray.col;
+	else {
+		// else it intersects nothing, get cube map value for the ray direction
+		if (use_envmap){
+			col = envmap->query_bmp_cube_map(ray.dir);
+		}
+	}
+	return col;
 }	
 
 void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Image& image) {
@@ -197,6 +204,11 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 	double factor = (double(image.height)/2)/tan(camera.fov*M_PI/360.0);
 
 	viewToWorld = camera.initInvViewMatrix();
+
+	if(use_envmap) {
+		envmap = new CubeMap;
+		envmap->set_face_images("environments/dark/");
+	}
 
 	// Construct a ray for each pixel.
 	for (int i = 0; i < image.height; i++) {

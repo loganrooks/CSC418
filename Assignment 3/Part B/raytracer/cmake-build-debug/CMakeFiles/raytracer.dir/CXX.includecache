@@ -93,6 +93,8 @@ iostream
 -
 cmath
 -
+string
+-
 bmp_io.h
 /Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
 

@@ -22,12 +22,12 @@ public:
 	bool shadows;
 	bool antialias;
 	bool max_depth;
-	bool envmap;
+	bool use_envmap;
 
 	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image);
 
-	Raytracer(bool shadows, bool max_depth, bool antialias, bool envmap) :
-			shadows(shadows), antialias(antialias), max_depth(max_depth), envmap(envmap) {}
+	Raytracer(bool shadows, bool max_depth, bool antialias, bool use_envmap) :
+			shadows(shadows), antialias(antialias), max_depth(max_depth), use_envmap(use_envmap) {}
 
 
 private:
@@ -54,6 +54,8 @@ private:
 	Vector3D computeRefraction(Vector3D normal, Vector3D incident, double nt);
 
 	void addTextureInfo(SceneNode *node, Ray3D &ray);
+
+	CubeMap* envmap;
 
 
 };

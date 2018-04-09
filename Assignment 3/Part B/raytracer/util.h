@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <string>
 #include "bmp_io.h"
 
 #ifndef M_PI
@@ -326,6 +327,8 @@ struct CubeMap {
 	Texture * face3;
 	Texture * face4;
 	Texture * face5;
+
+	void set_face_images(const char *env);
 };
 
 

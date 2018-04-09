@@ -488,17 +488,20 @@ int main(int argc, char* argv[])
 	inRight->scale(Point3D(0,0,0), factor4);*/
 
 
-	// Render the scene, remember to increase resolution for actual project
-	Camera camera1(Point3D(7, 4.5, 16), Vector3D(-1, 0.1, -0.5), Vector3D(0, 1, 0), 60.0);
+	// Looking into blue portal
+	Camera camera1(Point3D(15, 2, 8), Vector3D(0, 0.1, -0.3), Vector3D(0, 1, 0), 60.0);
 	Image image1(width, height);
-	//Different point of view
+
+	// Looking at corner with orange goo
 	Camera camera2(Point3D(22, 8, 14), Vector3D(1, -0.3, -0.7), Vector3D(0, 1, 0), 60.0);
 	Image image2(width, height);
-	//Another point of view
+
+	//Another point of view, used for showing texture mapping, looking at companion cube, portals
 	Camera camera3(Point3D(26, 5.5, 22), Vector3D(-1, -0.13, -1.8 ), Vector3D(0, 1, 0), 60.0);
 	Image image3(width, height);
 
-    Camera camera4(Point3D(30, 10, 40), Vector3D(-2, -1, -8 ), Vector3D(0, 1, 0), 60.0);
+	// Looking into blue portal
+    Camera camera4(Point3D(30, 10, 60), Vector3D(-2, -1, -8 ), Vector3D(0, 1, 0), 60.0);
     Image image4(width, height);
 
 	// Recursive Ray-Tracing
@@ -534,10 +537,10 @@ int main(int argc, char* argv[])
 
 	// Hard shadows rendered
 
-    Raytracer shadows(true, 2, false, false);
-	shadows.render(camera2, scene, light_list, image2);
-	image2.flushPixelBuffer("hardShadows2.bmp");
-	std::cout << "Done: hardShadows2" << std::endl;
+//    Raytracer shadows(true, 2, false, false);
+//	shadows.render(camera2, scene, light_list, image2);
+//	image2.flushPixelBuffer("hardShadows2.bmp");
+//	std::cout << "Done: hardShadows2" << std::endl;
 
 //	raytracer.render(camera3, scene, light_list, image3, true, 4, false);
 //	image3.flushPixelBuffer("hardShadows3.bmp");
@@ -546,6 +549,16 @@ int main(int argc, char* argv[])
 //    raytracer.render(camera4, scene, light_list, image4, true, 2, false);
 //    image4.flushPixelBuffer("hardShadows4.bmp");
 //    std::cout << "Done: hardShadows4" << std::endl;
+
+    // envmap
+    Raytracer envmapping(false, 2, false, true);
+    envmapping.render(camera1, scene, light_list, image3);
+	image3.flushPixelBuffer("envmap1.bmp");
+    std::cout << "Done: envmap1" << std::endl;
+
+    envmapping.render(camera4, scene, light_list, image3);
+    image3.flushPixelBuffer("envmap2.bmp");
+    std::cout << "Done: envmap2" << std::endl;
 
 	// render all using extended lighting
 
