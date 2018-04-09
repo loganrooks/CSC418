@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 	// scene and renders it from two different view points, DO NOT
 	// change this if you're just implementing part one of the 
 	// assignment.  
-	Raytracer raytracer;
+
 	LightList light_list;
 	Scene scene;
 
@@ -533,11 +533,9 @@ int main(int argc, char* argv[])
 	*/
 
 	// Hard shadows rendered
-//	raytracer.render(camera1, scene, light_list, image1, TRUE, 2, FALSE);
-//	image1.flushPixelBuffer("hardShadows1.bmp");
-//	std::cout << "Done: hardShadows1" << std::endl;
-//
-	raytracer.render(camera2, scene, light_list, image2, TRUE, 2, FALSE);
+
+    Raytracer shadows(true, 2, false, false);
+	shadows.render(camera2, scene, light_list, image2);
 	image2.flushPixelBuffer("hardShadows2.bmp");
 	std::cout << "Done: hardShadows2" << std::endl;
 

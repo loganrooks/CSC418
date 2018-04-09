@@ -18,7 +18,15 @@
 class Raytracer {
 public:
 	// Renders 3D scene to an image given camera and lights setup.
-	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image, bool shadows, int max_depth, bool antialias);
+	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image);
+
+	Raytracer::Raytracer(bool shadows, bool max_depth, bool antialias, bool envmap) :
+			shadows(shadows), antialias(antialias), max_depth(max_depth), envmap(envmap) {}
+
+	bool shadows;
+	bool antialias;
+	bool max_depth;
+	bool envmap;
 		
 private:
 
@@ -44,4 +52,6 @@ private:
 	Vector3D computeRefraction(Vector3D normal, Vector3D incident, double nt);
 
 	void addTextureInfo(SceneNode *node, Ray3D &ray);
+
+
 };

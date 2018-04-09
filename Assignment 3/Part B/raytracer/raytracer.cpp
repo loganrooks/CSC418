@@ -19,6 +19,7 @@ double EPSILON = 0.0001;
 
 
 
+
 void Raytracer::addTextureInfo(SceneNode* node, Ray3D& ray)
 {
 	ray.intersection.has_texture = true;
@@ -192,7 +193,7 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 	return ray.col;
 }	
 
-void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Image& image, bool shadows=FALSE, int max_depth=2, bool antialias=FALSE) {
+void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Image& image,) {
 	computeTransforms(scene);
 
 	Matrix4x4 viewToWorld;

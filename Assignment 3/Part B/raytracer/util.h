@@ -312,5 +312,20 @@ struct Texture {
 	Color get_colour_at_uv(Point3D uv);
 };
 
+struct CubeMap {
+	Point3D direction_to_cube_map_uv(Vector3D direction, int* face);
+
+	// For the environment maps that use bmp files
+	// We define an image for every face of the cube;
+	void set_face_images();
+	Color query_bmp_cube_map(Vector3D direction);
+
+	Texture * face0;
+	Texture * face1;
+	Texture * face2;
+	Texture * face3;
+	Texture * face4;
+	Texture * face5;
+};
 
 

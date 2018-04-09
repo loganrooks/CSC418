@@ -23,11 +23,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="raytracer.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="raytracer.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raytracer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="73" column="26" lean-forward="true" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+            <state relative-caret-position="192">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#272#294#0" expanded="true" />
               </folding>
@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="494" column="32" selection-start-line="494" selection-start-column="32" selection-end-line="494" selection-end-column="32" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#157#175#0" expanded="true" />
               </folding>
@@ -47,14 +47,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hardShadows2.bmp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hardShadows2.bmp">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
       <file leaf-file-name="hardShadows3.bmp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hardShadows3.bmp">
           <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="raytracer.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/raytracer.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+              <folding>
+                <element signature="e#321#340#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="320" column="8" selection-start-line="320" selection-start-column="8" selection-end-line="320" selection-end-column="8" />
+              <folding>
+                <element signature="e#290#309#0" expanded="true" />
+                <element signature="e#361#396#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="493" column="27" selection-start-line="493" selection-start-column="27" selection-end-line="493" selection-end-column="27" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -77,13 +106,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/light_source.h" />
-        <option value="$PROJECT_DIR$/raytracer.h" />
-        <option value="$PROJECT_DIR$/raytracer.cpp" />
         <option value="$PROJECT_DIR$/light_source.cpp" />
-        <option value="$PROJECT_DIR$/util.cpp" />
-        <option value="$PROJECT_DIR$/util.h" />
         <option value="$PROJECT_DIR$/scene_object.h" />
         <option value="$PROJECT_DIR$/scene_object.cpp" />
+        <option value="$PROJECT_DIR$/util.h" />
+        <option value="$PROJECT_DIR$/util.cpp" />
+        <option value="$PROJECT_DIR$/raytracer.cpp" />
+        <option value="$PROJECT_DIR$/raytracer.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
@@ -179,24 +208,24 @@
       <option name="presentableId" value="Default" />
       <updated>1523134050341</updated>
       <workItem from="1523134051473" duration="50018000" />
-      <workItem from="1523231995136" duration="32686000" />
+      <workItem from="1523231995136" duration="33725000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82704000" />
+    <option name="totallyTimeSpent" value="83743000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="47" width="968" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.46177685" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19524793" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.3278302" />
       <window_info anchor="bottom" id="CMake" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3275218" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3275218" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3275218" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
@@ -270,17 +299,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4500">
-          <caret line="300" selection-start-line="300" selection-end-line="300" />
-          <folding>
-            <element signature="e#290#309#0" expanded="true" />
-            <element signature="e#361#396#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -397,13 +415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="397" selection-start-line="397" selection-end-line="397" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scene_object.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -433,16 +444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/raytracer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="45" selection-start-line="44" selection-end-line="45" />
-          <folding>
-            <element signature="e#321#340#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/recursiveRT2.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -461,28 +462,56 @@
     <entry file="file://$PROJECT_DIR$/hardShadows4.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hardShadows3.bmp">
+    <entry file="file://$PROJECT_DIR$/hardShadows2.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/util.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="494" column="32" selection-start-line="494" selection-start-column="32" selection-end-line="494" selection-end-column="32" />
+        <state relative-caret-position="302">
+          <caret line="320" column="8" selection-start-line="320" selection-start-column="8" selection-end-line="320" selection-end-column="8" />
           <folding>
-            <element signature="e#157#175#0" expanded="true" />
+            <element signature="e#290#309#0" expanded="true" />
+            <element signature="e#361#396#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hardShadows2.bmp">
+    <entry file="file://$PROJECT_DIR$/util.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="493" column="27" selection-start-line="493" selection-start-column="27" selection-end-line="493" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hardShadows3.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/raytracer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="73" column="26" lean-forward="true" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+        <state relative-caret-position="192">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#272#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/raytracer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding>
+            <element signature="e#321#340#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#157#175#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -400,3 +400,129 @@ Color Texture::get_colour_at_uv(Point3D uv) {
 	return col;
 }
 
+Point3D CubeMap::direction_to_cube_map_uv(Vector3D direction, int* face) {
+
+	// Used the wikipedia article for cube mapping as a guide
+	// As well as the textbook
+	// Use the convention from the wikipedia article since in the book, +z is the up-direction
+	// In the cube mapping code I assume that positive y is the up-direction, as given in main.cpp
+
+	double u; double v;
+	double x = direction[0];
+	double y = direction[1];
+	double z = direction[2];
+
+	double abs_x = fabs(x);
+	double abs_y = fabs(y);
+	double abs_z = fabs(z);
+
+	// find the which face of the infinitely
+	// large cube we will intersect with
+	// by checking which component has biggest magnitude
+	bool x_is_biggest = (abs_x >= abs_y) && (abs_x >= abs_z);
+	bool y_is_biggest = (abs_y >= abs_x) && (abs_y >= abs_z);
+	bool z_is_biggest = (abs_z >= abs_x) && (abs_z >= abs_y);
+
+	// then, use the appropriate formula
+	// for that face to get (u,v) from the
+	// ray's direction
+	if (x_is_biggest)
+	{
+		if (x > 0)
+		{
+			u = (-z + x) / (2 * x);
+			v = (-y + x) / (2 * x);
+			*face = 0;
+		}
+		else {
+			u = (-	z + x) / (2 * x);
+			v = (y + x) / (2 * x);
+			*face = 1;
+		}
+	}
+	else if (y_is_biggest)
+	{
+		if (y > 0)
+		{
+			u = (x + y) / (2 * y);
+			v = (z + y) / (2 * y);
+			*face = 2;
+		}
+		else {
+			u = (-x + y) / (2 * y);
+			v = (z + y) / (2 * y);
+			*face = 3;
+		}
+	}
+	else if (z_is_biggest) {
+		if (z > 0)
+		{
+			u = (x + z) / (2 * z);
+			v = (-y + z) / (2 * z);
+			*face = 4;
+		}
+		else {
+			u = (x + z) / (2 * z);
+			v = (y + z) / (2 * z);
+			*face = 5;
+		}
+
+	}
+
+	// We do this flipping because
+	// The .bmp file coordinates
+	// are flipped and stored as Y,X
+
+	//otherwise we would do Point3D(u,v,0)
+	return Point3D(1-v, 1-u, 0);
+}
+
+
+void CubeMap::set_face_images() {
+	// we store the cube map
+	// as six square .bmp images
+	face0 = new Texture(1,1);
+	face0->loadBitmap("side1.bmp"); // pos_x
+	face1 = new Texture(1,1);
+	face1->loadBitmap("side3.bmp"); // neg_x
+	face2 = new Texture(1,1);
+	face2->loadBitmap("side6.bmp"); // pos_y
+	face3 = new Texture(1,1);
+	face3->loadBitmap("side5.bmp"); // neg_y
+	face4 = new Texture(1,1);
+	face4->loadBitmap("side2.bmp"); // pos_z
+	face5 = new Texture(1,1);
+	face5->loadBitmap("side4.bmp"); // neg_z
+}
+
+Color CubeMap::query_bmp_cube_map(Vector3D direction)
+{
+	int face = -1;
+	Color col = Color(0, 0, 0);
+
+	Point3D uv = direction_to_cube_map_uv(direction, &face);
+	Texture* txt;
+	switch (face)
+	{
+		case 0:
+			txt = face0;
+			break;
+		case 1:
+			txt = face1;
+			break;
+		case 2:
+			txt = face2;
+			break;
+		case 3:
+			txt = face3;
+			break;
+		case 4:
+			txt = face4;
+			break;
+		case 5:
+			txt = face5;
+			break;
+	}
+	col = txt->get_colour_at_uv(uv);
+	return col;
+}
