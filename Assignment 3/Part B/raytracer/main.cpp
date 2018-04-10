@@ -45,7 +45,6 @@ Material wood(Color(0,0,0), Color(0.392,0.117,0.0),
               12.8, 0, 0);
 
 
-
 int portal_scene(LightList& light_list, Scene& scene) {
     // Two lights on either side of the complex
     PointLight* pLight2 = new PointLight(Point3D(37,15,20), Color(0.4, 0.4, 0.4));
@@ -354,6 +353,206 @@ int portal_scene(LightList& light_list, Scene& scene) {
 }
 
 int simple_scene(LightList& light_list, Scene& scene) {
+        // Define materials for shading.
+
+
+    // Defines a point light source. 
+    PointLight* pLight = new PointLight(Point3D(14,18,15), Color(0.9,0.9,0.9));
+    light_list.push_back(pLight);
+
+    // Add unit spheres into the scene.
+    SceneNode* sphere1 = new SceneNode(new UnitSphere(), &copper);
+    scene.push_back(sphere1);
+
+    SceneNode* sphere2 = new SceneNode(new UnitSphere(), &mirror);
+    scene.push_back(sphere2);
+
+    SceneNode* sphere3 = new SceneNode(new UnitSphere(), &obsidian);
+    scene.push_back(sphere3);
+    // add unit planes to make into room
+    SceneNode* back = new SceneNode(new UnitSquare(), &grey);
+    scene.push_back(back);
+    SceneNode* front = new SceneNode(new UnitSquare(), &grey);
+    scene.push_back(front);
+    SceneNode* left = new SceneNode(new UnitSquare(), &grey);
+    scene.push_back(left);
+    SceneNode* right = new SceneNode(new UnitSquare(), &grey);
+    scene.push_back(right);
+    SceneNode* top = new SceneNode(new UnitSquare(), &grey);
+    scene.push_back(top);
+    SceneNode* bottom = new SceneNode(new UnitSquare(), &wood);
+    scene.push_back(bottom);
+
+    //Add unit planes to make mirror
+    SceneNode* backMirror = new SceneNode(new UnitSquare(), &mirror);
+    scene.push_back(backMirror);
+
+    //Add unit planes to make frame
+    SceneNode* leftFrontM = new SceneNode(new UnitSquare(), &wood);
+    scene.push_back(leftFrontM);
+    SceneNode* rightFrontM = new SceneNode(new UnitSquare(), &wood);
+    scene.push_back(rightFrontM);
+    SceneNode* topFrontM = new SceneNode(new UnitSquare(), &wood);
+    scene.push_back(topFrontM);
+    SceneNode* bottomFrontM = new SceneNode(new UnitSquare(), &wood);
+    scene.push_back(bottomFrontM);
+
+    //add unit planes to make light source box
+    SceneNode* lightBack = new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(lightBack);
+    SceneNode* lightFront= new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(lightFront);
+    SceneNode* lightLeft = new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(lightLeft);
+    SceneNode* lightRight = new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(lightRight);
+    
+    SceneNode* inBack = new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(inBack);
+    SceneNode* inFront= new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(inFront);
+    SceneNode* inLeft = new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(inLeft);
+    SceneNode* inRight = new SceneNode(new UnitSquare(), &obsidian);
+    scene.push_back(inRight);
+
+    // Apply some transformations to the spheres
+    double factorS1[3] = { 1.0, 1.0, 1.0 };
+    double factorS2[3] = { 1.5, 1.5, 1.5 };
+    sphere1->translate(Vector3D(5, 5, 10));
+    sphere1->scale(Point3D(0, 0, 0), factorS1);
+
+    sphere2->translate(Vector3D(10, 8, 12));
+    sphere2->scale(Point3D(0,0,0), factorS2);
+
+    sphere3->translate(Vector3D(3, 9, 8));
+    sphere3->scale(Point3D(0, 0, 0), factorS1);
+    
+    // Apply transformations to make the room
+    double factor2[3] = {20, 20, 20 };
+    back->translate(Vector3D(0, 10, 10));
+    back->rotate('y', 90);
+    back->scale(Point3D(0, 0, 0), factor2);
+    
+    front ->translate(Vector3D(20,10,10));
+    front->rotate('y', -90);
+    front->scale(Point3D(0,0,0), factor2);
+
+    left->translate(Vector3D(10, 10, 20));
+    left->scale(Point3D(0, 0, 0), factor2);
+    left->rotate('y', 180);
+
+    right->translate(Vector3D(10, 10, 0));
+    right->scale(Point3D(0, 0, 0), factor2);
+
+    bottom->translate(Vector3D(10,0,10));
+    bottom->rotate('x', -90);
+    bottom->scale(Point3D(0,0,0), factor2);
+
+    top->translate(Vector3D(10,20,10));
+    top->rotate('x', 90);
+    top->scale(Point3D(0,0,0), factor2);
+
+    // Apply transformations to make the mirror
+    double factorM1[3] = {10,10,10};
+    backMirror->translate(Vector3D(0.25, 10, 10));
+    backMirror->rotate('y', 90);
+    backMirror->scale(Point3D(0, 0, 0), factorM1);
+
+    // Apply transformations to make the frame
+    double factorM2[3] = {0.5, 10.5, 1};
+    leftFrontM->translate(Vector3D(0.5,10,15));
+    leftFrontM->rotate('y', -90);
+    leftFrontM->scale(Point3D(0,0,0), factorM2);
+    
+    rightFrontM->translate(Vector3D(0.5,10,5));
+    rightFrontM->rotate('y', -90);
+    rightFrontM->scale(Point3D(0,0,0), factorM2);
+    
+    topFrontM->translate(Vector3D(0.5, 15, 10));
+    topFrontM->rotate('y', -90);
+    topFrontM->rotate('z', 90);
+    topFrontM->scale(Point3D(0,0,0), factorM2);
+    
+    bottomFrontM->translate(Vector3D(0.5, 5, 10));
+    bottomFrontM->rotate('y', -90);
+    bottomFrontM->rotate('z', 90);
+    bottomFrontM->scale(Point3D(0,0,0), factorM2);
+    
+    
+    //bottomSideM
+
+    // Apply transformations to make the light box
+    double factor3[3] = {2, 2, 1 };
+    double factor4[3] = {3, 2, 1 };
+    lightBack->translate(Vector3D(13, 20, 15));
+    lightBack->rotate('y', 90);
+    lightBack->scale(Point3D(0,0,0), factor4);
+    inBack->translate(Vector3D(13.01, 20, 15));
+    inBack->rotate('y', -90);
+    inBack->scale(Point3D(0,0,0), factor4);
+
+    lightFront->translate(Vector3D(15, 20, 15));
+    lightFront->rotate('y', -90);
+    lightFront->scale(Point3D(0,0,0), factor4);
+    inFront->translate(Vector3D(14.99, 20, 15));
+    inFront->rotate('y', 90);
+    inFront->scale(Point3D(0,0,0), factor4);
+
+    lightLeft->translate(Vector3D(14, 20, 16.5));
+    lightLeft->rotate('y', 180);
+    lightLeft->scale(Point3D(0,0,0), factor3);
+    inLeft->translate(Vector3D(14, 20, 16.49));
+    inLeft->scale(Point3D(0,0,0), factor3);
+
+    lightRight->translate(Vector3D(14, 20, 13.5));
+    lightRight->scale(Point3D(0,0,0), factor3);
+    inRight->translate(Vector3D(14, 20, 13.49));
+    inRight->rotate('y', 180);
+    inRight->scale(Point3D(0,0,0), factor3);
+}
+
+int recursive_ray_tracing(int width, int height) {
+    LightList light_list;
+    Scene scene;
+    
+    simple_scene(light_list, scene);
+
+    // Render the scene
+    Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
+    Image image1(width, height);
+    raytracer.render(camera1, scene, light_list, image1); //render 3D scene to image
+    image1.flushPixelBuffer("recursiveRT1.bmp"); //save rendered image to file
+
+    //Render it from a different point of view.
+    Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
+    Image image2(width, height);
+    raytracer.render(camera2, scene, light_list, image2);
+    image2.flushPixelBuffer("recursiveRT2.bmp");
+
+    //Another point of view
+    Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
+    Image image3(width, height);
+    raytracer.render(camera3, scene, light_list, image3);
+    image3.flushPixelBuffer("recursiveRT3.bmp");
+
+    // Free memory
+    for (size_t i = 0; i < scene.size(); ++i) {
+        delete scene[i];
+    }
+
+    for (size_t i = 0; i < light_list.size(); ++i) {
+        delete light_list[i];
+    }
+    return 0;
+
+}
+
+int hard_shadows(int width, int height) {
+    return 0;
+}
+
+int anti_aliasing(int width, int height) {
 
 }
 
@@ -460,7 +659,7 @@ int main(int argc, char* argv[]) {
     }
 
 //    environment_mapping(width, height);
-    texture_mapping(width, height);
+//    texture_mapping(width, height);
 
 
 
@@ -624,36 +823,36 @@ int main(int argc, char* argv[]) {
 
     // render all using extended lighting
 
-//	//Add extended light sources
-//	double x = 13.0;
-//	double y = 17.9;
-//	double z = 13.0;
-//	double density = 3.0; //Number of lights per unit length
-//	double xNum = 3 * density;
-//	double zNum = 2 * density;
-//	double dist = 1.0/density;
-//	double n_lights = round(xNum * zNum);
-//	double intensity = 0.9 / (n_lights);
-//	std::cout << "Intesity / Point: " << intensity << std::endl;
-//	for (int i = 0; i < xNum; i++) {
-//		for (int j = 0; j < zNum; j++) {
-//			light_list.push_back(new PointLight(Point3D(x,y,z), Color(intensity,intensity,intensity)));
-//			x += dist;
-//			z += dist;
-//		}
-//
-//	}
-//	raytracer.render(camera1, scene, light_list, image1, TRUE, 2, FALSE);
-//	image1.flushPixelBuffer("extendedLights1.bmp");
-//	std::cout << "Done: extendedLights1" << std::endl;
-//
-//	raytracer.render(camera2, scene, light_list, image2, TRUE, 2, FALSE);
-//	image2.flushPixelBuffer("extendedLights2.bmp");
-//	std::cout << "Done: extendedLights2" << std::endl;
-//
-//	raytracer.render(camera3, scene, light_list, image3, TRUE, 2, FALSE);
-//	image3.flushPixelBuffer("extendedLights3.bmp");
-//	std::cout << "Done: extendedLights3" << std::endl;
+	//Add extended light sources
+	double x = 13.0;
+	double y = 17.9;
+	double z = 13.0;
+	double density = 3.0; //Number of lights per unit length
+	double xNum = 3 * density;
+	double zNum = 2 * density;
+	double dist = 1.0/density;
+	double n_lights = round(xNum * zNum);
+	double intensity = 0.9 / (n_lights);
+	std::cout << "Intesity / Point: " << intensity << std::endl;
+	for (int i = 0; i < xNum; i++) {
+		for (int j = 0; j < zNum; j++) {
+			light_list.push_back(new PointLight(Point3D(x,y,z), Color(intensity,intensity,intensity)));
+			x += dist;
+			z += dist;
+		}
+
+	}
+	raytracer.render(camera1, scene, light_list, image1, TRUE, 2, FALSE);
+	image1.flushPixelBuffer("extendedLights1.bmp");
+	std::cout << "Done: extendedLights1" << std::endl;
+
+	raytracer.render(camera2, scene, light_list, image2, TRUE, 2, FALSE);
+	image2.flushPixelBuffer("extendedLights2.bmp");
+	std::cout << "Done: extendedLights2" << std::endl;
+
+	raytracer.render(camera3, scene, light_list, image3, TRUE, 2, FALSE);
+	image3.flushPixelBuffer("extendedLights3.bmp");
+	std::cout << "Done: extendedLights3" << std::endl;
 
     //Chris's Contribution ends
 
