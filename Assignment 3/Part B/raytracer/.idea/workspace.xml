@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="466" selection-start-line="466" selection-end-line="474" selection-end-column="34" />
+            <state relative-caret-position="225">
+              <caret line="454" column="21" selection-start-line="454" selection-start-column="21" selection-end-line="454" selection-end-column="21" />
               <folding>
                 <element signature="e#157#175#0" expanded="true" />
               </folding>
@@ -47,8 +47,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
+      <file leaf-file-name="wormhole_envmap1.bmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap1.bmp">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="wormhole_envmap2.bmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap2.bmp">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
@@ -62,47 +72,19 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file leaf-file-name="scene_object.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scene_object.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-              <folding>
-                <element signature="e#214#231#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="raytracer.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/raytracer.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-              <folding>
-                <element signature="e#321#338#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="envmap3.bmp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/renderings/envmap3.bmp">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="wormhole_envmap3.bmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap3.bmp">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="envmap2.bmp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/renderings/envmap2.bmp">
           <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="util.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/util.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="504" column="46" selection-start-line="504" selection-start-column="46" selection-end-line="504" selection-end-column="46" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -146,7 +128,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="145" />
     <option name="y" value="60" />
     <option name="width" value="1398" />
@@ -169,11 +151,6 @@
               <item name="raytracer" type="b2602c69:ProjectViewProjectNode" />
               <item name="raytracer" type="462c0819:PsiDirectoryNode" />
               <item name="cmake-build-debug" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="raytracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="raytracer" type="462c0819:PsiDirectoryNode" />
-              <item name="environments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="raytracer" type="b2602c69:ProjectViewProjectNode" />
@@ -236,24 +213,24 @@
       <updated>1523134050341</updated>
       <workItem from="1523134051473" duration="50018000" />
       <workItem from="1523231995136" duration="46966000" />
-      <workItem from="1523327012583" duration="12245000" />
+      <workItem from="1523327012583" duration="13351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109229000" />
+    <option name="totallyTimeSpent" value="110335000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29093885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29093885" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32565445" />
       <window_info anchor="bottom" id="CMake" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32984293" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34450263" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34450263" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32900944" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -455,9 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/envmap2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/scene_object.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
@@ -481,18 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/envmap3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/wormhole_envmap1.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -508,18 +470,33 @@
     <entry file="file://$PROJECT_DIR$/envmap2.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="466" selection-start-line="466" selection-end-line="474" selection-end-column="34" />
+        <state relative-caret-position="225">
+          <caret line="454" column="21" selection-start-line="454" selection-start-column="21" selection-end-line="454" selection-end-column="21" />
           <folding>
             <element signature="e#157#175#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/envmap3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/envmap2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>

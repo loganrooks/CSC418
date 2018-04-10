@@ -451,8 +451,8 @@ int main(int argc, char* argv[]) {
     // assignment.
 
 
-    int width = 480;
-    int height = 270;
+    int width = 2560;
+    int height = 1440;
 
     if (argc == 3) {
         width = atoi(argv[1]);
