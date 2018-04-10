@@ -13,7 +13,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <curses.h>
 
 double EPSILON = 0.0001;
 
@@ -191,7 +190,7 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 	}
 	else {
 		// else it intersects nothing, get cube map value for the ray direction
-		if (use_envmap && ray.wormhole){
+		if (use_envmap && (ray.wormhole || !wormhole_effect)){
 			col = envmap->query_bmp_cube_map(ray.dir);
 		}
 	}

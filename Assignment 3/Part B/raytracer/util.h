@@ -167,7 +167,7 @@ struct Intersection {
 	double t_value;	
 	// Set to true when no intersection has occured.
 	bool none;
-	bool has_texture;
+	bool has_texture = false;
 	Point3D uv;
 	Color texture_col;
 };
@@ -298,7 +298,10 @@ private:
 struct Texture {
 	// define the size of the .bmp file
 
-	Texture(int r_x, int r_y) : repeats_x(r_x), repeats_y(r_y) {}
+	Texture(int r_x, int r_y){
+		repeats_x = r_x;
+		repeats_y = r_y;
+	}
 
 	unsigned long int x;
 	long int y;
@@ -312,8 +315,6 @@ struct Texture {
 	unsigned char* garray = NULL;
 	unsigned char* barray = NULL;
 
-	// array of dimension (x,y) giving the heightmap value at that pixel
-	void makeCheckerboard();
 	void loadBitmap(const char* filename);
 
 	Color get_colour_at_uv(Point3D uv);

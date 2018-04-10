@@ -8,116 +8,118 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
+				<Option working_dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
+				<Option working_dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
+				<Option working_dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="raytracer">
-				<Option output="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/raytracer" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
+				<Option output="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/raytracer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/."/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/."/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 raytracer"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 raytracer"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="raytracer/fast">
-				<Option output="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/raytracer" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
+				<Option output="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/raytracer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/."/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/."/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 raytracer/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/loganrooks/Google\ Drive/Programming/git/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 raytracer/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/media/logan/Shared/code/school/CSC418/Assignment\ 3/Part\ B/raytracer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.h">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.cpp">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.cpp">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.h">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.h">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/main.cpp">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/main.cpp">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.h">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.h">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.h">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.cpp">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.cpp">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.h">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.h">
 			<Option target="raytracer"/>
 		</Unit>
-		<Unit filename="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/CMakeLists.txt">
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

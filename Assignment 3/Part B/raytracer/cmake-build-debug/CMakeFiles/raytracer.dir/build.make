@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/bin/cmake
+CMAKE_COMMAND = /snap/clion/16/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
+RM = /snap/clion/16/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer"
+CMAKE_SOURCE_DIR = "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"
+CMAKE_BINARY_DIR = "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/raytracer.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/raytracer.dir/flags.make
 
 CMakeFiles/raytracer.dir/bmp_io.cpp.o: CMakeFiles/raytracer.dir/flags.make
 CMakeFiles/raytracer.dir/bmp_io.cpp.o: ../bmp_io.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/raytracer.dir/bmp_io.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/bmp_io.cpp.o -c "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/raytracer.dir/bmp_io.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/bmp_io.cpp.o -c "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp"
 
 CMakeFiles/raytracer.dir/bmp_io.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.dir/bmp_io.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp" > CMakeFiles/raytracer.dir/bmp_io.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp" > CMakeFiles/raytracer.dir/bmp_io.cpp.i
 
 CMakeFiles/raytracer.dir/bmp_io.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/bmp_io.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp" -o CMakeFiles/raytracer.dir/bmp_io.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp" -o CMakeFiles/raytracer.dir/bmp_io.cpp.s
 
 CMakeFiles/raytracer.dir/bmp_io.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/raytracer.dir/bmp_io.cpp.o.provides.build: CMakeFiles/raytracer.dir/b
 
 CMakeFiles/raytracer.dir/light_source.cpp.o: CMakeFiles/raytracer.dir/flags.make
 CMakeFiles/raytracer.dir/light_source.cpp.o: ../light_source.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/raytracer.dir/light_source.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/light_source.cpp.o -c "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/raytracer.dir/light_source.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/light_source.cpp.o -c "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.cpp"
 
 CMakeFiles/raytracer.dir/light_source.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.dir/light_source.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.cpp" > CMakeFiles/raytracer.dir/light_source.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.cpp" > CMakeFiles/raytracer.dir/light_source.cpp.i
 
 CMakeFiles/raytracer.dir/light_source.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/light_source.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/light_source.cpp" -o CMakeFiles/raytracer.dir/light_source.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.cpp" -o CMakeFiles/raytracer.dir/light_source.cpp.s
 
 CMakeFiles/raytracer.dir/light_source.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/raytracer.dir/light_source.cpp.o.provides.build: CMakeFiles/raytracer
 
 CMakeFiles/raytracer.dir/main.cpp.o: CMakeFiles/raytracer.dir/flags.make
 CMakeFiles/raytracer.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytracer.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/main.cpp.o -c "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/raytracer.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/main.cpp.o -c "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/main.cpp"
 
 CMakeFiles/raytracer.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/main.cpp" > CMakeFiles/raytracer.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/main.cpp" > CMakeFiles/raytracer.dir/main.cpp.i
 
 CMakeFiles/raytracer.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/main.cpp" -o CMakeFiles/raytracer.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/main.cpp" -o CMakeFiles/raytracer.dir/main.cpp.s
 
 CMakeFiles/raytracer.dir/main.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/raytracer.dir/main.cpp.o.provides.build: CMakeFiles/raytracer.dir/mai
 
 CMakeFiles/raytracer.dir/raytracer.cpp.o: CMakeFiles/raytracer.dir/flags.make
 CMakeFiles/raytracer.dir/raytracer.cpp.o: ../raytracer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytracer.dir/raytracer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/raytracer.cpp.o -c "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/raytracer.dir/raytracer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/raytracer.cpp.o -c "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp"
 
 CMakeFiles/raytracer.dir/raytracer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.dir/raytracer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp" > CMakeFiles/raytracer.dir/raytracer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp" > CMakeFiles/raytracer.dir/raytracer.cpp.i
 
 CMakeFiles/raytracer.dir/raytracer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/raytracer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp" -o CMakeFiles/raytracer.dir/raytracer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp" -o CMakeFiles/raytracer.dir/raytracer.cpp.s
 
 CMakeFiles/raytracer.dir/raytracer.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/raytracer.dir/raytracer.cpp.o.provides.build: CMakeFiles/raytracer.di
 
 CMakeFiles/raytracer.dir/scene_object.cpp.o: CMakeFiles/raytracer.dir/flags.make
 CMakeFiles/raytracer.dir/scene_object.cpp.o: ../scene_object.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/raytracer.dir/scene_object.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/scene_object.cpp.o -c "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/raytracer.dir/scene_object.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/scene_object.cpp.o -c "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp"
 
 CMakeFiles/raytracer.dir/scene_object.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.dir/scene_object.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp" > CMakeFiles/raytracer.dir/scene_object.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp" > CMakeFiles/raytracer.dir/scene_object.cpp.i
 
 CMakeFiles/raytracer.dir/scene_object.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/scene_object.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp" -o CMakeFiles/raytracer.dir/scene_object.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp" -o CMakeFiles/raytracer.dir/scene_object.cpp.s
 
 CMakeFiles/raytracer.dir/scene_object.cpp.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/raytracer.dir/scene_object.cpp.o.provides.build: CMakeFiles/raytracer
 
 CMakeFiles/raytracer.dir/util.cpp.o: CMakeFiles/raytracer.dir/flags.make
 CMakeFiles/raytracer.dir/util.cpp.o: ../util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytracer.dir/util.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/util.cpp.o -c "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/raytracer.dir/util.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/raytracer.dir/util.cpp.o -c "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.cpp"
 
 CMakeFiles/raytracer.dir/util.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.dir/util.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.cpp" > CMakeFiles/raytracer.dir/util.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.cpp" > CMakeFiles/raytracer.dir/util.cpp.i
 
 CMakeFiles/raytracer.dir/util.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.dir/util.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/util.cpp" -o CMakeFiles/raytracer.dir/util.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.cpp" -o CMakeFiles/raytracer.dir/util.cpp.s
 
 CMakeFiles/raytracer.dir/util.cpp.o.requires:
 
@@ -221,7 +221,7 @@ raytracer: CMakeFiles/raytracer.dir/scene_object.cpp.o
 raytracer: CMakeFiles/raytracer.dir/util.cpp.o
 raytracer: CMakeFiles/raytracer.dir/build.make
 raytracer: CMakeFiles/raytracer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable raytracer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable raytracer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/raytracer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -243,6 +243,6 @@ CMakeFiles/raytracer.dir/clean:
 .PHONY : CMakeFiles/raytracer.dir/clean
 
 CMakeFiles/raytracer.dir/depend:
-	cd "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer" "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer" "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug" "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug" "/Users/loganrooks/Google Drive/Programming/git/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles/raytracer.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer" "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer" "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug" "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug" "/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/cmake-build-debug/CMakeFiles/raytracer.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/raytracer.dir/depend
 

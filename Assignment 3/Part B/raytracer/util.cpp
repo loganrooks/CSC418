@@ -420,62 +420,74 @@ Point3D CubeMap::direction_to_cube_map_uv(Vector3D direction, int* face) {
 	// find the which face of the infinitely
 	// large cube we will intersect with
 	// by checking which component has biggest magnitude
-	bool x_is_biggest = (abs_x >= abs_y) && (abs_x >= abs_z);
-	bool y_is_biggest = (abs_y >= abs_x) && (abs_y >= abs_z);
-	bool z_is_biggest = (abs_z >= abs_x) && (abs_z >= abs_y);
+    int isXPositive = x > 0 ? 1 : 0;
+    int isYPositive = y > 0 ? 1 : 0;
+    int isZPositive = z > 0 ? 1 : 0;
+
+    double maxAxis, uc, vc;
 
 	// then, use the appropriate formula
 	// for that face to get (u,v) from the
 	// ray's direction
-	if (x_is_biggest)
-	{
-		if (x > 0)
-		{
-			u = (-z + x) / (2 * x);
-			v = (-y + x) / (2 * x);
-			*face = 0;
-		}
-		else {
-			u = (-	z + x) / (2 * x);
-			v = (y + x) / (2 * x);
-			*face = 1;
-		}
-	}
-	else if (y_is_biggest)
-	{
-		if (y > 0)
-		{
-			u = (x + y) / (2 * y);
-			v = (z + y) / (2 * y);
-			*face = 2;
-		}
-		else {
-			u = (-x + y) / (2 * y);
-			v = (z + y) / (2 * y);
-			*face = 3;
-		}
-	}
-	else if (z_is_biggest) {
-		if (z > 0)
-		{
-			u = (x + z) / (2 * z);
-			v = (-y + z) / (2 * z);
-			*face = 4;
-		}
-		else {
-			u = (x + z) / (2 * z);
-			v = (y + z) / (2 * z);
-			*face = 5;
-		}
+    if (isXPositive && abs_x >= abs_y && abs_x >= abs_z) {
+        // u (0 to 1) goes from +z to -z
+        // v (0 to 1) goes from -y to +y
+        maxAxis = abs_x;
+        uc = -z;
+        vc = y;
+        *face = 0;
+    }
+    // NEGATIVE X
+    if (!isXPositive && abs_x >= abs_y && abs_x >= abs_z) {
+        // u (0 to 1) goes from -z to +z
+        // v (0 to 1) goes from -y to +y
+        maxAxis = abs_x;
+        uc = z;
+        vc = y;
+        *face = 1;
+    }
+    // POSITIVE Y
+    if (isYPositive && abs_y >= abs_x && abs_y >= abs_z) {
+        // u (0 to 1) goes from -x to +x
+        // v (0 to 1) goes from +z to -z
+        maxAxis = abs_y;
+        uc = x;
+        vc = -z;
+        *face = 2;
+    }
+    // NEGATIVE Y
+    if (!isYPositive && abs_y >= abs_x && abs_y >= abs_z) {
+        // u (0 to 1) goes from -x to +x
+        // v (0 to 1) goes from -z to +z
+        maxAxis = abs_y;
+        uc = x;
+        vc = z;
+        *face = 3;
+    }
+    // POSITIVE Z
+    if (isZPositive && abs_z >= abs_x && abs_z >= abs_y) {
+        // u (0 to 1) goes from -x to +x
+        // v (0 to 1) goes from -y to +y
+        maxAxis = abs_z;
+        uc = x;
+        vc = y;
+        *face = 4;
+    }
+    // NEGATIVE Z
+    if (!isZPositive && abs_z >= abs_x && abs_z >= abs_y) {
+        // u (0 to 1) goes from +x to -x
+        // v (0 to 1) goes from -y to +y
+        maxAxis = abs_z;
+        uc = -x;
+        vc = y;
+        *face = 5;
+    }
 
-	}
+    // Convert range from -1 to 1 to 0 to 1
+    u = 0.5f * (uc / maxAxis + 1.0f);
+    v = 0.5f * (vc / maxAxis + 1.0f);
+    return Point3D(v, u, 0);
 
-	// We do this flipping because
-	// The .bmp file coordinates
-	// are flipped and stored as Y,X
-
-	//otherwise we would do Point3D(u,v,0)
-	return Point3D(1-v, 1-u, 0);
 }
 
 
@@ -484,17 +496,17 @@ void CubeMap::set_face_images() {
 	// as six square .bmp images
 
 	face0 = new Texture(1,1);
-	face0->loadBitmap("environments/dark/pos_x.bmp"); // pos_x
+	face0->loadBitmap("environments/nebula/pos_x.bmp"); // pos_x
 	face1 = new Texture(1,1);
-	face1->loadBitmap("environments/dark/neg_x.bmp"); // neg_x
+	face1->loadBitmap("environments/nebula/neg_x.bmp"); // neg_x
 	face2 = new Texture(1,1);
-	face2->loadBitmap("environments/dark/pos_y.bmp"); // pos_y
+	face2->loadBitmap("environments/nebula/pos_y.bmp"); // pos_y
 	face3 = new Texture(1,1);
-	face3->loadBitmap("environments/dark/neg_y.bmp"); // neg_y
+	face3->loadBitmap("environments/nebula/neg_y.bmp"); // neg_y
 	face4 = new Texture(1,1);
-	face4->loadBitmap("environments/dark/pos_z.bmp"); // pos_z
+	face4->loadBitmap("environments/nebula/pos_z.bmp"); // pos_z
 	face5 = new Texture(1,1);
-	face5->loadBitmap("environments/dark/neg_z.bmp"); // neg_z
+	face5->loadBitmap("environments/nebula/neg_z.bmp"); // neg_z
 }
 
 Color CubeMap::query_bmp_cube_map(Vector3D direction)

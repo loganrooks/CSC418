@@ -8,7 +8,6 @@
 ***********************************************************/
 #pragma once
 
-#include <curses.h>
 #include "util.h"
 #include "scene_object.h"
 #include "light_source.h"
@@ -23,6 +22,7 @@ public:
 	bool antialias;
 	int max_depth;
 	bool use_envmap;
+	bool wormhole_effect = false;
 
 	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image);
 

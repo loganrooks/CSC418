@@ -27,11 +27,11 @@ public:
 struct SceneNode {
 	SceneNode() 
 	: 
-	obj(NULL), mat(NULL) {}	
+	obj(NULL), mat(NULL), has_texture(false) {}
 
 	SceneNode(SceneObject* obj, Material* mat) 
 	: 
-	obj(obj), mat(mat) {}
+	obj(obj), mat(mat), has_texture(false) {}
 	
 	~SceneNode() {
 		if (obj) delete obj;
