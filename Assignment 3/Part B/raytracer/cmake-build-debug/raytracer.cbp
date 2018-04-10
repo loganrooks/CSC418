@@ -92,6 +92,12 @@
 		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h">
 			<Option target="raytracer"/>
 		</Unit>
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.cpp">
+			<Option target="raytracer"/>
+		</Unit>
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.h">
+			<Option target="raytracer"/>
+		</Unit>
 		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.cpp">
 			<Option target="raytracer"/>
 		</Unit>
@@ -111,6 +117,12 @@
 			<Option target="raytracer"/>
 		</Unit>
 		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h">
+			<Option target="raytracer"/>
+		</Unit>
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.cpp">
+			<Option target="raytracer"/>
+		</Unit>
+		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h">
 			<Option target="raytracer"/>
 		</Unit>
 		<Unit filename="/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.cpp">

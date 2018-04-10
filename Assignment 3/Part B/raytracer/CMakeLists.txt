@@ -16,4 +16,4 @@ add_executable(raytracer
         scene_object.cpp
         scene_object.h
         util.cpp
-        util.h)
+        util.h scenes.h scenes.cpp scenes.h experiments.cpp experiments.h)

@@ -9,6 +9,7 @@
 #pragma once
 
 #include "util.h"
+#include "scenes.h"
 #include <vector>
 
 // All primitives should provide an intersection function.  
@@ -22,16 +23,18 @@ public:
 	virtual ~SceneObject() {}
 };
 
+
 // Scene node containing information about an object: geometry, material, 
 // tranformations.
 struct SceneNode {
 	SceneNode() 
 	: 
-	obj(NULL), mat(NULL), has_texture(false) {}
+	obj(NULL), mat(NULL), has_texture(false), is_portal(false) {}
 
 	SceneNode(SceneObject* obj, Material* mat) 
 	: 
-	obj(obj), mat(mat), has_texture(false) {}
+	obj(obj), mat(mat), has_texture(false), is_portal(false) {}
+
 	
 	~SceneNode() {
 		if (obj) delete obj;
@@ -60,10 +63,15 @@ struct SceneNode {
 	Matrix4x4 worldToModel;
 	Texture* texture;
 	bool has_texture;
+	bool is_portal;
+	Matrix4x4 portalTrans;
 };
 
 // Scene is simply implemented as a list of nodes. Doesnt support hierarchy(scene graph).
 typedef std::vector<SceneNode*> Scene;
+
+
+
 
 // Example primitive you can create, this is a unit square on 
 // the xy-plane.
@@ -85,3 +93,16 @@ public:
 				const Matrix4x4& modelToWorld);
 };
 
+class Portal {
+    Portal(Scene& scene, Vector3D location1, Vector3D normal1, Point3D location2, Vector3D normal2) {
+        portal1->is_portal = true;
+        portal2->is_portal = true;
+        portal1->translate(location1);
+        portal1->scale()
+        portal1
+    }
+
+    SceneNode* portal1 = new SceneNode(new UnitCircle, &obsidian);
+    SceneNode* portal2 = new SceneNode(new UnitCircle, &obsidian);
+
+};

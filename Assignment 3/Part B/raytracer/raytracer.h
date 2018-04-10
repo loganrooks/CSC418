@@ -48,18 +48,14 @@ private:
     // object in the scene.
 	void computeTransforms(Scene& scene);
 
-
 	std::vector<Ray3D> antiAlias(Matrix4x4 viewToWorld, Point3D imagePlane, Point3D origin, double factor);
 
-	Vector3D computeRefraction(Vector3D normal, Vector3D incident, double nt);
-
 	void addTextureInfo(SceneNode *node, Ray3D &ray);
-
-	CubeMap* envmap;
-
 
     Vector3D computeRefraction(Vector3D normal, Vector3D incident, double n1, double n2);
 
     Vector3D computeReflection(Vector3D normal, Vector3D incident);
+
+	CubeMap* envmap;
 };
 

@@ -150,6 +150,33 @@ bmp_io.cpp.s:
 	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/bmp_io.cpp.s
 .PHONY : bmp_io.cpp.s
 
+experiments.o: experiments.cpp.o
+
+.PHONY : experiments.o
+
+# target to build an object file
+experiments.cpp.o:
+	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/experiments.cpp.o
+.PHONY : experiments.cpp.o
+
+experiments.i: experiments.cpp.i
+
+.PHONY : experiments.i
+
+# target to preprocess a source file
+experiments.cpp.i:
+	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/experiments.cpp.i
+.PHONY : experiments.cpp.i
+
+experiments.s: experiments.cpp.s
+
+.PHONY : experiments.s
+
+# target to generate assembly for a file
+experiments.cpp.s:
+	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/experiments.cpp.s
+.PHONY : experiments.cpp.s
+
 light_source.o: light_source.cpp.o
 
 .PHONY : light_source.o
@@ -258,6 +285,33 @@ scene_object.cpp.s:
 	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/scene_object.cpp.s
 .PHONY : scene_object.cpp.s
 
+scenes.o: scenes.cpp.o
+
+.PHONY : scenes.o
+
+# target to build an object file
+scenes.cpp.o:
+	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/scenes.cpp.o
+.PHONY : scenes.cpp.o
+
+scenes.i: scenes.cpp.i
+
+.PHONY : scenes.i
+
+# target to preprocess a source file
+scenes.cpp.i:
+	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/scenes.cpp.i
+.PHONY : scenes.cpp.i
+
+scenes.s: scenes.cpp.s
+
+.PHONY : scenes.s
+
+# target to generate assembly for a file
+scenes.cpp.s:
+	$(MAKE) -f CMakeFiles/raytracer.dir/build.make CMakeFiles/raytracer.dir/scenes.cpp.s
+.PHONY : scenes.cpp.s
+
 util.o: util.cpp.o
 
 .PHONY : util.o
@@ -297,6 +351,9 @@ help:
 	@echo "... bmp_io.o"
 	@echo "... bmp_io.i"
 	@echo "... bmp_io.s"
+	@echo "... experiments.o"
+	@echo "... experiments.i"
+	@echo "... experiments.s"
 	@echo "... light_source.o"
 	@echo "... light_source.i"
 	@echo "... light_source.s"
@@ -309,6 +366,9 @@ help:
 	@echo "... scene_object.o"
 	@echo "... scene_object.i"
 	@echo "... scene_object.s"
+	@echo "... scenes.o"
+	@echo "... scenes.i"
+	@echo "... scenes.s"
 	@echo "... util.o"
 	@echo "... util.i"
 	@echo "... util.s"
