@@ -58,5 +58,8 @@ private:
 	CubeMap* envmap;
 
 
+    Vector3D computeRefraction(Vector3D normal, Vector3D incident, double n1, double n2);
+
+    Vector3D computeReflection(Vector3D normal, Vector3D incident);
 };
 

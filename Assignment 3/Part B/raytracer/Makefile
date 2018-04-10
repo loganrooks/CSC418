@@ -1,5 +1,6 @@
 CC = g++
 CFLAGS = -pg -g -O2 -Wall
+CXXFLAGS=-g -std=c++11 -Wall -pedantic
 LDFLAGS = -pg -g
 LIBS = -lm
 

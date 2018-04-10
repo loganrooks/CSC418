@@ -80,18 +80,30 @@ void Raytracer::computeShading(Ray3D& ray, Scene& scene, LightList& light_list, 
 		light->shade(ray);
 	}
 }
+Vector3D Raytracer::computeReflection(Vector3D normal, Vector3D incident) {
+	Vector3D reflect = incident - 2 * incident.dot(normal) * normal;
+	reflect.normalize();
+	return reflect;
+}
 
-Vector3D Raytracer::computeRefraction(Vector3D normal, Vector3D incident, double nt)
+Vector3D Raytracer::computeRefraction(Vector3D normal, Vector3D incident, double n1, double n2)
 {
-	const double n = 1;
 	normal.normalize();
 	incident.normalize();
-	double cosA = normal.dot(incident);
-	Vector3D refract = (n / nt) * (incident - (cosA)* normal)
-					   - sqrt(1 - (n*n) / (nt*nt) * (1 - cosA * cosA)) * normal;
-	refract.normalize();
+	double cosAlpha = normal.dot(incident);
+	if (cosAlpha < 0) { cosAlpha = -cosAlpha; } else {std::swap(n1, n2), normal = -normal;}
+	double eta = n1/n2;
+	double k = 1 - eta * eta * (1 - cosAlpha * cosAlpha);
+	// Total internal reflection
+	if (k < 0) {
+		return computeReflection(normal, incident);
+	}
+	else {
+		Vector3D refract = eta * incident + (eta * cosAlpha - sqrt(k)) * normal;
+		refract.normalize();
+		return refract;
+	}
 
-	return refract;
 }
 
 Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int depth) {
@@ -123,8 +135,7 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 		if(depth < max_depth){
 			if (reflectIndex > 0) {
 				//get reflection vector
-				Vector3D reflectVec = incidentVec - 2 * incidentVec.dot(normal) * normal;
-				reflectVec.normalize();
+				Vector3D reflectVec = computeReflection(normal, incidentVec);
 				Point3D point = ray.intersection.point;
 				point = point + EPSILON * reflectVec;
 				Ray3D reflect_ray = Ray3D(point, reflectVec);
@@ -138,53 +149,20 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 				ray.col.clamp();
 			}
 //
-//			if (refractIndex > 0) {
-//				const double a0 = 0;
-//				const double a1 = 0;
-//				const double a2 = 0.4;
-//				double cosA = incidentVec.dot(normal);
-//				double k0;
-//				double k1;
-//				double k2;
-//
-//				Vector3D refract_dir;
-//				double c;
-//				if (cosA < 0)
-//				{
-//					refract_dir = computeRefraction(normal, incidentVec, NT);
-//					c = -cosA;
-//					k0 = 1;
-//					k1 = 1;
-//					k2 = 1;
-//				}
-//				else
-//				{
-//					refract_dir = computeRefraction(-normal, incidentVec, 1.0 / NT);
-//					c = refract_dir.dot(normal);
-//					k0 = exp(-a0*t_ray);
-//					k1 = exp(-a1*t_ray);
-//					k2 = exp(-a2*t_ray);
-//				}
-//
-//				// refract ray
-//				Ray3D refract_ray;
-//				refract_ray.origin =ray.intersection.point + EPSILON * refract_dir; // acne
-//				refract_ray.dir = refract_dir;
-//				refract_ray.dir.normalize();
-//				refract_ray.refracted = true;
-//
-//				refract_col = shadeRay(refract_ray, scene, light_list, depth + 1);
-//
-//				double R0 = ((NT - 1) * (NT - 1)) / ((NT + 1) * (NT + 1));
-//				double d = 1 - c;
-//				double R = R0 + (1 - R0) * (d*d*d*d*d);
-//
-//				col = (R * reflect_col + (1 - R) * refract_col);
-//				col[0] = k0 * col[0];
-//				col[1] = k1 * col[1];
-//				col[2] = k2 * col[2];
-//				ray.col = col;
-//			}
+			if (refractIndex > 1) {
+
+				double n1 = 1;
+				double n2 = ray.intersection.mat->refractIndex;
+
+
+				Vector3D refract_dir = computeRefraction(normal, incidentVec, n1, n2);
+
+				// refract ray
+				Ray3D refract_ray(ray.intersection.point + EPSILON * refract_dir, refract_dir);
+				refract_ray.refracted = true;
+				ray.col = shadeRay(refract_ray, scene, light_list, depth + 1);
+				ray.col.clamp();
+			}
 		}
 		col = ray.col;
 	}

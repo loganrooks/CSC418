@@ -21,13 +21,15 @@ Material wormhole(Color(0.05375, 0.05, 0.06625), Color(0.18275, 0.17, 0.22525),
 Material mirror(Color(0, 0, 0), Color(0.5,0.5,0.5),
                 Color(0.5,0.5,0.5),
                 19, 0.95, 0);
-Material red_glass(Color(0.3, 0.1, 0), Color(0.6,0.3,0.3),
-                   Color(1,1,1),
-                   40, 0, 1);
+
 
 Material glass(Color(0, 0, 0), Color(0.1,0.2,0.6),
                Color(1,1,1),
-               40, 1, 0.05);
+               40, 0, 1.5);
+
+Material water(Color(0, 0, 0), Color(0.1,0.2,0.6),
+               Color(1,1,1),
+               40, 0, 1.3);
 
 
 Material grey(Color(0, 0, 0), Color(0.5, 0.5, 0.5),
@@ -512,29 +514,62 @@ int simple_scene(LightList& light_list, Scene& scene) {
     inRight->scale(Point3D(0,0,0), factor3);
 }
 
-int recursive_ray_tracing(int width, int height) {
+int refraction(int width, int height) {
     LightList light_list;
     Scene scene;
-    
-    simple_scene(light_list, scene);
 
-    // Render the scene
-    Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
-    Image image1(width, height);
-    raytracer.render(camera1, scene, light_list, image1); //render 3D scene to image
-    image1.flushPixelBuffer("recursiveRT1.bmp"); //save rendered image to file
+    portal_scene(light_list, scene);
 
-    //Render it from a different point of view.
-    Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
-    Image image2(width, height);
-    raytracer.render(camera2, scene, light_list, image2);
-    image2.flushPixelBuffer("recursiveRT2.bmp");
+    SceneNode* sphere1 = new SceneNode(new UnitSphere(), &glass);
+    scene.push_back(sphere1);
 
-    //Another point of view
-    Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
-    Image image3(width, height);
-    raytracer.render(camera3, scene, light_list, image3);
-    image3.flushPixelBuffer("recursiveRT3.bmp");
+    SceneNode* sphere2 = new SceneNode(new UnitSphere(), &glass);
+    scene.push_back(sphere2);
+
+    SceneNode* sphere3 = new SceneNode(new UnitSphere(), &glass);
+    scene.push_back(sphere3);
+
+    SceneNode* sphere4 = new SceneNode(new UnitSphere(), &glass);
+    scene.push_back(sphere4);
+
+    SceneNode* plane1 = new SceneNode(new UnitSquare(), &water);
+    scene.push_back(plane1);
+
+    double factorS1[3] = {2.5, 2.5, 2.5};
+    double factorS2[3] = {2, 2, 2};
+    double factorS3[3] = {1.5, 1.5, 1.5};
+    double factor1[3] = {3, 3, 3};
+    sphere1->translate(Vector3D(34,2.5,7));
+    sphere1->scale(Point3D(0,0,0), factorS1);
+
+    sphere2->translate(Vector3D(34,2.1,15));
+    sphere2->scale(Point3D(0,0,0), factorS2);
+
+    sphere3->translate(Vector3D(16,4.5,6));
+    sphere3->scale(Point3D(0,0,0), factorS2);
+
+    sphere4->translate(Vector3D(25,7.5,6));
+    sphere4->scale(Point3D(0,0,0), factorS2);
+
+    plane1->translate(Vector3D(31, 5, 8));
+    plane1->rotate('y', -25);
+    plane1->scale(Point3D(0,0,0), factor1);
+
+    Camera camera1(Point3D(25, 5, 17), Vector3D(0.8, -0.1, -0.7), Vector3D(0, 1, 0), 60.0);
+
+    Camera camera2(Point3D(39, 5, 21), Vector3D(-0.3, -0.1, -0.7), Vector3D(0, 1, 0), 60.0);
+
+    Image image(width, height);
+
+    Raytracer refract(false, 10, false, false);
+
+    refract.render(camera1, scene, light_list, image);
+    image.flushPixelBuffer("refraction1.bmp");
+    std::cout << "Done: refraction1" << std::endl;
+
+    refract.render(camera2, scene, light_list, image);
+    image.flushPixelBuffer("refraction2.bmp");
+    std::cout << "Done: refraction2" << std::endl;
 
     // Free memory
     for (size_t i = 0; i < scene.size(); ++i) {
@@ -546,7 +581,44 @@ int recursive_ray_tracing(int width, int height) {
     }
     return 0;
 
+
 }
+
+//int recursive_ray_tracing(int width, int height) {
+//    LightList light_list;
+//    Scene scene;
+//
+//    simple_scene(light_list, scene);
+//
+//    // Render the scene
+//    Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
+//    Image image1(width, height);
+//    raytracer.render(camera1, scene, light_list, image1); //render 3D scene to image
+//    image1.flushPixelBuffer("recursiveRT1.bmp"); //save rendered image to file
+//
+//    //Render it from a different point of view.
+//    Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
+//    Image image2(width, height);
+//    raytracer.render(camera2, scene, light_list, image2);
+//    image2.flushPixelBuffer("recursiveRT2.bmp");
+//
+//    //Another point of view
+//    Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
+//    Image image3(width, height);
+//    raytracer.render(camera3, scene, light_list, image3);
+//    image3.flushPixelBuffer("recursiveRT3.bmp");
+//
+//    // Free memory
+//    for (size_t i = 0; i < scene.size(); ++i) {
+//        delete scene[i];
+//    }
+//
+//    for (size_t i = 0; i < light_list.size(); ++i) {
+//        delete light_list[i];
+//    }
+//    return 0;
+//
+//}
 
 int hard_shadows(int width, int height) {
     return 0;
@@ -649,6 +721,13 @@ int main(int argc, char* argv[]) {
     // change this if you're just implementing part one of the
     // assignment.
 
+#if __cplusplus==201402L
+    std::cout << "C++14" << std::endl;
+#elif __cplusplus==201103L
+    std::cout << "C++11" << std::endl;
+#else
+    std::cout << "C++" << std::endl;
+#endif
 
     int width = 2560;
     int height = 1440;
@@ -660,6 +739,7 @@ int main(int argc, char* argv[]) {
 
 //    environment_mapping(width, height);
 //    texture_mapping(width, height);
+    refraction(width, height);
 
 
 
@@ -756,8 +836,7 @@ int main(int argc, char* argv[]) {
 
 
     // Looking at corner with orange goo
-    Camera camera2(Point3D(22, 8, 14), Vector3D(1, -0.3, -0.7), Vector3D(0, 1, 0), 60.0);
-    Image image2(width, height);
+
 
     //Another point of view, used for showing texture mapping, looking at companion cube, portals
 
@@ -824,38 +903,38 @@ int main(int argc, char* argv[]) {
     // render all using extended lighting
 
 	//Add extended light sources
-	double x = 13.0;
-	double y = 17.9;
-	double z = 13.0;
-	double density = 3.0; //Number of lights per unit length
-	double xNum = 3 * density;
-	double zNum = 2 * density;
-	double dist = 1.0/density;
-	double n_lights = round(xNum * zNum);
-	double intensity = 0.9 / (n_lights);
-	std::cout << "Intesity / Point: " << intensity << std::endl;
-	for (int i = 0; i < xNum; i++) {
-		for (int j = 0; j < zNum; j++) {
-			light_list.push_back(new PointLight(Point3D(x,y,z), Color(intensity,intensity,intensity)));
-			x += dist;
-			z += dist;
-		}
+//	double x = 13.0;
+//	double y = 17.9;
+//	double z = 13.0;
+//	double density = 3.0; //Number of lights per unit length
+//	double xNum = 3 * density;
+//	double zNum = 2 * density;
+//	double dist = 1.0/density;
+//	double n_lights = round(xNum * zNum);
+//	double intensity = 0.9 / (n_lights);
+//	std::cout << "Intesity / Point: " << intensity << std::endl;
+//	for (int i = 0; i < xNum; i++) {
+//		for (int j = 0; j < zNum; j++) {
+//			light_list.push_back(new PointLight(Point3D(x,y,z), Color(intensity,intensity,intensity)));
+//			x += dist;
+//			z += dist;
+//		}
+//
+//	}
+//	raytracer.render(camera1, scene, light_list, image1, TRUE, 2, FALSE);
+//	image1.flushPixelBuffer("extendedLights1.bmp");
+//	std::cout << "Done: extendedLights1" << std::endl;
+//
+//	raytracer.render(camera2, scene, light_list, image2, TRUE, 2, FALSE);
+//	image2.flushPixelBuffer("extendedLights2.bmp");
+//	std::cout << "Done: extendedLights2" << std::endl;
+//
+//	raytracer.render(camera3, scene, light_list, image3, TRUE, 2, FALSE);
+//	image3.flushPixelBuffer("extendedLights3.bmp");
+//	std::cout << "Done: extendedLights3" << std::endl;
+//
 
-	}
-	raytracer.render(camera1, scene, light_list, image1, TRUE, 2, FALSE);
-	image1.flushPixelBuffer("extendedLights1.bmp");
-	std::cout << "Done: extendedLights1" << std::endl;
-
-	raytracer.render(camera2, scene, light_list, image2, TRUE, 2, FALSE);
-	image2.flushPixelBuffer("extendedLights2.bmp");
-	std::cout << "Done: extendedLights2" << std::endl;
-
-	raytracer.render(camera3, scene, light_list, image3, TRUE, 2, FALSE);
-	image3.flushPixelBuffer("extendedLights3.bmp");
-	std::cout << "Done: extendedLights3" << std::endl;
-
-    //Chris's Contribution ends
-
+//
     return 0;
 }
 

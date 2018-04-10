@@ -187,6 +187,7 @@ struct Ray3D {
 		reflected = false;
 		refracted = false;
 		wormhole = false;
+
 	}
 	// Origin and direction of the ray.
 	Point3D origin;
