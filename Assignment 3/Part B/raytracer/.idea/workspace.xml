@@ -38,8 +38,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1339">
-              <caret line="590" selection-start-line="590" selection-start-column="2" selection-end-line="608" selection-end-column="5" />
+            <state relative-caret-position="45">
+              <caret line="466" selection-start-line="466" selection-end-line="474" selection-end-column="34" />
               <folding>
                 <element signature="e#157#175#0" expanded="true" />
               </folding>
@@ -47,18 +47,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wormhole_envmap1.bmp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wormhole_envmap1.bmp">
+      <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file leaf-file-name="wormhole_envmap2.bmp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wormhole_envmap2.bmp">
+      <file leaf-file-name="envmap2.bmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/envmap2.bmp">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file leaf-file-name="wormhole_envmap3.bmp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wormhole_envmap3.bmp">
+      <file leaf-file-name="envmap1.bmp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/envmap1.bmp">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
@@ -236,24 +236,24 @@
       <updated>1523134050341</updated>
       <workItem from="1523134051473" duration="50018000" />
       <workItem from="1523231995136" duration="46966000" />
-      <workItem from="1523327012583" duration="11099000" />
+      <workItem from="1523327012583" duration="12245000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108083000" />
+    <option name="totallyTimeSpent" value="109229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29093885" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29093885" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32565445" />
       <window_info anchor="bottom" id="CMake" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32984293" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34450263" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34450263" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32900944" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -502,10 +502,19 @@
     <entry file="file://$PROJECT_DIR$/wormhole_envmap3.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/envmap1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/envmap2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1339">
-          <caret line="590" selection-start-line="590" selection-start-column="2" selection-end-line="608" selection-end-column="5" />
+        <state relative-caret-position="45">
+          <caret line="466" selection-start-line="466" selection-end-line="474" selection-end-column="34" />
           <folding>
             <element signature="e#157#175#0" expanded="true" />
           </folding>

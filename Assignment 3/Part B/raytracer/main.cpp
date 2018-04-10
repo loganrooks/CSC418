@@ -48,9 +48,9 @@ Material wood(Color(0,0,0), Color(0.392,0.117,0.0),
 
 int portal_scene(LightList& light_list, Scene& scene) {
     // Two lights on either side of the complex
-    PointLight* pLight2 = new PointLight(Point3D(37,15,30), Color(0.5, 0.5, 0.5));
+    PointLight* pLight2 = new PointLight(Point3D(37,15,20), Color(0.4, 0.4, 0.4));
     light_list.push_back(pLight2);
-    PointLight* pLight3 = new PointLight(Point3D(20,18,30), Color(0.5, 0.5, 0.5));
+    PointLight* pLight3 = new PointLight(Point3D(22,18,30), Color(0.45, 0.45, 0.45));
     light_list.push_back(pLight3);
 
     // Orange goo
@@ -216,6 +216,7 @@ int portal_scene(LightList& light_list, Scene& scene) {
     // Transformations
     // Scaling factors
     double ratio = 0.65439672801;
+    double factor1[3] = {7.5, 7.5, 7.5};
     double factor2[3] = {10, 20, 10};
     double factor3[3] = {10, 10*ratio, 1};
     double factor4[3] = {10, 10, 10};
@@ -283,7 +284,7 @@ int portal_scene(LightList& light_list, Scene& scene) {
     // Piston
     piston->translate(Vector3D(7.5,EPSILON,8));
     piston->rotate('x', -90);
-    piston->scale(Point3D(0,0,0), factor7);
+    piston->scale(Point3D(0,0,0), factor1);
 
     // Walls
     front_top->translate(Vector3D(0, 15, 10));
@@ -352,6 +353,10 @@ int portal_scene(LightList& light_list, Scene& scene) {
     return 0;
 }
 
+int simple_scene(LightList& light_list, Scene& scene) {
+
+}
+
 int environment_mapping(int width, int height) {
 
     LightList light_list;
@@ -401,6 +406,43 @@ int environment_mapping(int width, int height) {
     return 0;
 }
 
+int texture_mapping(int width, int height) {
+    LightList light_list;
+    Scene scene;
+
+    portal_scene(light_list, scene);
+
+    SceneNode* green_planet = new SceneNode(new UnitSphere(), &obsidian);
+    green_planet->texture = new Texture(1, 1);
+    green_planet->has_texture = true;
+    green_planet->texture->loadBitmap("textures/green_gas.bmp");
+    scene.push_back(green_planet);
+
+    double factorS1[3] = { 4.0, 4.0, 4.0 };
+    green_planet->translate(Vector3D(0, 8, 38));
+    green_planet->scale(Point3D(0, 0, 0), factorS1);
+
+    Camera camera1(Point3D(26, 5.5, 22), Vector3D(-1, -0.13, -1.8), Vector3D(0, 1, 0), 60.0);
+
+    Image image(width, height);
+
+    Raytracer txtmapping(true, 4, false, false);
+    txtmapping.render(camera1, scene, light_list, image);
+	image.flushPixelBuffer("textureMapping1.bmp");
+	std::cout << "Done: textureMapping1" << std::endl;
+
+    for (size_t i = 0; i < scene.size(); ++i) {
+        delete scene[i];
+    }
+
+    for (size_t i = 0; i < light_list.size(); ++i) {
+        delete light_list[i];
+    }
+    return 0;
+}
+
+
+
 int main(int argc, char* argv[]) {
     // Build your scene and setup your camera here, by calling
     // functions from Raytracer.  The code here sets up an example
@@ -417,13 +459,10 @@ int main(int argc, char* argv[]) {
         height = atoi(argv[2]);
     }
 
-    environment_mapping(width, height);
+//    environment_mapping(width, height);
+    texture_mapping(width, height);
 
-//	SceneNode* green_planet = new SceneNode(new UnitSphere(), &obsidian);
-//    green_planet->texture = new Texture(1, 1);
-//    green_planet->has_texture = true;
-//    green_planet->texture->loadBitmap("textures/green_gas.bmp");
-//    scene.push_back(green_planet);
+
 
 //	//Add unit planes to make frame
 //	SceneNode* leftFrontM = new SceneNode(new UnitSquare(), &wood);
@@ -460,8 +499,7 @@ int main(int argc, char* argv[]) {
 
 
 
-//	green_planet->translate(Vector3D(0, 8, 38));
-//	green_planet->scale(Point3D(0, 0, 0), factorS1);
+
 
 //	// Apply transformations to make the frame
 //	double factorM2[3] = {0.5, 10.5, 1};
@@ -523,8 +561,7 @@ int main(int argc, char* argv[]) {
     Image image2(width, height);
 
     //Another point of view, used for showing texture mapping, looking at companion cube, portals
-    Camera camera3(Point3D(26, 5.5, 22), Vector3D(-1, -0.13, -1.8), Vector3D(0, 1, 0), 60.0);
-    Image image3(width, height);
+
 
     // Looking at entire scene
     Camera camera4(Point3D(20, 10, 60), Vector3D(0, -1, -8), Vector3D(0, 1, 0), 60.0);
