@@ -8,6 +8,43 @@
 #include <curses.h>
 #include "raytracer.h"
 extern double EPSILON;
+Material copper(Color(0.19125 , 0.0735, 0.0225), Color(0.7038,0.27048,0.0828),
+                Color(0.256777, 0.137622, 0.086014),
+                12.8);
+Material obsidian(Color(0.05375, 0.05, 0.06625), Color(0.18275, 0.17, 0.22525),
+                  Color(0.332741, 0.328634, 0.346435),
+                  38.4, 0, 0);
+
+Material wormhole(Color(0.05375, 0.05, 0.06625), Color(0.18275, 0.17, 0.22525),
+                  Color(0.332741, 0.328634, 0.346435),
+                  38.4, 0.97, 0);
+
+Material mirror(Color(0, 0, 0), Color(0.5,0.5,0.5),
+                Color(0.5,0.5,0.5),
+                19, 0.95, 0);
+Material red_glass(Color(0.3, 0.1, 0), Color(0.6,0.3,0.3),
+                   Color(1,1,1),
+                   40, 0, 1);
+
+Material glass(Color(0, 0, 0), Color(0.1,0.2,0.6),
+               Color(1,1,1),
+               40, 1, 0.05);
+
+
+Material grey(Color(0, 0, 0), Color(0.5, 0.5, 0.5),
+              Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material black(Color(0, 0, 0), Color(0, 0, 0),
+               Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material orange_slime(Color(0.3, 0.2, 0), Color(0.7, 0.45, 0),
+                      Color(0.3, 0.2, 0.1), 5, 0.05, 0);
+Material blue(Color(0, 0, 0), Color(0.3, 0.3, 0.6),
+              Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material green(Color(0, 0, 0), Color(0.3, 0.6, 0.3),
+               Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material wood(Color(0,0,0), Color(0.392,0.117,0.0),
+              Color(0.45,0.14,0.0),
+              12.8, 0, 0);
+
 int main(int argc, char* argv[])
 {
 	// Build your scene and setup your camera here, by calling 
@@ -19,8 +56,8 @@ int main(int argc, char* argv[])
 	LightList light_list;
 	Scene scene;
 
-	int width = 480;
-	int height = 270;
+	int width = 2560;
+	int height = 1440;
 
 	if (argc == 3) {
 		width = atoi(argv[1]);
@@ -28,61 +65,28 @@ int main(int argc, char* argv[])
 	}
 	//Chris's Contribution begins
 
-	// Define materials for shading.
-	Material copper(Color(0.19125 , 0.0735, 0.0225), Color(0.7038,0.27048,0.0828),
-		Color(0.256777, 0.137622, 0.086014),
-		12.8);
-	Material obsidian(Color(0.05375, 0.05, 0.06625), Color(0.18275, 0.17, 0.22525),
-		Color(0.332741, 0.328634, 0.346435),
-		38.4, 0, 0);
-	Material mirror(Color(0, 0, 0), Color(0,0,0),
-		Color(0,0,0),
-		12, 1, 0);
-	Material red_glass(Color(0.3, 0.1, 0), Color(0.6,0.3,0.3),
-					Color(1,1,1),
-					40, 0, 1);
-
-    Material glass(Color(0, 0, 0), Color(0.1,0.2,0.6),
-                    Color(1,1,1),
-                    40, 1, 0.05);
-
-
-	Material grey(Color(0, 0, 0), Color(0.5, 0.5, 0.5),
-				  Color(0.3, 0.3, 0.3), 5, 0, 0);
-	Material black(Color(0, 0, 0), Color(0, 0, 0),
-				  Color(0.3, 0.3, 0.3), 5, 0, 0);
-	Material orange_slime(Color(0.3, 0.2, 0), Color(0.7, 0.45, 0),
-                          Color(0.3, 0.2, 0.1), 5, 0.05, 0);
-	Material blue(Color(0, 0, 0), Color(0.3, 0.3, 0.6),
-				  Color(0.3, 0.3, 0.3), 5, 0, 0);
-	Material green(Color(0, 0, 0), Color(0.3, 0.6, 0.3),
-				  Color(0.3, 0.3, 0.3), 5, 0, 0);
-	Material wood(Color(0,0,0), Color(0.392,0.117,0.0),
-		Color(0.45,0.14,0.0),
-		12.8, 0, 0);
-
 	// Defines a point light source. 
-	PointLight* pLight1 = new PointLight(Point3D(35,19,4), Color(0.5, 0.5, 0.5));
-//	light_list.push_back(pLight1);
+	PointLight* pLight1 = new PointLight(Point3D(80,40,-20), Color(0.3, 0.3, 0.3));
+	light_list.push_back(pLight1);
 
-    PointLight* pLight2 = new PointLight(Point3D(37,15,18), Color(0.5, 0.5, 0.5));
+    PointLight* pLight2 = new PointLight(Point3D(37,15,30), Color(0.5, 0.5, 0.5));
     light_list.push_back(pLight2);
 
-    PointLight* pLight3 = new PointLight(Point3D(20,18,25), Color(0.5, 0.5, 0.5));
+    PointLight* pLight3 = new PointLight(Point3D(20,18,30), Color(0.5, 0.5, 0.5));
     light_list.push_back(pLight3);
 
 	// Add unit spheres into the scene.
 	SceneNode* sphere1 = new SceneNode(new UnitSphere(), &red_glass);
 	scene.push_back(sphere1);
 
-	SceneNode* sphere2 = new SceneNode(new UnitSphere(), &mirror);
-//	scene.push_back(sphere2);
+	SceneNode* sphere2 = new SceneNode(new UnitSphere(), &wormhole);
+	scene.push_back(sphere2);
 
 	SceneNode* green_planet = new SceneNode(new UnitSphere(), &obsidian);
     green_planet->texture = new Texture(1, 1);
     green_planet->has_texture = true;
     green_planet->texture->loadBitmap("textures/green_gas.bmp");
-    scene.push_back(green_planet);
+//    scene.push_back(green_planet);
 
     SceneNode* slime1 = new SceneNode(new UnitCircle(), &orange_slime);
     scene.push_back(slime1);
@@ -282,12 +286,13 @@ int main(int argc, char* argv[])
 	// Apply some transformations to the spheres
 	double factorS1[3] = { 4.0, 4.0, 4.0 };
 	double factorS2[3] = { 2.5, 2.5, 2.5 };
+    double factorS3[3] = { 15.0, 15.0, 15.0 };
 
 	sphere1->translate(Vector3D(34, 2.6, 6));
     sphere1->scale(Point3D(0,0,0), factorS2);
 
-	sphere2->translate(Vector3D(10, 8, 12));
-	sphere2->scale(Point3D(0,0,0), factorS2);
+	sphere2->translate(Vector3D(15, 12, 26));
+	sphere2->scale(Point3D(0,0,0), factorS1);
 
 	green_planet->translate(Vector3D(0, 8, 38));
 	green_planet->scale(Point3D(0, 0, 0), factorS1);
@@ -322,26 +327,26 @@ int main(int argc, char* argv[])
     portal_blue->translate(Vector3D(15.55, 5, EPSILON));
     portal_blue->scale(Point3D(0, 0, 0), factor6);
 
-    cube0->translate(Vector3D(20, 2, 15));
+    cube0->translate(Vector3D(22, 2, 15));
     cube0->rotate('z', 90);
     cube0->scale(Point3D(0, 0, 0), factor8);
 
-    cube1->translate(Vector3D(22, 2, 13));
+    cube1->translate(Vector3D(24, 2, 13));
     cube1->rotate('x', 90);
     cube1->rotate('y', 90);
     cube1->scale(Point3D(0, 0, 0), factor8);
 
-    cube2->translate(Vector3D(18, 2, 13));
+    cube2->translate(Vector3D(20, 2, 13));
     cube2->rotate('x', 90);
     cube2->rotate('y', -90);
     cube2->rotate('z', 180);
     cube2->scale(Point3D(0, 0, 0), factor8);
 //
-    cube3->translate(Vector3D(20, 2, 11));
+    cube3->translate(Vector3D(22, 2, 11));
     cube3->rotate('y', -180);
     cube3->scale(Point3D(0, 0, 0), factor8);
 
-    cube4->translate(Vector3D(20, 4, 13));
+    cube4->translate(Vector3D(22, 4, 13));
     cube4->rotate('x', -90);
     cube4->scale(Point3D(0, 0, 0), factor8);
 
@@ -488,8 +493,8 @@ int main(int argc, char* argv[])
 	inRight->scale(Point3D(0,0,0), factor4);*/
 
 
-	// Looking into blue portal
-	Camera camera1(Point3D(15, 2, 8), Vector3D(0, 0.1, -0.3), Vector3D(0, 1, 0), 60.0);
+	// Looking into orange portal
+	Camera camera1(Point3D(7, 3, 10), Vector3D(-1, 0.2, 0.05), Vector3D(0, 1, 0), 60.0);
 	Image image1(width, height);
 
 	// Looking at corner with orange goo
@@ -500,9 +505,15 @@ int main(int argc, char* argv[])
 	Camera camera3(Point3D(26, 5.5, 22), Vector3D(-1, -0.13, -1.8 ), Vector3D(0, 1, 0), 60.0);
 	Image image3(width, height);
 
-	// Looking into blue portal
-    Camera camera4(Point3D(30, 10, 60), Vector3D(-2, -1, -8 ), Vector3D(0, 1, 0), 60.0);
+	// Looking at entire scene
+    Camera camera4(Point3D(20, 10, 60), Vector3D(0, -1, -8 ), Vector3D(0, 1, 0), 60.0);
     Image image4(width, height);
+
+    // Looking at blue portal
+    Camera camera5(Point3D(15, 2.6, 9.5), Vector3D(0, 0.14, -1), Vector3D(0, 1, 0), 60.0);
+
+    // Pointing at mirror ball in space
+    Camera camera6(Point3D(21, 12, 19), Vector3D(-0.6, 0, 1), Vector3D(0, 1, 0), 60.0);
 
 	// Recursive Ray-Tracing
 
@@ -551,14 +562,18 @@ int main(int argc, char* argv[])
 //    std::cout << "Done: hardShadows4" << std::endl;
 
     // envmap
-    Raytracer envmapping(false, 2, false, true);
+    Raytracer envmapping(false, 3, false, true);
     envmapping.render(camera1, scene, light_list, image3);
 	image3.flushPixelBuffer("envmap1.bmp");
     std::cout << "Done: envmap1" << std::endl;
 
-    envmapping.render(camera4, scene, light_list, image3);
+    envmapping.render(camera5, scene, light_list, image3);
     image3.flushPixelBuffer("envmap2.bmp");
     std::cout << "Done: envmap2" << std::endl;
+
+    envmapping.render(camera6, scene, light_list, image3);
+    image3.flushPixelBuffer("envmap3.bmp");
+    std::cout << "Done: envmap3" << std::endl;
 
 	// render all using extended lighting
 

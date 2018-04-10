@@ -21,12 +21,12 @@ public:
 
 	bool shadows;
 	bool antialias;
-	bool max_depth;
+	int max_depth;
 	bool use_envmap;
 
 	void render(Camera& camera, Scene& scene, LightList& light_list, Image& image);
 
-	Raytracer(bool shadows, bool max_depth, bool antialias, bool use_envmap) :
+	Raytracer(bool shadows, int max_depth, bool antialias, bool use_envmap) :
 			shadows(shadows), antialias(antialias), max_depth(max_depth), use_envmap(use_envmap) {}
 
 
@@ -34,7 +34,7 @@ private:
 
 	// Return the color of the ray after intersection and shading, call 
 	// this function recursively for reflection and refraction.  
-	Color shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int depth, bool shadows, int max_depth);
+	Color shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int depth);
 
 	// Traversal code for the scene, the ray is transformed into 
 	// the object space of each node where intersection is performed.
@@ -59,3 +59,4 @@ private:
 
 
 };
+

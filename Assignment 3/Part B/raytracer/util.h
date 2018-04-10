@@ -18,6 +18,8 @@
 #endif
 
 
+
+
 class Point3D {
 public:
 	Point3D(); 
@@ -165,7 +167,6 @@ struct Intersection {
 	double t_value;	
 	// Set to true when no intersection has occured.
 	bool none;
-
 	bool has_texture;
 	Point3D uv;
 	Color texture_col;
@@ -175,13 +176,17 @@ struct Intersection {
 struct Ray3D {
 	Ray3D() {
 		intersection.none = true;
+        inShadow = false;
 		reflected = false;
 		refracted = false;
+		wormhole = false;
 	}
-	Ray3D( Point3D p, Vector3D v ) : origin(p), dir(v), inShadow(false) {
+	Ray3D( Point3D p, Vector3D v ) : origin(p), dir(v) {
+	    inShadow = false;
 		intersection.none = true;
 		reflected = false;
 		refracted = false;
+		wormhole = false;
 	}
 	// Origin and direction of the ray.
 	Point3D origin;
@@ -197,6 +202,7 @@ struct Ray3D {
 	bool inShadow;
 	bool reflected;
 	bool refracted;
+	bool wormhole;
 };
 
 struct Camera {    
@@ -328,7 +334,7 @@ struct CubeMap {
 	Texture * face4;
 	Texture * face5;
 
-	void set_face_images(const char *env);
 };
+
 
 

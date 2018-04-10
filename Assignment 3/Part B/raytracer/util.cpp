@@ -479,7 +479,7 @@ Point3D CubeMap::direction_to_cube_map_uv(Vector3D direction, int* face) {
 }
 
 
-void CubeMap::set_face_images(const char* env) {
+void CubeMap::set_face_images() {
 	// we store the cube map
 	// as six square .bmp images
 

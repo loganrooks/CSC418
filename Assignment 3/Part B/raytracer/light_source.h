@@ -46,3 +46,4 @@ private:
 	Color col_diffuse; 
 	Color col_specular; 
 };
+
