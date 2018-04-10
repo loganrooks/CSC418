@@ -399,25 +399,6 @@ int simple_scene(LightList& light_list, Scene& scene) {
     SceneNode* bottomFrontM = new SceneNode(new UnitSquare(), &wood);
     scene.push_back(bottomFrontM);
 
-    //add unit planes to make light source box
-    SceneNode* lightBack = new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(lightBack);
-    SceneNode* lightFront= new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(lightFront);
-    SceneNode* lightLeft = new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(lightLeft);
-    SceneNode* lightRight = new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(lightRight);
-    
-    SceneNode* inBack = new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(inBack);
-    SceneNode* inFront= new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(inFront);
-    SceneNode* inLeft = new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(inLeft);
-    SceneNode* inRight = new SceneNode(new UnitSquare(), &obsidian);
-    scene.push_back(inRight);
-
     // Apply some transformations to the spheres
     double factorS1[3] = { 1.0, 1.0, 1.0 };
     double factorS2[3] = { 1.5, 1.5, 1.5 };
@@ -463,60 +444,31 @@ int simple_scene(LightList& light_list, Scene& scene) {
 
     // Apply transformations to make the frame
     double factorM2[3] = {0.5, 10.5, 1};
-    leftFrontM->translate(Vector3D(0.5,10,15));
-    leftFrontM->rotate('y', -90);
+    leftFrontM->translate(Vector3D(0.01,10,15));
+    leftFrontM->rotate('y', 90);
     leftFrontM->scale(Point3D(0,0,0), factorM2);
     
-    rightFrontM->translate(Vector3D(0.5,10,5));
-    rightFrontM->rotate('y', -90);
+    rightFrontM->translate(Vector3D(0.01,10,5));
+    rightFrontM->rotate('y', 90);
     rightFrontM->scale(Point3D(0,0,0), factorM2);
     
-    topFrontM->translate(Vector3D(0.5, 15, 10));
-    topFrontM->rotate('y', -90);
+    topFrontM->translate(Vector3D(0.01, 15, 10));
+    topFrontM->rotate('y', 90);
     topFrontM->rotate('z', 90);
     topFrontM->scale(Point3D(0,0,0), factorM2);
     
-    bottomFrontM->translate(Vector3D(0.5, 5, 10));
-    bottomFrontM->rotate('y', -90);
+    bottomFrontM->translate(Vector3D(0.01, 5, 10));
+    bottomFrontM->rotate('y', 90);
     bottomFrontM->rotate('z', 90);
     bottomFrontM->scale(Point3D(0,0,0), factorM2);
-    
-    
-    //bottomSideM
 
-    // Apply transformations to make the light box
-    double factor3[3] = {2, 2, 1 };
-    double factor4[3] = {3, 2, 1 };
-    lightBack->translate(Vector3D(13, 20, 15));
-    lightBack->rotate('y', 90);
-    lightBack->scale(Point3D(0,0,0), factor4);
-    inBack->translate(Vector3D(13.01, 20, 15));
-    inBack->rotate('y', -90);
-    inBack->scale(Point3D(0,0,0), factor4);
-
-    lightFront->translate(Vector3D(15, 20, 15));
-    lightFront->rotate('y', -90);
-    lightFront->scale(Point3D(0,0,0), factor4);
-    inFront->translate(Vector3D(14.99, 20, 15));
-    inFront->rotate('y', 90);
-    inFront->scale(Point3D(0,0,0), factor4);
-
-    lightLeft->translate(Vector3D(14, 20, 16.5));
-    lightLeft->rotate('y', 180);
-    lightLeft->scale(Point3D(0,0,0), factor3);
-    inLeft->translate(Vector3D(14, 20, 16.49));
-    inLeft->scale(Point3D(0,0,0), factor3);
-
-    lightRight->translate(Vector3D(14, 20, 13.5));
-    lightRight->scale(Point3D(0,0,0), factor3);
-    inRight->translate(Vector3D(14, 20, 13.49));
-    inRight->rotate('y', 180);
-    inRight->scale(Point3D(0,0,0), factor3);
+    return 0;
 }
 
 int refraction(int width, int height) {
     LightList light_list;
     Scene scene;
+<<<<<<< HEAD
 
     portal_scene(light_list, scene);
 
@@ -570,6 +522,32 @@ int refraction(int width, int height) {
     refract.render(camera2, scene, light_list, image);
     image.flushPixelBuffer("refraction2.bmp");
     std::cout << "Done: refraction2" << std::endl;
+=======
+    simple_scene(light_list, scene);
+
+    Raytracer raytracer(false, 4, false, false);
+    
+    // Render the scene
+    Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
+    Image image1(width, height);
+    raytracer.render(camera1, scene, light_list, image1); //render 3D scene to image
+    image1.flushPixelBuffer("recursiveRT1.bmp"); //save rendered image to file
+    std::cout << "Done: recursiveRT1" << std::endl;
+
+    //Render it from a different point of view.
+    Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
+    Image image2(width, height);
+    raytracer.render(camera2, scene, light_list, image2);
+    image2.flushPixelBuffer("recursiveRT2.bmp");
+    std::cout << "Done: recursiveRT2" << std::endl;
+
+    //Another point of view
+    Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
+    Image image3(width, height);
+    raytracer.render(camera3, scene, light_list, image3);
+    image3.flushPixelBuffer("recursiveRT3.bmp");
+    std::cout << "Done: recursiveRT3" << std::endl;
+>>>>>>> 08dbb3b7d2f1d9829f4632ea9164856c632e162a
 
     // Free memory
     for (size_t i = 0; i < scene.size(); ++i) {
@@ -621,11 +599,103 @@ int refraction(int width, int height) {
 //}
 
 int hard_shadows(int width, int height) {
+    LightList light_list;
+    Scene scene;
+    simple_scene(light_list, scene);
+
+    Raytracer shadows(true, 0, false, false);
+    
+    Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
+    Image image1(width, height);
+    shadows.render(camera1, scene, light_list, image1);
+    image1.flushPixelBuffer("hardShadows1.bmp");
+    std::cout << "Done: hardShadows1" << std::endl;
+
+    Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
+    Image image2(width, height);
+    shadows.render(camera2, scene, light_list, image2);
+    image2.flushPixelBuffer("hardShadows2.bmp");
+    std::cout << "Done: hardShadows2" << std::endl;
+
+    Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
+    Image image3(width, height);
+    shadows.render(camera3, scene, light_list, image3);
+    image3.flushPixelBuffer("hardShadows3.bmp");
+    std::cout << "Done: hardShadows3" << std::endl;
+    
     return 0;
 }
 
 int anti_aliasing(int width, int height) {
+    LightList light_list;
+    Scene scene;
+    simple_scene(light_list, scene);
 
+    Raytracer anti(false, 0, true, false);
+
+    Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
+    Image image1(width, height);
+    anti.render(camera1, scene, light_list, image1);
+    image1.flushPixelBuffer("antiAliasing1.bmp");
+    std::cout << "Done: antiAliasing1" << std::endl;
+
+    Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
+    Image image2(width, height);
+    anti.render(camera2, scene, light_list, image2);
+    image2.flushPixelBuffer("antiAliasing2.bmp");
+    std::cout << "Done: antiAliasing2" << std::endl;
+
+    Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
+    Image image3(width, height);
+    anti.render(camera3, scene, light_list, image3);
+    image3.flushPixelBuffer("antiAliasing3.bmp");
+    std::cout << "Done: antiAliasing3" << std::endl;
+
+    return 0;
+}
+
+int softShadows(int width, int height, int numLights, int radius, double intensity) {
+    LightList light_list;
+    Scene scene;
+    simple_scene(light_list, scene);
+
+    Raytracer shadows(true, 0, false, false);
+    
+    //Generate randomnly sampled PointLights in a circle around a specified point
+    double x = 14;
+    double y = 18;
+    double z = 15;
+
+    for (int  i = 0; i < numLights; ++i) {
+        double r = (double(rand())/double(RAND_MAX)) * radius;
+        double theta = (double(rand())/double(RAND_MAX)) * 2.0 * M_PI;
+
+        double xi = x + r * cos(theta);
+        double yi = y + r * sin(theta);
+        double zi = z;
+
+        light_list.push_back(new PointLight(Point3D(xi,yi,zi), Color(intensity,intensity,intensity)));
+    }    
+    
+    Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
+    Image image1(width, height);
+    shadows.render(camera1, scene, light_list, image1);
+    image1.flushPixelBuffer("softShadows1.bmp");
+    std::cout << "Done: softShadows1" << std::endl;
+
+    Camera camera2(Point3D(18, 10, 2), Vector3D(-1, -0.5, 1), Vector3D(0, 1, 0), 60.0);
+    Image image2(width, height);
+    shadows.render(camera2, scene, light_list, image2);
+    image2.flushPixelBuffer("softShadows2.bmp");
+    std::cout << "Done: softShadows2" << std::endl;
+
+    Camera camera3(Point3D(18, 8, 8), Vector3D(-1, 0.1, 0.1 ), Vector3D(0, 1, 0), 60.0);
+    Image image3(width, height);
+    shadows.render(camera3, scene, light_list, image3);
+    image3.flushPixelBuffer("softShadows3.bmp");
+    std::cout << "Done: softShadows3" << std::endl;
+    
+    return 0;
 }
 
 int environment_mapping(int width, int height) {
@@ -678,6 +748,7 @@ int environment_mapping(int width, int height) {
 }
 
 int texture_mapping(int width, int height) {
+    // NEED MORE IMAGES FOR TEXTURE MAPPING (SHOW CUBE, PLANE, SPHERE)
     LightList light_list;
     Scene scene;
 
@@ -713,7 +784,6 @@ int texture_mapping(int width, int height) {
 }
 
 
-
 int main(int argc, char* argv[]) {
     // Build your scene and setup your camera here, by calling
     // functions from Raytracer.  The code here sets up an example
@@ -729,127 +799,49 @@ int main(int argc, char* argv[]) {
     std::cout << "C++" << std::endl;
 #endif
 
-    int width = 2560;
-    int height = 1440;
+    int width = 360;
+    int height = 280;
 
     if (argc == 3) {
         width = atoi(argv[1]);
         height = atoi(argv[2]);
     }
+    
+    
 
+//    recursive_ray_tracing(width, height);
+//    hard_shadows(width, height);
+//    anti_aliasing(width, height);
+    softShadows(width, height, 10, 0.5, 0.05);
 //    environment_mapping(width, height);
 //    texture_mapping(width, height);
     refraction(width, height);
 
 
 
-//	//Add unit planes to make frame
-//	SceneNode* leftFrontM = new SceneNode(new UnitSquare(), &wood);
-//	scene.push_back(leftFrontM);
-//	SceneNode* rightFrontM = new SceneNode(new UnitSquare(), &wood);
-//	scene.push_back(rightFrontM);
-//	SceneNode* topFrontM = new SceneNode(new UnitSquare(), &wood);
-//	scene.push_back(topFrontM);
-//	SceneNode* bottomFrontM = new SceneNode(new UnitSquare(), &wood);
-//	scene.push_back(bottomFrontM);
-
-/*	//add unit planes to make light source box
-	SceneNode* lightBack = new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(lightBack);
-	SceneNode* lightFront= new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(lightFront);
-	SceneNode* lightLeft = new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(lightLeft);
-	SceneNode* lightRight = new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(lightRight);
-
-	SceneNode* inBack = new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(inBack);
-	SceneNode* inFront= new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(inFront);
-	SceneNode* inLeft = new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(inLeft);
-	SceneNode* inRight = new SceneNode(new UnitSquare(), &obsidian);
-	scene.push_back(inRight);*/
-
-    // Apply some transformations to the spheres
-
-
-
-
-
-
-
-//	// Apply transformations to make the frame
-//	double factorM2[3] = {0.5, 10.5, 1};
-//	leftFrontM->translate(Vector3D(0.5,10,15));
-//	leftFrontM->rotate('y', -90);
-//	leftFrontM->scale(Point3D(0,0,0), factorM2);
-//
-//	rightFrontM->translate(Vector3D(0.5,10,5));
-//	rightFrontM->rotate('y', -90);
-//	rightFrontM->scale(Point3D(0,0,0), factorM2);
-//
-//	topFrontM->translate(Vector3D(0.5, 15, 10));
-//	topFrontM->rotate('y', -90);
-//	topFrontM->rotate('z', 90);
-//	topFrontM->scale(Point3D(0,0,0), factorM2);
-//
-//	bottomFrontM->translate(Vector3D(0.5, 5, 10));
-//	bottomFrontM->rotate('y', -90);
-//	bottomFrontM->rotate('z', 90);
-//	bottomFrontM->scale(Point3D(0,0,0), factorM2);
-
-
-    //bottomSideM
-
-/*	// Apply transformations to make the light box
-	double factor4[3] = {2, 2, 1 };
-	double factor4[3] = {3, 2, 1 };
-	lightBack->translate(Vector3D(13, 20, 15));
-	lightBack->rotate('y', 90);
-	lightBack->scale(Point3D(0,0,0), factor4);
-	inBack->translate(Vector3D(13.01, 20, 15));
-	inBack->rotate('y', -90);
-	inBack->scale(Point3D(0,0,0), factor4);
-
-	lightFront->translate(Vector3D(15, 20, 15));
-	lightFront->rotate('y', -90);
-	lightFront->scale(Point3D(0,0,0), factor4);
-	inFront->translate(Vector3D(14.99, 20, 15));
-	inFront->rotate('y', 90);
-	inFront->scale(Point3D(0,0,0), factor4);
-
-	lightLeft->translate(Vector3D(14, 20, 16.5));
-	lightLeft->rotate('y', 180);
-	lightLeft->scale(Point3D(0,0,0), factor4);
-	inLeft->translate(Vector3D(14, 20, 16.49));
-	inLeft->scale(Point3D(0,0,0), factor4);
-
-	lightRight->translate(Vector3D(14, 20, 13.5));
-	lightRight->scale(Point3D(0,0,0), factor4);
-	inRight->translate(Vector3D(14, 20, 13.49));
-	inRight->rotate('y', 180);
-	inRight->scale(Point3D(0,0,0), factor4);*/
-
 
 
 
     // Looking at corner with orange goo
+<<<<<<< HEAD
 
+=======
+    //Camera camera2(Point3D(22, 8, 14), Vector3D(1, -0.3, -0.7), Vector3D(0, 1, 0), 60.0);
+    //Image image2(width, height);
+>>>>>>> 08dbb3b7d2f1d9829f4632ea9164856c632e162a
 
     //Another point of view, used for showing texture mapping, looking at companion cube, portals
 
 
     // Looking at entire scene
-    Camera camera4(Point3D(20, 10, 60), Vector3D(0, -1, -8), Vector3D(0, 1, 0), 60.0);
-    Image image4(width, height);
+    //Camera camera4(Point3D(20, 10, 60), Vector3D(0, -1, -8), Vector3D(0, 1, 0), 60.0);
+    //Image image4(width, height);
 
     // Pointing at mirror ball in space
-    Camera camera7(Point3D(23, 11, 26), Vector3D(-1, 0.1, 0.1), Vector3D(0, 1, 0), 60.0);
+    //Camera camera7(Point3D(23, 11, 26), Vector3D(-1, 0.1, 0.1), Vector3D(0, 1, 0), 60.0);
 
     // Pointing at mirror ball in space
-    Camera camera8(Point3D(5, 12, 22), Vector3D(1, 0.1, 0.4), Vector3D(0, 1, 0), 60.0);
+    //Camera camera8(Point3D(5, 12, 22), Vector3D(1, 0.1, 0.4), Vector3D(0, 1, 0), 60.0);
 
     // Recursive Ray-Tracing
 
@@ -903,6 +895,7 @@ int main(int argc, char* argv[]) {
     // render all using extended lighting
 
 	//Add extended light sources
+<<<<<<< HEAD
 //	double x = 13.0;
 //	double y = 17.9;
 //	double z = 13.0;
@@ -935,6 +928,13 @@ int main(int argc, char* argv[]) {
 //
 
 //
+=======
+
+
+    //Chris's Contribution ends
+
+
+>>>>>>> 08dbb3b7d2f1d9829f4632ea9164856c632e162a
     return 0;
 }
 

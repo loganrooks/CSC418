@@ -461,21 +461,21 @@ int simple_scene(LightList& light_list, Scene& scene) {
 
     // Apply transformations to make the frame
     double factorM2[3] = {0.5, 10.5, 1};
-    leftFrontM->translate(Vector3D(0.5,10,15));
-    leftFrontM->rotate('y', -90);
+    leftFrontM->translate(Vector3D(0.01,10,15));
+    leftFrontM->rotate('y', 90);
     leftFrontM->scale(Point3D(0,0,0), factorM2);
     
-    rightFrontM->translate(Vector3D(0.5,10,5));
-    rightFrontM->rotate('y', -90);
+    rightFrontM->translate(Vector3D(0.01,10,5));
+    rightFrontM->rotate('y', 90);
     rightFrontM->scale(Point3D(0,0,0), factorM2);
     
-    topFrontM->translate(Vector3D(0.5, 15, 10));
-    topFrontM->rotate('y', -90);
+    topFrontM->translate(Vector3D(0.01, 15, 10));
+    topFrontM->rotate('y', 90);
     topFrontM->rotate('z', 90);
     topFrontM->scale(Point3D(0,0,0), factorM2);
     
-    bottomFrontM->translate(Vector3D(0.5, 5, 10));
-    bottomFrontM->rotate('y', -90);
+    bottomFrontM->translate(Vector3D(0.01, 5, 10));
+    bottomFrontM->rotate('y', 90);
     bottomFrontM->rotate('z', 90);
     bottomFrontM->scale(Point3D(0,0,0), factorM2);
     
@@ -507,6 +507,8 @@ int simple_scene(LightList& light_list, Scene& scene) {
     inRight->translate(Vector3D(14, 20, 13.49));
     inRight->rotate('y', 180);
     inRight->scale(Point3D(0,0,0), factor3);
+
+    return 0;
 }
 
 int recursive_ray_tracing(int width, int height) {
@@ -602,6 +604,7 @@ int anti_aliasing(int width, int height) {
     image3.flushPixelBuffer("antiAliasing3.bmp");
     std::cout << "Done: antiAliasing3" << std::endl;
 
+    return 0;
 }
 
 int environment_mapping(int width, int height) {
@@ -742,21 +745,19 @@ int main(int argc, char* argv[]) {
     // assignment.
 
 
-    int width = 480;
-    int height = 270;
+    int width = 360;
+    int height = 280;
 
     if (argc == 3) {
         width = atoi(argv[1]);
         height = atoi(argv[2]);
     }
-    #if __cplusplus==201402L
-        std::cout << "C++14" << std::endl;
-    #elif __cplusplus==201103L
-        std::cout << "C++11" << std::endl;
-    #else
-        std::cout << "C++" << std::endl;
-    #endif
-    return 0;
+    
+    
+
+//    recursive_ray_tracing(width, height);
+    hard_shadows(width, height);
+    anti_aliasing(width, height);
 //    environment_mapping(width, height);
 //    texture_mapping(width, height);
 
@@ -838,6 +839,8 @@ int main(int argc, char* argv[]) {
 
     //Chris's Contribution ends
 
+
+    return 0;
 }
 
 
