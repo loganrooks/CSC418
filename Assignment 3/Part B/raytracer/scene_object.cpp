@@ -48,7 +48,9 @@ bool UnitSquare::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 		ray.intersection.normal = normal;
 		ray.intersection.none = false;
 		ray.intersection.t_value = t;
-		ray.intersection.uv = Point3D((x + 0.5), (1 - (y + 0.5)), 0);
+		double u = x + 0.5;
+		double v = y + 0.5;
+		ray.intersection.uv = Point3D(v, u, 0);
 
 
 		return true;
@@ -154,8 +156,6 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	ray.intersection.none = false;
 	ray.intersection.t_value = t;
 	ray.intersection.uv = Point3D(1 - (0.5 - asin(point[1]) / M_PI), 1 - (0.5 + atan2(point[2], point[0]) / (2 * M_PI)), 0 );
-	return true;
-	//Chris's contribution ends
 }
 
 void SceneNode::rotate(char axis, double angle) {
@@ -230,4 +230,28 @@ void SceneNode::scale(Point3D origin, double factor[3] ) {
 	scale[2][2] = 1/factor[2];
 	scale[2][3] = origin[2] - 1/factor[2] * origin[2];
 	this->invtrans = scale*this->invtrans; 
+}
+void SceneNode::transformPortal(Vector3D location, Vector3D normal, double scale) {
+	double euler_angles[3];
+	this->translate(location);
+	double ratio = 1.64974619289;
+	double factor[3] = {scale,ratio*scale, 1};
+	this->scale(Point3D(0,0,0), factor);
+	double cosTheta = normal.dot(Vector3D(0,0,1));
+	double theta = acos(cosTheta);
+	if (cosTheta == 0) {theta=90;}
+	else if (cosTheta < 0) {theta = 180 - theta;}
+	Vector3D rotationAxis = Vector3D(0,0,1).cross(normal);
+	to_euler(rotationAxis, theta, euler_angles);
+//	std::cout << normal << std::endl;
+//	std::cout << cosTheta << std::endl;
+//	std::cout << theta << std::endl;
+//	std::cout << rotationAxis << std::endl;
+//    std::cout << euler_angles[0] << std::endl;
+	this->rotate('y', euler_angles[0]);
+	this->rotate('z', euler_angles[1]);
+	this->rotate('x', euler_angles[2]);
+//    std::cout << trans<<std::endl;
+//    std::cout << invtrans<<"\n"<<std::endl;
+
 }

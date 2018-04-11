@@ -6,11 +6,35 @@
 
 
 extern double EPSILON;
+Material grey(Color(0, 0, 0), Color(0.5, 0.5, 0.5),
+              Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material black(Color(0, 0, 0), Color(0, 0, 0),
+               Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material orange_slime(Color(0.3, 0.2, 0), Color(0.7, 0.45, 0),
+                      Color(0.3, 0.2, 0.1), 5, 0.05, 0);
+Material red(Color(0, 0, 0), Color(0.6, 0.3, 0.3),
+             Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material blue(Color(0, 0, 0), Color(0.3, 0.3, 0.6),
+              Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material green(Color(0, 0, 0), Color(0.3, 0.6, 0.3),
+               Color(0.3, 0.3, 0.3), 5, 0, 0);
+Material wood(Color(0,0,0), Color(0.392,0.117,0.0),
+              Color(0.45,0.14,0.0),
+              12.8, 0, 0);
+Material copper(Color(0.19125 , 0.0735, 0.0225), Color(0.7038,0.27048,0.0828),
+                Color(0.256777, 0.137622, 0.086014),
+                12.8);
+Material obsidian(Color(0.05375, 0.05, 0.06625), Color(0.18275, 0.17, 0.22525),
+                  Color(0.332741, 0.328634, 0.346435),
+                  38.4, 0, 0);
 
+Material wormhole(Color(0.05375, 0.05, 0.06625), Color(0.18275, 0.17, 0.22525),
+                  Color(0.332741, 0.328634, 0.346435),
+                  38.4, 0.97, 0);
 
-
-
-
+Material mirror(Color(0, 0, 0), Color(0.5,0.5,0.5),
+                Color(0.5,0.5,0.5),
+                19, 0.95, 0);
 
 
 
@@ -187,8 +211,7 @@ int portal_scene(LightList& light_list, Scene& scene) {
     // Scaling factors
     double ratio = 0.65439672801;
     double factor1[3] = {7.5, 7.5, 7.5};
-    double factor2[3] = {10, 20, 10};
-    double factor3[3] = {10, 10*ratio, 1};
+    double factor2[3] = {20, 10, 10};
     double factor4[3] = {10, 10, 10};
     double factor5[3] = {40, 20, 20};
     double factor6[3] = {10*ratio, 10, 1};
@@ -197,10 +220,9 @@ int portal_scene(LightList& light_list, Scene& scene) {
     double factor9[3] = {3,3,3};
 
     // Portals
-    portal_orange->translate(Vector3D(EPSILON, 5, 15));
+    portal_orange->translate(Vector3D(EPSILON, 5, 14.65));
     portal_orange->rotate('y', 90);
-    portal_orange->rotate('z', 90);
-    portal_orange->scale(Point3D(0, 0, 0), factor3);
+    portal_orange->scale(Point3D(0, 0, 0), factor6);
 
     portal_blue->translate(Vector3D(15.55, 5, EPSILON));
     portal_blue->scale(Point3D(0, 0, 0), factor6);
@@ -229,7 +251,6 @@ int portal_scene(LightList& light_list, Scene& scene) {
 
     // Companion Cube
     cube0->translate(Vector3D(22, 2, 15));
-    cube0->rotate('z', 90);
     cube0->scale(Point3D(0, 0, 0), factor8);
 
     cube1->translate(Vector3D(24, 2, 13));
@@ -259,12 +280,12 @@ int portal_scene(LightList& light_list, Scene& scene) {
     // Walls
     front_top->translate(Vector3D(0, 15, 10));
     front_top->rotate('y', 90);
-    front_top->rotate('z', 90);
+//    front_top->rotate('z', 90);
     front_top->scale(Point3D(0, 0, 0), factor2);
 
     front_bottom->translate(Vector3D(0, 5, 10));
     front_bottom->rotate('y', 90);
-    front_bottom->rotate('z', 90);
+//    front_bottom->rotate('z', 90);
     front_bottom->scale(Point3D(0, 0, 0), factor2);
 
     back_bottom1->translate(Vector3D(40,5,5));
@@ -277,7 +298,6 @@ int portal_scene(LightList& light_list, Scene& scene) {
 
     back_top1->translate(Vector3D(40,15,5));
     back_top1->rotate('y', -90);
-    back_top1->rotate('z', 90);
     back_top1->scale(Point3D(0,0,0), factor4);
 
     back_top2->translate(Vector3D(40,15,15));
@@ -285,31 +305,24 @@ int portal_scene(LightList& light_list, Scene& scene) {
     back_top2->scale(Point3D(0,0,0), factor4);
 
     right_front_bottom->translate(Vector3D(10, 5, 0));
-    right_front_bottom->rotate('z', 90);
     right_front_bottom->scale(Point3D(0, 0, 0), factor2);
 
     right_front_top1->translate(Vector3D(5, 15, 0));
-    right_front_top1->rotate('z', 90);
     right_front_top1->scale(Point3D(0, 0, 0), factor4);
 
     right_front_top2->translate(Vector3D(15, 15, 0));
-    right_front_top2->rotate('z', 90);
     right_front_top2->scale(Point3D(0, 0, 0), factor4);
 
     right_back_bottom1->translate(Vector3D(25, 5, 0));
-    right_back_bottom1->rotate('z', 90);
     right_back_bottom1->scale(Point3D(0, 0, 0), factor4);
 
     right_back_bottom2->translate(Vector3D(35, 5, 0));
-    right_back_bottom2->rotate('z', 90);
     right_back_bottom2->scale(Point3D(0, 0, 0), factor4);
 
     right_back_top1->translate(Vector3D(25, 15, 0));
-    right_back_top1->rotate('z', 90);
     right_back_top1->scale(Point3D(0, 0, 0), factor4);
 
     right_back_top2->translate(Vector3D(35, 15, 0));
-    right_back_top2->rotate('z', 90);
     right_back_top2->scale(Point3D(0, 0, 0), factor4);
 
     // Ceiling and Floor
@@ -439,47 +452,112 @@ int simple_scene(LightList& light_list, Scene& scene) {
 
 int simple_portal_scene(LightList& light_list, Scene& scene) {
     // Defines a point light source.
+    double ratio = 0.65439672801;
     PointLight* pLight = new PointLight(Point3D(14,18,15), Color(0.9,0.9,0.9));
     light_list.push_back(pLight);
 
+    Portal portals(Vector3D(14.98*ratio, 5, 30*ratio-2*EPSILON), Vector3D(0,0,-1), Vector3D(15.2*ratio, 5, 2*EPSILON),
+                   Vector3D(0, 0,1), 2);
+    scene.push_back(portals.portal1);
+    scene.push_back(portals.portal2);
+
+    SceneNode* portal_orange = new SceneNode(new UnitSquare(), &grey);
+    portal_orange->texture = new Texture(1, 1);
+    portal_orange->has_texture = true;
+    portal_orange->texture->loadBitmap("textures/portal_orange.bmp");
+    scene.push_back(portal_orange);
+
+    SceneNode* portal_blue = new SceneNode(new UnitSquare(), &grey);
+    portal_blue->texture = new Texture(1, 1);
+    portal_blue->has_texture = true;
+    portal_blue->texture->loadBitmap("textures/portal_blue.bmp");
+    scene.push_back(portal_blue);
+
     // add unit planes to make into room
     SceneNode* back = new SceneNode(new UnitSquare(), &black);
+    back->texture = new Texture(2, 3);
+    back->has_texture = true;
+    back->texture->loadBitmap("textures/portal_bgs.bmp");
     scene.push_back(back);
-    SceneNode* front = new SceneNode(new UnitSquare(), &green);
+    SceneNode* front = new SceneNode(new UnitSquare(), &black);
+    front->texture = new Texture(2, 3);
+    front->has_texture = true;
+    front->texture->loadBitmap("textures/portal_bgs.bmp");
     scene.push_back(front);
-    SceneNode* left = new SceneNode(new UnitSquare(), &red);
+    SceneNode* left = new SceneNode(new UnitSquare(), &black);
+    left->texture = new Texture(2, 3);
+    left->has_texture = true;
+    left->texture->loadBitmap("textures/portal_bgs.bmp");
     scene.push_back(left);
-    SceneNode* right = new SceneNode(new UnitSquare(), &blue);
+    SceneNode* right = new SceneNode(new UnitSquare(), &black);
+    right->texture = new Texture(2, 3);
+    right->has_texture = true;
+    right->texture->loadBitmap("textures/portal_bgs.bmp");
     scene.push_back(right);
-    SceneNode* top = new SceneNode(new UnitSquare(), &grey);
+    SceneNode* top = new SceneNode(new UnitSquare(), &black);
+    top->texture = new Texture(2, 2);
+    top->has_texture = true;
+    top->texture->loadBitmap("textures/portal_wall1.bmp");
     scene.push_back(top);
-    SceneNode* bottom = new SceneNode(new UnitSquare(), &wood);
+    SceneNode* bottom = new SceneNode(new UnitSquare(), &black);
+    bottom->texture = new Texture(2, 2);
+    bottom->has_texture = true;
+    bottom->texture->loadBitmap("textures/portal_wall1.bmp");
     scene.push_back(bottom);
 
+    SceneNode* sphere1 = new SceneNode(new UnitSphere(), &copper);
+    scene.push_back(sphere1);
+    SceneNode* sphere3 = new SceneNode(new UnitSphere(), &obsidian);
+    scene.push_back(sphere3);
+//
+//    // Apply some transformations to the spheres
+    double factorS2[3] = { 1.5, 1.5, 1.5 };
+    sphere1->translate(Vector3D(12, 5, 8));
+
+
+    sphere3->translate(Vector3D(10, 9, 8));
+    sphere3->scale(Point3D(0, 0, 0), factorS2);
     // Apply transformations to make the room
-    double factor2[3] = {20, 20, 20 };
-    back->translate(Vector3D(0, 10, 10));
+
+
+    double factor1[3] = {30*ratio, 30*ratio, 20};
+    double factor2[3] = {30*ratio, 20, 20 };
+
+    back->translate(Vector3D(0, 10, 15*ratio));
     back->rotate('y', 90);
     back->scale(Point3D(0, 0, 0), factor2);
 
-    front ->translate(Vector3D(20,10,10));
+    front ->translate(Vector3D(30*ratio,10,10));
     front->rotate('y', -90);
     front->scale(Point3D(0,0,0), factor2);
 
-    left->translate(Vector3D(10, 10, 20));
+    left->translate(Vector3D(15*ratio, 10, 30*ratio));
     left->scale(Point3D(0, 0, 0), factor2);
     left->rotate('y', 180);
 
-    right->translate(Vector3D(10, 10, 0));
+    right->translate(Vector3D(15*ratio, 10, 0));
     right->scale(Point3D(0, 0, 0), factor2);
 
-    bottom->translate(Vector3D(10,0,10));
+    bottom->translate(Vector3D(15*ratio,0,15*ratio));
     bottom->rotate('x', -90);
-    bottom->scale(Point3D(0,0,0), factor2);
+    bottom->scale(Point3D(0,0,0), factor1);
 
-    top->translate(Vector3D(10,20,10));
+    top->translate(Vector3D(15*ratio,20,15*ratio));
     top->rotate('x', 90);
-    top->scale(Point3D(0,0,0), factor2);
+    top->scale(Point3D(0,0,0), factor1);
+
+    // Portals
+
+    double factorP1[3] = {10*ratio, 10, 1};
+    double factorP2[3] = {10, 10*ratio, 1};
+    portal_orange->translate(Vector3D(15*ratio, 5, EPSILON));
+    portal_orange->scale(Point3D(0, 0, 0), factorP1);
+
+
+    portal_blue->translate(Vector3D(15*ratio, 5, 30*ratio - EPSILON));
+    portal_blue->scale(Point3D(0, 0, 0), factorP1);
+    portal_blue->rotate('y', -180);
+//    std::cout << scene[3]->invtrans<<std::endl;
 
     return 0;
 }

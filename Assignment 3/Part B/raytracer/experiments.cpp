@@ -3,7 +3,19 @@
 //
 
 #include "experiments.h"
+extern double EPSILON;
+double ratio = 0.65439672801;
+Material glass(Color(0, 0, 0), Color(0.1,0.2,0.6),
+               Color(1,1,1),
+               40, 0, 1.5);
 
+Material water(Color(0, 0, 0), Color(0.1,0.2,0.6),
+               Color(1,1,1),
+               40, 0, 1.3);
+extern Material wormhole;
+extern Material grey;
+extern Material copper;
+extern Material mirror;
 int refraction(int width, int height) {
     LightList light_list;
     Scene scene;
@@ -280,7 +292,6 @@ int soft_shadows(int width, int height, int numLights, int radius, double intens
 }
 
 int environment_mapping(int width, int height) {
-
     LightList light_list;
     Scene scene;
 
@@ -329,12 +340,12 @@ int environment_mapping(int width, int height) {
 }
 
 int texture_mapping(int width, int height) {
-    // NEED MORE IMAGES FOR TEXTURE MAPPING (SHOW CUBE, PLANE, SPHERE)
     LightList light_list;
     Scene scene;
 
     portal_scene(light_list, scene);
 
+    // Mapping on sphere
     SceneNode* green_planet = new SceneNode(new UnitSphere(), &obsidian);
     green_planet->texture = new Texture(1, 1);
     green_planet->has_texture = true;
@@ -367,7 +378,162 @@ int texture_mapping(int width, int height) {
 int portal_test(int width, int height) {
     LightList light_list;
     Scene scene;
-    simple_scene(light_list, scene);
+    simple_portal_scene(light_list, scene);
+    Raytracer portal(false, 40, false, false);
+    Camera camera1(Point3D(15*ratio, 5, 10), Vector3D(0, 0, -1), Vector3D(0, 1, 0), 60.0);
+    Image image1(width, height);
+    portal.render(camera1, scene, light_list, image1);
+    image1.flushPixelBuffer("portal1.bmp");
+    std::cout << "Done: portal1" << std::endl;
 
-    Raytracer portal(false, 10, true, false);
+    Camera camera2(Point3D(15*ratio, 5, 10), Vector3D(0, 0, 1), Vector3D(0, 1, 0), 60.0);
+    Image image2(width, height);
+    portal.render(camera2, scene, light_list, image2);
+    image2.flushPixelBuffer("portal2.bmp");
+    std::cout << "Done: portal2" << std::endl;
+
+    Camera camera3(Point3D(12, 8, 16), Vector3D(-0.1, -0.1, -0.45 ), Vector3D(0, 1, 0), 60.0);
+    Image image3(width, height);
+    portal.render(camera3, scene, light_list, image3);
+    image3.flushPixelBuffer("portal3.bmp");
+    std::cout << "Done: portal3" << std::endl;
+
+    // Free memory
+    for (size_t i = 0; i < scene.size(); ++i) {
+        delete scene[i];
+    }
+
+    for (size_t i = 0; i < light_list.size(); ++i) {
+        delete light_list[i];
+    }
+    return 0;
+}
+
+int final(int width, int height, int numLights, int radius, double intensity) {
+    LightList light_list;
+    Scene scene;
+    portal_scene(light_list, scene);
+
+    for (size_t i = 0; i < light_list.size(); ++i) {
+        delete light_list[i];
+    }
+    light_list.clear();
+    double x = 12;
+    double y = 25;
+    double z = 33;
+    double pointIntensity = intensity / numLights;
+    for (int  i = 0; i < numLights; ++i) {
+        double r = (double(rand())/double(RAND_MAX)) * radius;
+        double theta = (double(rand())/double(RAND_MAX)) * 2.0 * M_PI;
+
+        double xi = x + r * cos(theta);
+        double yi = y + r * sin(theta);
+        double zi = z;
+
+        light_list.push_back(new PointLight(Point3D(xi,yi,zi), Color(pointIntensity,pointIntensity,pointIntensity)));
+    }
+
+    scene[5]->translate(Vector3D(0,0,-1));
+    scene[6]->translate(Vector3D(0,0,-1));
+    scene[3]->translate(Vector3D(0,1,0));
+//    scene[13]->texture->loadBitmap("textures/portal_bg.bmp");
+//    scene[23]->texture->loadBitmap("textures/portal_bg.bmp");
+//    scene[25]->texture->loadBitmap("textures/portal_bg.bmp");
+    scene[26]->rotate('x', 180);
+
+
+    Portal portals(Vector3D(3*EPSILON, 20/ratio, 14.45), Vector3D(-1,0,0), Vector3D(15.55, 5, 3*EPSILON),
+                   Vector3D(0,0,-1), 2);
+    Portal portals_out(Vector3D(20,5, 20 - 2*EPSILON), Vector3D(0,0,-1), Vector3D(60,60,60), Vector3D(0,0,-1), 2);
+
+    scene.push_back(portals_out.portal1);
+    scene.push_back(portals_out.portal2);
+    scene.push_back(portals.portal1);
+    scene.push_back(portals.portal2);
+
+    SceneNode* left_smooth = new SceneNode(new UnitSquare, &grey);
+    left_smooth->texture = new Texture(2,3);
+    left_smooth->has_texture = true;
+    left_smooth->texture->loadBitmap("textures/sandstone_smooth.bmp");
+    scene.push_back(left_smooth);
+
+    SceneNode* left_dark= new SceneNode(new UnitSquare, &grey);
+    left_dark->texture = new Texture(2,1);
+    left_dark->has_texture = true;
+    left_dark->texture->loadBitmap("textures/dark0.bmp");
+    scene.push_back(left_dark);
+
+    SceneNode* new_portal = new SceneNode(new UnitSquare, &grey);
+    new_portal->texture = new Texture(1,1);
+    new_portal->has_texture = true;
+    new_portal->texture->loadBitmap("textures/portal_orange.bmp");
+    scene.push_back(new_portal);
+
+    SceneNode* carving = new SceneNode(new UnitSquare, &grey);
+    carving->texture = new Texture(1,1);
+    carving->has_texture = true;
+    carving->texture->loadBitmap("textures/sandstone_carved.bmp");
+    scene.push_back(carving);
+
+
+
+    SceneNode* sphere2 = new SceneNode(new UnitSphere(), &mirror);
+    scene.push_back(sphere2);
+
+    SceneNode* sphere3 = new SceneNode(new UnitSphere(), &water);
+    scene.push_back(sphere3);
+
+
+    double factor1[3] = {30,20,20};
+    double factor2[3] = {10,20,20};
+    double factor3[3] = {10*ratio, 10, 1};
+    double factor4[3] = {10,10,10};
+    left_smooth->translate(Vector3D(25,10,20));
+//    left_smooth->rotate('y', -180);
+    left_smooth->scale(Point3D(0,0,0), factor1);
+
+    left_dark->translate(Vector3D(5,10,20));
+//    left_dark->rotate('y', -180);
+    left_dark->scale(Point3D(0,0,0), factor2);
+
+    new_portal->translate(Vector3D(20, 5, 20-EPSILON));
+    new_portal->scale(Point3D(0,0,0), factor3);
+
+    carving->translate(Vector3D(20, 15, 20-EPSILON));
+    carving->scale(Point3D(0,0,0), factor4);
+
+    double factorS1[3] = { 1.0, 1.0, 1.0 };
+    double factorS2[3] = { 1.5, 1.5, 1.5 };
+
+    sphere2->translate(Vector3D(7.5, 14, 12));
+    sphere2->scale(Point3D(0,0,0), factorS2);
+
+    sphere3->translate(Vector3D(33, 3, 17));
+    sphere3->scale(Point3D(0, 0, 0), factorS2);
+
+    Camera camera1(Point3D(14, 6.5, 6), Vector3D(0.2, -0.16, -1.3), Vector3D(0, 1, 0), 60.0);
+    Camera camera2(Point3D(22, 7.5, 4.5), Vector3D(-1.1, -0.4, -1.5), Vector3D(0, 1, 0), 60.0);
+
+
+    Image image(width, height);
+
+    Raytracer finaltracer(true, 10, true, true);
+    finaltracer.render(camera1, scene, light_list, image);
+    image.flushPixelBuffer("final1.bmp");
+    std::cout << "Done: final1" << std::endl;
+
+    finaltracer.render(camera2, scene, light_list, image);
+    image.flushPixelBuffer("final2.bmp");
+    std::cout << "Done: final2" << std::endl;
+
+
+    for (size_t i = 0; i < scene.size(); ++i) {
+        delete scene[i];
+    }
+
+    for (size_t i = 0; i < light_list.size(); ++i) {
+        delete light_list[i];
+    }
+    return 0;
+
 }

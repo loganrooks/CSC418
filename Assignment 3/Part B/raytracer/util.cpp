@@ -27,12 +27,21 @@ Point3D::Point3D(const Point3D& other) {
 	m_data[2] = other.m_data[2];
 }
 
+Point3D::Point3D(const Vector4D& other) {
+	m_data[0] = other[0];
+	m_data[1] = other[1];
+	m_data[2] = other[2];
+}
+
+
 Point3D& Point3D::operator =(const Point3D& other) {
 	m_data[0] = other.m_data[0];
 	m_data[1] = other.m_data[1];
 	m_data[2] = other.m_data[2];
 	return *this;
 }
+
+
 
 double& Point3D::operator[](int i) {
 	return m_data[i];
@@ -48,7 +57,7 @@ Vector3D::Vector3D() {
 	m_data[2] = 0.0;
 }
 
-Vector3D::Vector3D(double x, double y, double z) { 
+Vector3D::Vector3D(double x, double y, double z) {
 	m_data[0] = x;
 	m_data[1] = y;
 	m_data[2] = z;
@@ -59,6 +68,13 @@ Vector3D::Vector3D(const Vector3D& other) {
 	m_data[1] = other.m_data[1];
 	m_data[2] = other.m_data[2];
 }
+
+Vector3D::Vector3D(const Point3D& other) {
+	m_data[0] = other[0];
+	m_data[1] = other[1];
+	m_data[2] = other[2];
+}
+
 
 Vector3D& Vector3D::operator =(const Vector3D& other) {
 	m_data[0] = other.m_data[0];
@@ -175,12 +191,41 @@ Point3D operator -(const Point3D& u, const Vector3D& v)
   return Point3D(u[0]-v[0], u[1]-v[1], u[2]-v[2]);
 }
 
-Vector3D cross(const Vector3D& u, const Vector3D& v) 
+Vector3D cross(const Vector3D& u, const Vector3D& v)
 {
   return u.cross(v);
 }
 
-std::ostream& operator <<(std::ostream& s, const Point3D& p)
+void to_euler(Vector3D u, const double angle, double (&euler_angles)[3]) {
+    // using euler rotation sequence y, z, x
+    u.normalize();
+    double angle_rad = (M_PI / 180.0) * angle;
+    double x = u[0];
+    double y = u[1];
+    double z = u[2];
+    double s=sin(angle_rad);
+    double c=cos(angle_rad);
+    double t=1-c;
+
+    if ((x*y*t + z*s) > 0.998) { // north pole singularity detected
+        euler_angles[0] = 2*atan2(x*sin(angle/2), cos(angle/2)); // rotation about y
+        euler_angles[1] = M_PI/2; // rotation about z
+        euler_angles[2] = 0; // rotation about x
+        return;
+    }
+    if ((x*y*t + z*s) < -0.998) { // south pole singularity detected
+        euler_angles[0] = -2*atan2(x*sin(angle/2), cos(angle/2));
+        euler_angles[1] = -M_PI/2;
+        euler_angles[2] = 0;
+        return;
+    }
+    double rad_to_deg = 180.0 / M_PI;
+    euler_angles[0] = rad_to_deg * atan2(y * s - x * z * t, 1 - (y * y + z * z) * t);
+    euler_angles[1] = rad_to_deg * asin(x * y * t + z * s);
+    euler_angles[2] = rad_to_deg * atan2(x * s - y * z * t, 1 - (x * x + z * z) * t);
+}
+
+std::ostream& operator <<(const Point3D& p, std::ostream& s)
 {
   return s << "p(" << p[0] << "," << p[1] << "," << p[2] << ")";
 }
@@ -367,6 +412,7 @@ Point3D operator *(const Matrix4x4& M, const Point3D& p) {
 			p[0] * M[2][0] + p[1] * M[2][1] + p[2] * M[2][2] + M[2][3]);
 }
 
+
 Vector3D transNorm(const Matrix4x4& M, const Vector3D& n) {
 	return Vector3D(
 			n[0] * M[0][0] + n[1] * M[1][0] + n[2] * M[2][0],
@@ -397,7 +443,7 @@ Color Texture::get_colour_at_uv(Point3D uv) {
 
 	// we need to divide by 255 since the texture is stored as an int from 0 to 255
 	Color col = Color (rarray[i *x + j]/255.0,garray[i *x + j]/255.0,barray[i* x + j]/255.0);
-
+	col.clamp();
 	return col;
 }
 

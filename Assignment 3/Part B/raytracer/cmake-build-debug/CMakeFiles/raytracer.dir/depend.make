@@ -4,16 +4,27 @@
 CMakeFiles/raytracer.dir/bmp_io.cpp.o: ../bmp_io.cpp
 CMakeFiles/raytracer.dir/bmp_io.cpp.o: ../bmp_io.h
 
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../bmp_io.h
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../experiments.cpp
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../experiments.h
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../light_source.h
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../raytracer.h
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../scene_object.h
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../scenes.h
+CMakeFiles/raytracer.dir/experiments.cpp.o: ../util.h
+
 CMakeFiles/raytracer.dir/light_source.cpp.o: ../bmp_io.h
 CMakeFiles/raytracer.dir/light_source.cpp.o: ../light_source.cpp
 CMakeFiles/raytracer.dir/light_source.cpp.o: ../light_source.h
 CMakeFiles/raytracer.dir/light_source.cpp.o: ../util.h
 
 CMakeFiles/raytracer.dir/main.cpp.o: ../bmp_io.h
+CMakeFiles/raytracer.dir/main.cpp.o: ../experiments.h
 CMakeFiles/raytracer.dir/main.cpp.o: ../light_source.h
 CMakeFiles/raytracer.dir/main.cpp.o: ../main.cpp
 CMakeFiles/raytracer.dir/main.cpp.o: ../raytracer.h
 CMakeFiles/raytracer.dir/main.cpp.o: ../scene_object.h
+CMakeFiles/raytracer.dir/main.cpp.o: ../scenes.h
 CMakeFiles/raytracer.dir/main.cpp.o: ../util.h
 
 CMakeFiles/raytracer.dir/raytracer.cpp.o: ../bmp_io.h
@@ -27,6 +38,13 @@ CMakeFiles/raytracer.dir/scene_object.cpp.o: ../bmp_io.h
 CMakeFiles/raytracer.dir/scene_object.cpp.o: ../scene_object.cpp
 CMakeFiles/raytracer.dir/scene_object.cpp.o: ../scene_object.h
 CMakeFiles/raytracer.dir/scene_object.cpp.o: ../util.h
+
+CMakeFiles/raytracer.dir/scenes.cpp.o: ../bmp_io.h
+CMakeFiles/raytracer.dir/scenes.cpp.o: ../light_source.h
+CMakeFiles/raytracer.dir/scenes.cpp.o: ../scene_object.h
+CMakeFiles/raytracer.dir/scenes.cpp.o: ../scenes.cpp
+CMakeFiles/raytracer.dir/scenes.cpp.o: ../scenes.h
+CMakeFiles/raytracer.dir/scenes.cpp.o: ../util.h
 
 CMakeFiles/raytracer.dir/util.cpp.o: ../bmp_io.h
 CMakeFiles/raytracer.dir/util.cpp.o: ../util.cpp

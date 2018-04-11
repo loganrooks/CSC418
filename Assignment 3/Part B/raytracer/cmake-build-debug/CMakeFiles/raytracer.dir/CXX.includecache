@@ -22,6 +22,20 @@ bmp_io.h
 fstream
 -
 
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.cpp
+experiments.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.h
+
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.h
+light_source.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.h
+scene_object.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+scenes.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h
+raytracer.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.h
+
 /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.cpp
 cmath
 -
@@ -43,6 +57,10 @@ cstdlib
 -
 raytracer.h
 /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.h
+scenes.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h
+experiments.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.h
 
 /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.cpp
 raytracer.h
@@ -77,6 +95,16 @@ util.h
 /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.h
 vector
 -
+
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.cpp
+scenes.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h
+
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h
+scene_object.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+light_source.h
+/media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.h
 
 /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.cpp
 util.h

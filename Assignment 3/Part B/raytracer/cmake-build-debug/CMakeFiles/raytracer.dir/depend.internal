@@ -4,6 +4,15 @@
 CMakeFiles/raytracer.dir/bmp_io.cpp.o
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.cpp
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
+CMakeFiles/raytracer.dir/experiments.cpp.o
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.cpp
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.h
 CMakeFiles/raytracer.dir/light_source.cpp.o
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.cpp
@@ -11,10 +20,12 @@ CMakeFiles/raytracer.dir/light_source.cpp.o
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.h
 CMakeFiles/raytracer.dir/main.cpp.o
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/experiments.h
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.h
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/main.cpp
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/raytracer.h
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.h
 CMakeFiles/raytracer.dir/raytracer.cpp.o
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
@@ -27,6 +38,13 @@ CMakeFiles/raytracer.dir/scene_object.cpp.o
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.cpp
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.h
+CMakeFiles/raytracer.dir/scenes.cpp.o
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/light_source.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scene_object.h
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.cpp
+ /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/scenes.h
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/util.h
 CMakeFiles/raytracer.dir/util.cpp.o
  /media/logan/Shared/code/school/CSC418/Assignment 3/Part B/raytracer/bmp_io.h

@@ -37,6 +37,14 @@ void Raytracer::traverseScene(Scene& scene, Ray3D& ray)  {
 				else {
 					ray.intersection.has_texture = false;
 				}
+				if (node->is_portal) {
+
+				    ray.intersection.is_portal = true;
+				    ray.intersection.portalTrans = node->portalTrans;
+				}
+				else {
+				    ray.intersection.is_portal = false;
+				}
 		}
 	}
 }
@@ -130,39 +138,40 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 		normal.normalize();
 		Vector3D incidentVec = ray.dir;
 		incidentVec.normalize();
-		double t_ray = ray.intersection.t_value;
 
 		if(depth < max_depth){
-			if (reflectIndex > 0) {
-				//get reflection vector
-				Vector3D reflectVec = computeReflection(normal, incidentVec);
-				Point3D point = ray.intersection.point;
-				point = point + EPSILON * reflectVec;
-				Ray3D reflect_ray = Ray3D(point, reflectVec);
-				reflect_ray.reflected = true;
-				reflect_ray.intersection.has_texture = false;
-				reflect_ray.wormhole = ray.intersection.mat == &wormhole;
-
-				//get reflection color
-				Color reflect_col = shadeRay(reflect_ray, scene, light_list, depth + 1);
-				ray.col = reflectIndex * reflect_col + (1 - reflectIndex) * ray.col;
-				ray.col.clamp();
-			}
-//
+		    if (ray.intersection.is_portal) {
+		    	Vector3D transportedVec = ray.intersection.portalTrans * incidentVec;
+		    	Ray3D transported_ray(Point3D(ray.intersection.portalTrans.getColumn(3)) + ray.intersection.point +
+									  EPSILON * transportedVec, transportedVec);
+		    	ray.col = shadeRay(transported_ray, scene, light_list, depth + 1);
+		    	ray.col.clamp();
+		    }
 			if (refractIndex > 1) {
 
 				double n1 = 1;
 				double n2 = ray.intersection.mat->refractIndex;
-
-
 				Vector3D refract_dir = computeRefraction(normal, incidentVec, n1, n2);
-
 				// refract ray
 				Ray3D refract_ray(ray.intersection.point + EPSILON * refract_dir, refract_dir);
 				refract_ray.refracted = true;
 				ray.col = shadeRay(refract_ray, scene, light_list, depth + 1);
 				ray.col.clamp();
 			}
+            if (reflectIndex > 0) {
+                //get reflection vector
+                Vector3D reflectVec = computeReflection(normal, incidentVec);
+                Point3D point = ray.intersection.point;
+                point = point + EPSILON * reflectVec;
+                Ray3D reflect_ray = Ray3D(point, reflectVec);
+                reflect_ray.reflected = true;
+                reflect_ray.intersection.has_texture = false;
+                reflect_ray.wormhole = ray.intersection.mat == &wormhole;
+                //get reflection color
+                Color reflect_col = shadeRay(reflect_ray, scene, light_list, depth + 1);
+                ray.col = reflectIndex * reflect_col + (1 - reflectIndex) * ray.col;
+                ray.col.clamp();
+            }
 		}
 		col = ray.col;
 	}

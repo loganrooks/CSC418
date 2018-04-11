@@ -6,12 +6,14 @@
 	Classes defining primitives in the scene
 
 ***********************************************************/
-#pragma once
+#ifndef __SCENE_OBJECT_H_INCLUDED__
+#define __SCENE_OBJECT_H_INCLUDED__
+
 
 #include "util.h"
-#include "scenes.h"
-#include <vector>
 
+#include <vector>
+extern Material obsidian;
 // All primitives should provide an intersection function.  
 // To create more primitives, inherit from SceneObject.
 // Namely, you can create, Sphere, Cylinder, etc... classes
@@ -49,6 +51,8 @@ struct SceneNode {
 	// Apply scaling about a fixed point origin.
 	void scale(Point3D origin, double factor[3]);
 
+	void transformPortal(Vector3D location, Vector3D normal, double scale);
+
 	// Pointer to geometry primitive, used for intersection.
 	SceneObject* obj;
 	
@@ -57,6 +61,7 @@ struct SceneNode {
 	
 	// Each node maintains a transformation matrix, which maps the 
 	// geometry from object space to world space and the inverse.
+	Point3D origin;
 	Matrix4x4 trans;
 	Matrix4x4 invtrans;
 	Matrix4x4 modelToWorld;
@@ -93,16 +98,25 @@ public:
 				const Matrix4x4& modelToWorld);
 };
 
-class Portal {
-    Portal(Scene& scene, Vector3D location1, Vector3D normal1, Point3D location2, Vector3D normal2) {
-        portal1->is_portal = true;
-        portal2->is_portal = true;
-        portal1->translate(location1);
-        portal1->scale()
-        portal1
-    }
+
+struct Portal {
 
     SceneNode* portal1 = new SceneNode(new UnitCircle, &obsidian);
     SceneNode* portal2 = new SceneNode(new UnitCircle, &obsidian);
 
+	Portal(const Vector3D &location1, const Vector3D &normal1, const Vector3D &location2, const Vector3D &normal2,
+           double scale) {
+		portal1->is_portal = true;
+		portal2->is_portal = true;
+		portal1->transformPortal(location1, normal1, scale);
+		portal2->transformPortal(location2, normal2, scale);
+//		std::cout << normal1 << normal2 << std::endl;
+		portal1->portalTrans = portal1->invtrans*portal2->trans;
+		portal2->portalTrans = portal2->invtrans*portal1->trans;
+//		std::cout << portal1->portalTrans << std::endl;
+//		std::cout << portal2->portalTrans << std::endl;
+	}
 };
+
+
+#endif // __SCENE_OBJECT_H_INCLUDED__
