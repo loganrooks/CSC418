@@ -232,11 +232,17 @@ void SceneNode::scale(Point3D origin, double factor[3] ) {
 	this->invtrans = scale*this->invtrans; 
 }
 void SceneNode::transformPortal(Vector3D location, Vector3D normal, double scale) {
+	// This function is used to help transform the portal to a certain location and orient it to have a certain normal
 	double euler_angles[3];
 	this->translate(location);
+	// This ratio is the ratio of the height to width of the portal in the texture map, used so it fits nicely over
+	// the texture
 	double ratio = 1.64974619289;
 	double factor[3] = {scale,ratio*scale, 1};
 	this->scale(Point3D(0,0,0), factor);
+	// Determine the angle between the vectors in the plane defined by their cross product
+	// We are constructing here an axis-angle formulation for the rotation necessary but since the rotation function
+	// works on only primary axises, we must convert the formulation using to_euler.
 	double cosTheta = normal.dot(Vector3D(0,0,1));
 	double theta = acos(cosTheta);
 	if (cosTheta == 0) {theta=90;}

@@ -437,7 +437,7 @@ void Texture::loadBitmap(const char * filename){
 
 
 Color Texture::get_colour_at_uv(Point3D uv) {
-
+	// Accessing the bitmap texture
 	int i = int(uv[0] * repeats_x * x) % int(x);
 	int j = int(uv[1] * repeats_y * y) % int(y);
 
@@ -447,12 +447,10 @@ Color Texture::get_colour_at_uv(Point3D uv) {
 	return col;
 }
 
+
 Point3D CubeMap::direction_to_cube_map_uv(Vector3D direction, int* face) {
 
-	// Used the wikipedia article for cube mapping as a guide
-	// As well as the textbook
-	// Use the convention from the wikipedia article since in the book, +z is the up-direction
-	// In the cube mapping code I assume that positive y is the up-direction, as given in main.cpp
+	// Used wikipedia article to help
 
 	double u; double v;
 	double x = direction[0];
@@ -528,7 +526,6 @@ Point3D CubeMap::direction_to_cube_map_uv(Vector3D direction, int* face) {
         vc = y;
         *face = 5;
     }
-
     // Convert range from -1 to 1 to 0 to 1
     u = 0.5f * (uc / maxAxis + 1.0f);
     v = 0.5f * (vc / maxAxis + 1.0f);
@@ -536,11 +533,9 @@ Point3D CubeMap::direction_to_cube_map_uv(Vector3D direction, int* face) {
 
 }
 
-
+//
 void CubeMap::set_face_images() {
-	// we store the cube map
-	// as six square .bmp images
-
+	// The environment map is stored in the environments folder
 	face0 = new Texture(1,1);
 	face0->loadBitmap("environments/nebula/pos_x.bmp"); // pos_x
 	face1 = new Texture(1,1);
@@ -559,7 +554,8 @@ Color CubeMap::query_bmp_cube_map(Vector3D direction)
 {
 	int face = -1;
 	Color col = Color(0, 0, 0);
-
+	// Given the direction of the ray, determine both which face of the cube did it hit and the corresponding uv
+	// coordinates for that texture.
 	Point3D uv = direction_to_cube_map_uv(direction, &face);
 	Texture* txt;
 	switch (face)

@@ -173,6 +173,7 @@ struct Intersection {
 	// Set to true when no intersection has occured.
 	bool none;
 	Point3D uv;
+	// Properties inherent to the intersected node
 	bool has_texture;
 	Color texture_col;
 	bool is_portal;
@@ -206,7 +207,7 @@ struct Ray3D {
 	// function.
 	Color col;
 
-	// Keep sense of recursive ray tracing;
+	// Keep sense of recursive ray tracing, these help determine the properties of the ray;
 	bool inShadow;
 	bool reflected;
 	bool refracted;
@@ -319,8 +320,8 @@ struct Texture {
 
 	// arrays of dimension (x,y)
 	// defining the RGB value of the texture
-	unsigned char* rarray = NULL;
-	unsigned char* garray = NULL;
+	unsigned char* rarray = nullptr;
+	unsigned char* garray = nullptr;
 	unsigned char* barray = NULL;
 
 	void loadBitmap(const char* filename);
