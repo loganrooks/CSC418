@@ -2,6 +2,7 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/raytracer.h" line="49" />
+    <bookmark url="file://$PROJECT_DIR$/experiments.cpp" line="375" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
@@ -25,94 +26,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.17506297">
+    <splitter split-orientation="horizontal" split-proportion="0.65387034">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="refraction2.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/refraction2.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="refraction3.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/refraction3.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="antiAliasing1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/antiAliasing1.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="softShadows2.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/softShadows2.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="softShadows3.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/softShadows3.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="softShadows1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/softShadows1.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="refraction4.bmp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/renderings/refraction4.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="refraction5.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/refraction5.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="refraction1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/refraction1.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="experiments.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/experiments.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="484">
-                  <caret line="508" column="40" selection-start-line="508" selection-start-column="40" selection-end-line="508" selection-end-column="40" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="final1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/final1.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="experiments.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/experiments.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-                  <folding>
-                    <element signature="e#105#130#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="439">
-                  <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+                <state relative-caret-position="285">
+                  <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
                   <folding>
                     <element signature="e#157#175#0" expanded="true" />
                   </folding>
@@ -120,34 +41,71 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="final2.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/final2.bmp">
+          <file leaf-file-name="experiments.cpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/experiments.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="94">
+                  <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="portal1.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/portal1.bmp">
               <provider selected="true" editor-type-id="images" />
             </entry>
           </file>
-          <file leaf-file-name="envmap3.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/envmap3.bmp">
+          <file leaf-file-name="scene_object.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/scene_object.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="484">
+                  <caret line="115" selection-start-line="115" selection-start-column="2" selection-end-line="116" selection-end-column="55" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="scenes.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/scenes.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="484">
+                  <caret line="557" column="49" selection-start-line="557" selection-start-column="49" selection-end-line="557" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
               <provider selected="true" editor-type-id="images" />
             </entry>
           </file>
-          <file leaf-file-name="hardShadows2.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/hardShadows2.bmp">
+          <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
               <provider selected="true" editor-type-id="images" />
             </entry>
           </file>
-          <file leaf-file-name="recursiveRT3.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/recursiveRT3.bmp">
-              <provider selected="true" editor-type-id="images" />
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/main.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+                  <folding>
+                    <element signature="e#157#175#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
             </entry>
           </file>
-          <file leaf-file-name="recursiveRT2.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/recursiveRT2.bmp">
-              <provider selected="true" editor-type-id="images" />
-            </entry>
-          </file>
-          <file leaf-file-name="recursiveRT1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/recursiveRT1.bmp">
-              <provider selected="true" editor-type-id="images" />
+          <file leaf-file-name="REPORT.txt" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/REPORT.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="569">
+                  <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+                </state>
+              </provider>
             </entry>
           </file>
         </leaf>
@@ -181,18 +139,18 @@
         <option value="$PROJECT_DIR$/light_source.cpp" />
         <option value="$PROJECT_DIR$/light_source.h" />
         <option value="$PROJECT_DIR$/raytracer.h" />
-        <option value="$PROJECT_DIR$/REPORT.txt" />
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/util.h" />
         <option value="$PROJECT_DIR$/scenes.h" />
         <option value="$PROJECT_DIR$/raytracer.cpp" />
         <option value="$PROJECT_DIR$/util.cpp" />
-        <option value="$PROJECT_DIR$/scenes.cpp" />
         <option value="$PROJECT_DIR$/scene_object.cpp" />
         <option value="$PROJECT_DIR$/scene_object.h" />
         <option value="$PROJECT_DIR$/experiments.h" />
-        <option value="$PROJECT_DIR$/experiments.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/REPORT.txt" />
+        <option value="$PROJECT_DIR$/scenes.cpp" />
+        <option value="$PROJECT_DIR$/experiments.cpp" />
       </list>
     </option>
   </component>
@@ -201,6 +159,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
@@ -225,17 +186,7 @@
             <path>
               <item name="raytracer" type="b2602c69:ProjectViewProjectNode" />
               <item name="raytracer" type="462c0819:PsiDirectoryNode" />
-              <item name="cmake-build-debug" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="raytracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="raytracer" type="462c0819:PsiDirectoryNode" />
               <item name="renderings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="raytracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="raytracer" type="462c0819:PsiDirectoryNode" />
-              <item name="textures" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -293,15 +244,16 @@
       <updated>1523134050341</updated>
       <workItem from="1523134051473" duration="50018000" />
       <workItem from="1523231995136" duration="46966000" />
-      <workItem from="1523327012583" duration="81859000" />
+      <workItem from="1523327012583" duration="83403000" />
+      <workItem from="1523477116280" duration="9786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178843000" />
+    <option name="totallyTimeSpent" value="190173000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13264193" />
@@ -324,23 +276,23 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="CMake" order="11" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13264193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34450263" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32670158" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3748691" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32565445" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32900944" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32984293" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="CMake" order="11" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32670158" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32565445" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -368,50 +320,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/renderings/antiAliasing2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="91" selection-start-line="8" selection-start-column="91" selection-end-line="8" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/raytracer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding>
-            <element signature="e#272#294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textures/portal_blue.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textures/portal_orange.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/refraction4.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/refraction5.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/refraction3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textures/portal_bg.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/refraction2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/util.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -419,28 +327,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/portal2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/portal3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/util.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="206" column="26" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenes.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="387" selection-start-line="387" selection-end-line="396" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/final3.bmp">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/scene_object.cpp">
       <provider selected="true" editor-type-id="text-editor">
@@ -452,12 +344,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scene_object.h">
+    <entry file="file://$PROJECT_DIR$/experiments.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1695">
-          <caret line="115" selection-start-line="115" selection-start-column="2" selection-end-line="116" selection-end-column="55" />
+        <state relative-caret-position="300">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding>
+            <element signature="e#105#130#0" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/portal1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/refraction3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/portal2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/portal3.bmp">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/scenes.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -469,114 +388,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/portal1.bmp">
+    <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/textures/portal_wall1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/antiAliasing3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/softShadows1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/softShadows3.bmp">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/scene_object.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="115" selection-start-line="115" selection-start-column="2" selection-end-line="116" selection-end-column="55" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/refraction1.bmp">
+    <entry file="file://$PROJECT_DIR$/textureMapping4.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/refraction3.bmp">
+    <entry file="file://$PROJECT_DIR$/textureMapping2.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/refraction2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textures/dark0.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textures/sandstone_smooth.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/portal2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/portal1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/softShadows2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/portal3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding>
-            <element signature="e#105#130#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiments.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="508" column="40" selection-start-line="508" selection-start-column="40" selection-end-line="508" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/envmap3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/hardShadows2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/recursiveRT2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/recursiveRT1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/antiAliasing1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/refraction5.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/recursiveRT3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/final2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/final1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/refraction4.bmp">
+    <entry file="file://$PROJECT_DIR$/textureMapping3.bmp">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="285">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
           <folding>
             <element signature="e#157#175#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/REPORT.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenes.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="557" column="49" selection-start-line="557" selection-start-column="49" selection-end-line="557" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/portal1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
         </state>
       </provider>
     </entry>

@@ -6,10 +6,11 @@
 
 
 extern double EPSILON;
+// Materials used in the different scenes to showcase various effects
 Material grey(Color(0, 0, 0), Color(0.5, 0.5, 0.5),
               Color(0.3, 0.3, 0.3), 5, 0, 0);
 Material black(Color(0, 0, 0), Color(0, 0, 0),
-               Color(0.3, 0.3, 0.3), 5, 0, 0);
+               Color(0.1, 0.1, 0.1), 1, 0, 0);
 Material orange_slime(Color(0.3, 0.2, 0), Color(0.7, 0.45, 0),
                       Color(0.3, 0.2, 0.1), 5, 0.05, 0);
 Material red(Color(0, 0, 0), Color(0.6, 0.3, 0.3),
@@ -36,10 +37,8 @@ Material mirror(Color(0, 0, 0), Color(0.5,0.5,0.5),
                 Color(0.5,0.5,0.5),
                 19, 0.95, 0);
 
-
-
-
-
+// Portal Scene -> Made by Logan Rooks
+// Consists of two portals, texture mapped walls, floor, ceiling and companion cube
 int portal_scene(LightList& light_list, Scene& scene) {
     // Two lights on either side of the complex
     PointLight* pLight2 = new PointLight(Point3D(37,15,20), Color(0.4, 0.4, 0.4));
@@ -336,9 +335,8 @@ int portal_scene(LightList& light_list, Scene& scene) {
     return 0;
 }
 
+// Simple Scene -> Made by Christopher Sheedy
 int simple_scene(LightList& light_list, Scene& scene) {
-    // Define materials for shading.
-
 
     // Defines a point light source.
     PointLight* pLight = new PointLight(Point3D(14,18,15), Color(0.9,0.9,0.9));
@@ -381,8 +379,6 @@ int simple_scene(LightList& light_list, Scene& scene) {
     scene.push_back(topFrontM);
     SceneNode* bottomFrontM = new SceneNode(new UnitSquare(), &wood);
     scene.push_back(bottomFrontM);
-
-
 
     // Apply some transformations to the spheres
     double factorS1[3] = { 1.0, 1.0, 1.0 };
@@ -450,6 +446,8 @@ int simple_scene(LightList& light_list, Scene& scene) {
     return 0;
 }
 
+// Simple Portal Scene -> Made by Logan Rooks
+// Consists of texture mapped walls and floors along with two portals on opposite sides and two balls in the center
 int simple_portal_scene(LightList& light_list, Scene& scene) {
     // Defines a point light source.
     double ratio = 0.65439672801;
@@ -558,6 +556,5 @@ int simple_portal_scene(LightList& light_list, Scene& scene) {
     portal_blue->scale(Point3D(0, 0, 0), factorP1);
     portal_blue->rotate('y', -180);
 //    std::cout << scene[3]->invtrans<<std::endl;
-
     return 0;
 }

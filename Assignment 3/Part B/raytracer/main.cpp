@@ -16,8 +16,8 @@ int main(int argc, char* argv[]) {
     // change this if you're just implementing part one of the
     // assignment.
 
-    int width = 2560;
-    int height = 1440;
+    int width = 3840;
+    int height = 2160;
 
     if (argc == 3) {
         width = atoi(argv[1]);
@@ -27,12 +27,12 @@ int main(int argc, char* argv[]) {
 //    recursive_ray_tracing(width, height);
 //    hard_shadows(width, height);
 //    anti_aliasing(width, height);
-//    soft_shadows(width, height, 200, 4, 0.8);
+//    soft_shadows(width, height, 100, 3, 0.8);
 //    environment_mapping(width, height);
-//    texture_mapping(width, height);
+    texture_mapping(width, height);
 //    refraction(width, height);
 //    portal_test(width,height);
-    final(width, height);
+//    final(width, height);
 
     return 0;
 }
