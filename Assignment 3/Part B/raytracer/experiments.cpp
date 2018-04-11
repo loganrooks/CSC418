@@ -3,6 +3,7 @@
 //
 
 #include "experiments.h"
+// Define global variables
 extern double EPSILON;
 double ratio = 0.65439672801;
 Material glass(Color(0, 0, 0), Color(0.1,0.2,0.6),
@@ -23,13 +24,15 @@ int refraction(int width, int height) {
     LightList light_list;
     Scene scene;
 
-    // Start with the basic scene
+    // Start with the basic scene to clearly showcase the effects
     simple_scene(light_list, scene);
+
     // Make the spheres made of refractive materials
     scene[0]->mat = &water;
     scene[1]->mat = &glass;
 
     Raytracer refract(false, 10, false, false);
+
     // Render the scene
     Camera camera1(Point3D(18, 10, 15), Vector3D(-2, -1, -1), Vector3D(0, 1, 0), 60.0);
     //Render it from a different point of view.
@@ -66,6 +69,7 @@ int refraction(int width, int height) {
     // Portal scene, because I had too
     portal_scene(light_list, scene);
 
+    // Add refractive objects into the scene
     SceneNode* sphere1 = new SceneNode(new UnitSphere(), &glass);
     scene.push_back(sphere1);
 
@@ -101,8 +105,10 @@ int refraction(int width, int height) {
     plane1->rotate('y', -25);
     plane1->scale(Point3D(0,0,0), factor1);
 
+    // Pointing at the corner with the orange goo, looking at how the spheres refract the textures and the orange goo.
     Camera camera4(Point3D(25, 5, 17), Vector3D(0.8, -0.1, -0.7), Vector3D(0, 1, 0), 60.0);
 
+    // Pointing from that corner to the rest of the scene
     Camera camera5(Point3D(36, 5, 17), Vector3D(-0.3, -0.1, -0.7), Vector3D(0, 1, 0), 60.0);
 
     refract.render(camera4, scene, light_list, image);

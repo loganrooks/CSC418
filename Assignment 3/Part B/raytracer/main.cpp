@@ -1,8 +1,3 @@
-/***********************************************************
-	
-	Starter code for Assignment 3
-
-***********************************************************/
 
 #include <cstdlib>
 #include "raytracer.h"
@@ -16,23 +11,24 @@ int main(int argc, char* argv[]) {
     // change this if you're just implementing part one of the
     // assignment.
 
-    int width = 3840;
-    int height = 2160;
+    // We use a 16:9 ratio for the images, most of the images in the renderings folder used the dimensions 2560x1440
+    int width = 480;
+    int height = 270;
 
     if (argc == 3) {
         width = atoi(argv[1]);
         height = atoi(argv[2]);
     }
-
-//    recursive_ray_tracing(width, height);
-//    hard_shadows(width, height);
-//    anti_aliasing(width, height);
-//    soft_shadows(width, height, 100, 3, 0.8);
-//    environment_mapping(width, height);
+// The tests, comment out any ones you don't want to run
+    recursive_ray_tracing(width, height);
+    hard_shadows(width, height);
+    anti_aliasing(width, height);
+    soft_shadows(width, height, 50, 2, 0.8); // For our rendering, we used 200 lights within a radius of 4
+    environment_mapping(width, height);
     texture_mapping(width, height);
-//    refraction(width, height);
-//    portal_test(width,height);
-//    final(width, height);
+    refraction(width, height);
+    portal_test(width,height);
+    final(width, height);
 
     return 0;
 }

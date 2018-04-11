@@ -66,16 +66,17 @@ struct SceneNode {
 	Matrix4x4 invtrans;
 	Matrix4x4 modelToWorld;
 	Matrix4x4 worldToModel;
+	// Variables to store and check for textures
 	Texture* texture;
 	bool has_texture;
+	// Variables to check if an object is a portal and the corresponding transformation to be applied to any
+	// intersecting rays
 	bool is_portal;
 	Matrix4x4 portalTrans;
 };
 
 // Scene is simply implemented as a list of nodes. Doesnt support hierarchy(scene graph).
 typedef std::vector<SceneNode*> Scene;
-
-
 
 
 // Example primitive you can create, this is a unit square on 
@@ -98,7 +99,8 @@ public:
 				const Matrix4x4& modelToWorld);
 };
 
-
+// Portal Structure -> Created by Logan Rooks
+// Used to hold and initialize a connection between two scene nodes
 struct Portal {
 
     SceneNode* portal1 = new SceneNode(new UnitCircle, &obsidian);
@@ -106,8 +108,12 @@ struct Portal {
 
 	Portal(const Vector3D &location1, const Vector3D &normal1, const Vector3D &location2, const Vector3D &normal2,
            double scale) {
+		// The portal constructor takes 4 arguments, a desired normal and location for each of the portals and a
+		// corresponding scaling factor to make them bigger or smaller
 		portal1->is_portal = true;
 		portal2->is_portal = true;
+		// Using the desired normal and location for each, apply the correct sequence of transformations to obtain
+		// the worldToModel and modelToWorld transformation matrices
 		portal1->transformPortal(location1, normal1, scale);
 		portal2->transformPortal(location2, normal2, scale);
 //		std::cout << normal1 << normal2 << std::endl;

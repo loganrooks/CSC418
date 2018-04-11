@@ -38,7 +38,11 @@ Material mirror(Color(0, 0, 0), Color(0.5,0.5,0.5),
                 19, 0.95, 0);
 
 // Portal Scene -> Made by Logan Rooks
-// Consists of two portals, texture mapped walls, floor, ceiling and companion cube
+// Consists of two portals, texture mapped walls, floor, ceiling and companion cube. Textures obtained from the
+// following sources:
+// 1. ApertureCraft - Minecraft Portal Texture Pack: https://www.planetminecraft.com/texture_pack/aperturecraft---a-high-res-portal-2-pack/
+// 2. Portal Illustrating Tutorial: https://design.tutsplus.com/tutorials/create-a-portal-without-a-portal-gun-in-adobe-illustrator--vector-13240
+
 int portal_scene(LightList& light_list, Scene& scene) {
     // Two lights on either side of the complex
     PointLight* pLight2 = new PointLight(Point3D(37,15,20), Color(0.4, 0.4, 0.4));
@@ -507,7 +511,7 @@ int simple_portal_scene(LightList& light_list, Scene& scene) {
     scene.push_back(sphere1);
     SceneNode* sphere3 = new SceneNode(new UnitSphere(), &obsidian);
     scene.push_back(sphere3);
-//
+
 //    // Apply some transformations to the spheres
     double factorS2[3] = { 1.5, 1.5, 1.5 };
     sphere1->translate(Vector3D(12, 5, 8));
@@ -551,10 +555,8 @@ int simple_portal_scene(LightList& light_list, Scene& scene) {
     portal_orange->translate(Vector3D(15*ratio, 5, EPSILON));
     portal_orange->scale(Point3D(0, 0, 0), factorP1);
 
-
     portal_blue->translate(Vector3D(15*ratio, 5, 30*ratio - EPSILON));
     portal_blue->scale(Point3D(0, 0, 0), factorP1);
     portal_blue->rotate('y', -180);
-//    std::cout << scene[3]->invtrans<<std::endl;
     return 0;
 }
