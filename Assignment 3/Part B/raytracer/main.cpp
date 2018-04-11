@@ -16,8 +16,8 @@ int main(int argc, char* argv[]) {
     // change this if you're just implementing part one of the
     // assignment.
 
-    int width = 1920;
-    int height = 1080;
+    int width = 2560;
+    int height = 1440;
 
     if (argc == 3) {
         width = atoi(argv[1]);
@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
 //    texture_mapping(width, height);
 //    refraction(width, height);
 //    portal_test(width,height);
-    final(width, height, 40, 1, 0.8);
+    final(width, height);
 
     return 0;
 }

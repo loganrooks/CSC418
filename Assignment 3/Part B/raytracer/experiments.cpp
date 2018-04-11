@@ -409,7 +409,7 @@ int portal_test(int width, int height) {
     return 0;
 }
 
-int final(int width, int height, int numLights, int radius, double intensity) {
+int final(int width, int height) {
     LightList light_list;
     Scene scene;
     portal_scene(light_list, scene);
@@ -418,21 +418,10 @@ int final(int width, int height, int numLights, int radius, double intensity) {
         delete light_list[i];
     }
     light_list.clear();
-    double x = 12;
-    double y = 25;
-    double z = 33;
-    double pointIntensity = intensity / numLights;
-    for (int  i = 0; i < numLights; ++i) {
-        double r = (double(rand())/double(RAND_MAX)) * radius;
-        double theta = (double(rand())/double(RAND_MAX)) * 2.0 * M_PI;
-
-        double xi = x + r * cos(theta);
-        double yi = y + r * sin(theta);
-        double zi = z;
-
-        light_list.push_back(new PointLight(Point3D(xi,yi,zi), Color(pointIntensity,pointIntensity,pointIntensity)));
-    }
-
+    PointLight* pLight1 = new PointLight(Point3D(10,30,40), Color(0.4,0.4,0.4));
+    light_list.push_back(pLight1);
+    PointLight* pLight2 = new PointLight(Point3D(30,30,40), Color(0.4,0.4,0.4));
+    light_list.push_back(pLight2);
     scene[5]->translate(Vector3D(0,0,-1));
     scene[6]->translate(Vector3D(0,0,-1));
     scene[3]->translate(Vector3D(0,1,0));
@@ -513,11 +502,11 @@ int final(int width, int height, int numLights, int radius, double intensity) {
 
     Camera camera1(Point3D(14, 6.5, 6), Vector3D(0.2, -0.16, -1.3), Vector3D(0, 1, 0), 60.0);
     Camera camera2(Point3D(22, 7.5, 4.5), Vector3D(-1.1, -0.4, -1.5), Vector3D(0, 1, 0), 60.0);
-
+    Camera camera3(Point3D(60, 60, 70), Vector3D(0, 0, -1), Vector3D(0, 1, 0), 60.0);
 
     Image image(width, height);
 
-    Raytracer finaltracer(true, 10, true, true);
+    Raytracer finaltracer(false, 5, true, true);
     finaltracer.render(camera1, scene, light_list, image);
     image.flushPixelBuffer("final1.bmp");
     std::cout << "Done: final1" << std::endl;
@@ -525,7 +514,9 @@ int final(int width, int height, int numLights, int radius, double intensity) {
     finaltracer.render(camera2, scene, light_list, image);
     image.flushPixelBuffer("final2.bmp");
     std::cout << "Done: final2" << std::endl;
-
+//    finaltracer.render(camera3, scene, light_list, image);
+//    image.flushPixelBuffer("final3.bmp");
+//    std::cout << "Done: final3" << std::endl;
 
     for (size_t i = 0; i < scene.size(); ++i) {
         delete scene[i];

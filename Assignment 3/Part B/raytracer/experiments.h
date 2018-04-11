@@ -18,7 +18,7 @@ int soft_shadows(int width, int height, int numLights, int radius, double intens
 int environment_mapping(int width, int height);
 int texture_mapping(int width, int height);
 int portal_test(int width, int height);
-int final(int width, int height, int numLights, int radius, double intensity);
+int final(int width, int height);
 
 
 #endif //RAYTRACER_EXPERIMENTS_H
