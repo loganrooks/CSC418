@@ -26,47 +26,63 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.65387034">
+    <splitter split-orientation="horizontal" split-proportion="0.39332914">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
+          <file leaf-file-name="wormhole_envmap1.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap1.bmp">
               <provider selected="true" editor-type-id="images" />
             </entry>
           </file>
-          <file leaf-file-name="util.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/util.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="7593">
-                  <caret line="553" column="1" selection-start-line="553" selection-start-column="1" selection-end-line="553" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="util.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/util.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1530">
-                  <caret line="108" column="50" lean-forward="true" selection-start-line="108" selection-start-column="50" selection-end-line="108" selection-end-column="50" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="scene_object.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/scene_object.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="658">
-                  <caret line="244" column="84" selection-start-line="244" selection-start-column="84" selection-end-line="244" selection-end-column="84" />
-                  <folding>
-                    <element signature="e#186#202#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="textureMapping1.bmp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/textureMapping1.bmp">
+          <file leaf-file-name="wormhole_envmap3.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap3.bmp">
               <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file leaf-file-name="wormhole_envmap2.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap2.bmp">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file leaf-file-name="recursiveRT3.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/recursiveRT3.bmp">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file leaf-file-name="recursiveRT2.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/recursiveRT2.bmp">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file leaf-file-name="recursiveRT1.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/recursiveRT1.bmp">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file leaf-file-name="portal3.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/portal3.bmp">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file leaf-file-name="portal2.bmp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderings/portal2.bmp">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file leaf-file-name="raytracer.cpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/raytracer.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-720" />
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="light_source.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/light_source.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="705">
+                  <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+                </state>
+              </provider>
             </entry>
           </file>
         </leaf>
@@ -76,11 +92,8 @@
           <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
+                <state relative-caret-position="180">
                   <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-                  <folding>
-                    <element signature="e#157#175#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -88,8 +101,8 @@
           <file leaf-file-name="REPORT.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/REPORT.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="824">
-                  <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
+                <state relative-caret-position="585">
+                  <caret line="60" column="59" selection-start-line="60" selection-start-column="59" selection-end-line="60" selection-end-column="59" />
                 </state>
               </provider>
             </entry>
@@ -122,14 +135,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/light_source.cpp" />
         <option value="$PROJECT_DIR$/light_source.h" />
         <option value="$PROJECT_DIR$/raytracer.h" />
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/scenes.h" />
         <option value="$PROJECT_DIR$/raytracer.cpp" />
         <option value="$PROJECT_DIR$/experiments.h" />
-        <option value="$PROJECT_DIR$/REPORT.txt" />
         <option value="$PROJECT_DIR$/experiments.cpp" />
         <option value="$PROJECT_DIR$/scenes.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
@@ -137,6 +148,8 @@
         <option value="$PROJECT_DIR$/util.cpp" />
         <option value="$PROJECT_DIR$/util.h" />
         <option value="$PROJECT_DIR$/scene_object.cpp" />
+        <option value="$PROJECT_DIR$/light_source.cpp" />
+        <option value="$PROJECT_DIR$/REPORT.txt" />
       </list>
     </option>
   </component>
@@ -177,7 +190,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Part A/raytracer/main.cpp" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="ValgrindSettings" />
@@ -226,12 +239,12 @@
       <workItem from="1523134051473" duration="50018000" />
       <workItem from="1523231995136" duration="46966000" />
       <workItem from="1523327012583" duration="83403000" />
-      <workItem from="1523477116280" duration="12162000" />
+      <workItem from="1523477116280" duration="13824000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192549000" />
+    <option name="totallyTimeSpent" value="194211000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -338,12 +351,6 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/portal2.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/portal3.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/scenes.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -382,11 +389,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="180">
           <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding>
-            <element signature="e#157#175#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -400,16 +404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/REPORT.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/util.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7593">
@@ -417,20 +411,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="108" column="50" lean-forward="true" selection-start-line="108" selection-start-column="50" selection-end-line="108" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scene_object.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
+        <state relative-caret-position="513">
           <caret line="244" column="84" selection-start-line="244" selection-start-column="84" selection-end-line="244" selection-end-column="84" />
           <folding>
             <element signature="e#186#202#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="108" column="50" lean-forward="true" selection-start-line="108" selection-start-column="50" selection-end-line="108" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/hardShadows3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/hardShadows2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/refraction1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/textureMapping2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/textureMapping1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/textureMapping4.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/textureMapping3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/wormhole_envmap2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/recursiveRT3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/recursiveRT2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/recursiveRT1.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/portal3.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderings/portal2.bmp">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/light_source.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/raytracer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-720" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Part A/raytracer/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" selection-start-line="2" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/REPORT.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="60" column="59" selection-start-line="60" selection-start-column="59" selection-end-line="60" selection-end-column="59" />
         </state>
       </provider>
     </entry>

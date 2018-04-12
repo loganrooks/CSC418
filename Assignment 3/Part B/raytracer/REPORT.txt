@@ -47,9 +47,19 @@ Note that we have provided all images to demonstrate the working of our program,
 Note that while each section was primarily completed by the student indicated, There was some degree of collaboration
 that is not explicitly documented.
 
-To better demonstrate the techniques we implemented, we designed a new environment to render.
-The environment consists of a square room with a mirror or painting on one side, a light source in the back corner, and
-numerous objects floating in front of the mirror/painting. This was done by Christopher Sheedy in main.cpp
+To better demonstrate the techniques we implemented, we designed several new scenes to render. A standardized scene was
+created by Christopher Sheedy called simple_scene to standardize the demonstration. The environment consists of a square
+ room with a mirror or painting on one side, a light source in the back corner, and numerous objects floating in front
+ of the mirror/painting. Two other environments, based on the Portal games, were created to showcase the effects in a
+ flashier way using textures and were created by Logan Rooks. The first one is called portal_scene and consists of two
+ portals, a companion cube, "orange goo" and texture mapped floor, ceiling and walls. One of the walls is missing since
+ the portals at this point are actually just mirrors and interesting scenes can be set up by placing objects behind the
+ camera. The third scene is simple_portal_scene, which includes a small texture mapped rooms with two portals (that
+ actual work as portals) as a bonus. It was used just to demonstrate the portal effect.
+
+ To keep our main file clean, we created two new files scenes.cpp and experiments.cpp with their corresponding headers.
+ Our scenes are defined and set up as functions in scenes.cpp, while the experiments.cpp contains functions that render
+ and save images of scenes portraying each of the effects.
 
 i) Recursive Ray Tracing
 	For this section we needed to modify the Raytracer::shadeRay function. This was done by
@@ -61,8 +71,9 @@ i) Recursive Ray Tracing
 	images for this section are saved as recurseRT#.bmp
 
 ii) Hard Shadows
-	For this section we needed to... LOGAN ROOKS FILL THIS PART IN
-
+	For this section we needed to modify the Raytracer::computeShading and PointLight::shade functions. This was done by
+	 extending a shadow ray from the point of intersection to each of the point lights and only adding the ambient
+	 component of the shading to the ray if the shadow ray intersects an object
 iii) Anti-Aliasing
 	For this section we implemented 8x anti-aliasing by creating a new function, Raytracer::antiAliasRender8x in raytracer.cpp.
 	This was done by Christopher Sheedy. Much of the function is exactly the same as in Raytracer::render, except for the creation of rays.

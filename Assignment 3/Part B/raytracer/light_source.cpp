@@ -31,7 +31,7 @@ void PointLight::shade(Ray3D& ray) {
 	double specular_exp = ray.intersection.mat->specular_exp;
 
 	Point3D lightPos = get_position();
-	//Ambient effect
+	//Ambient effect, multiply the ambient color of the light with the ambient color of the intersected material
 	Color ambient_col = col_ambient * ambient;
 	ambient_col.clamp();
 
@@ -48,6 +48,8 @@ void PointLight::shade(Ray3D& ray) {
 		double n_dot_l = std::max(0.0, normal.dot(lightVec));
 
 		Color diffuse_light = n_dot_l * col_diffuse;
+		// If the intersected object has a texture, don't use the color of the underlying material but rather the
+		// texture
 		Color diffuse_col = ray.intersection.has_texture ? diffuse_light * ray.intersection.texture_col :
 							diffuse_light * diffuse;
 //		Color diffuse_col = diffuse_light * diffuse;
