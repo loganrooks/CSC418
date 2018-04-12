@@ -61,7 +61,10 @@ created by Christopher Sheedy called simple_scene to standardize the demonstrati
  Our scenes are defined and set up as functions in scenes.cpp, while the experiments.cpp contains functions that render
  and save images of scenes portraying each of the effects.
 
-i) Recursive Ray Tracing
+ The completed renderings are in "renderings/", the environment textures for environment mapping are in "environments/"
+ and the other textures used are in "textures".
+
+i) Recursive Ray Tracing (Christopher Sheedy)
 	For this section we needed to modify the Raytracer::shadeRay function. This was done by
 	Christopher Sheedy, and can be found in raytracer.cpp (note that this is in the Part B folder). To implement recursive
 	ray tracing, we simply calculated the reflected ray ([1] from stack-exchange), and
@@ -70,11 +73,12 @@ i) Recursive Ray Tracing
 	reflectIndex of 1.0. In addition, we added an epsilon term to the reflected ray to reduce noise/errors. The demo
 	images for this section are saved as recurseRT#.bmp
 
-ii) Hard Shadows
+ii) Hard Shadows (Logan Rooks)
 	For this section we needed to modify the Raytracer::computeShading and PointLight::shade functions. This was done by
 	 extending a shadow ray from the point of intersection to each of the point lights and only adding the ambient
-	 component of the shading to the ray if the shadow ray intersects an object
-iii) Anti-Aliasing
+	 component of the shading to the ray if the shadow ray intersects an object.
+
+iii) Anti-Aliasing (Christopher Sheedy)
 	For this section we implemented 8x anti-aliasing by creating a new function, Raytracer::antiAliasRender8x in raytracer.cpp.
 	This was done by Christopher Sheedy. Much of the function is exactly the same as in Raytracer::render, except for the creation of rays.
 	In render, each pixel gets a single ray through the center of that pixel on the image plane. In antiAliasRender8x,
@@ -82,10 +86,13 @@ iii) Anti-Aliasing
 	The idea for this came from wikipedia, it is similar to "Jittering" from [2]. Each ray is shaded, and then the average
 	of all 8 rays is computed.
 
-iv) Extended light sources
+iv) Extended light sources (Christopher Sheedy)
 	For this section we added an extended light source in main.cpp.
 	This was done by Christopher Sheedy.
 	We approximated the light source by adding a large number of point light sources.
+
+v) Environment Mapping (Logan Rooks)
+    The environment mapping was implemented by mapping rays that did not intersect with any object t
 
 Sources:
 
