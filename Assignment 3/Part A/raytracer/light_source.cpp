@@ -32,20 +32,27 @@ void PointLight::shade(Ray3D& ray) {
 	Point3D lightPos = get_position();
 
 	//Ambient 
-	Color color = ambient;
+	Color ambient_col = col_ambient * ambient;
+	ambient_col.clamp()
 
 	//Diffuse
 	Vector3D lightVec = lightPos - point;
 	lightVec.normalize();
-	color = color + std::max(0.0, normal.dot(viewVec)) * diffuse;
-
+	
+	Color diffuse_light = std::max(0.0, normal.dot(viewVec)) * col_diffuse;
+	Color diffuse_col = diffuse_light * diffuse;
+	doffise_col.clamp();
+	
 	//Specular
 	Vector3D incVec = -1.0 * lightVec;
 	Vector3D refVec = 2.0 * normal.dot(lightVec)*normal - lightVec;
 	double cosTheta = std::max(0.0, viewVec.dot(refVec));
-	color = color + pow(cosTheta, specular_exp) * specular;
-	color.clamp();
-	ray.col = color;
+	Color specular_col = pow(cosTheta, specular_exp) * col_specular * specular;
+	specular_col.clamp();
+	
+	ray.col = ray.col + ambient_col + diffuse_col + specular_col;
+	
+	ray.col.clamp();
 	//Chris's contribution ends
 }
 
