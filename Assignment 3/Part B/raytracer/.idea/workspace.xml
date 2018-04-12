@@ -106,8 +106,8 @@
           <file leaf-file-name="REPORT.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/REPORT.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="644">
-                  <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+                <state relative-caret-position="884">
+                  <caret line="134" column="105" selection-start-line="134" selection-start-column="105" selection-end-line="134" selection-end-column="105" />
                 </state>
               </provider>
             </entry>
@@ -262,12 +262,12 @@
       <workItem from="1523134051473" duration="50018000" />
       <workItem from="1523231995136" duration="46966000" />
       <workItem from="1523327012583" duration="83403000" />
-      <workItem from="1523477116280" duration="16868000" />
+      <workItem from="1523477116280" duration="17797000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197255000" />
+    <option name="totallyTimeSpent" value="198184000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -519,8 +519,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/REPORT.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="884">
+          <caret line="134" column="105" selection-start-line="134" selection-start-column="105" selection-end-line="134" selection-end-column="105" />
         </state>
       </provider>
     </entry>

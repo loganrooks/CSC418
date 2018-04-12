@@ -123,6 +123,17 @@ Raytracer::shadeRay by computing a refract_ray using the helper function compute
  for the two materials and returns the direction of the refracted ray. The variable refractIndex was added to each
  material.
 
+ viii) Bonus: PORTALS! (Logan Rooks)
+ Even though this was not on the list, I've always enjoyed the optical effects of the portals in the Portal games and
+ the amazing scenes that can be created with them. All it consists of is linking two objects by constructing
+ a transformation matrix that map incident rays on one of the objects to outgoing rays on the other. This special
+ transformation matrix (which I called portalTrans) is constructed using both the worldToModel transformation and its
+ inverse, the modelToWorld. The pair of portals is defined by specifying the normals to the surface of each respective
+ portal and its location. Given the normals, we can construct a rotation matrix using axis-angle, where the axis of
+ rotation is the cross product of the normals and the angle between them extracted from their dot product. Since we
+ already have function to compute rotation matrices via euler angles, the axis-angle formulation was converted. The
+ translation portion was computed using the difference of the portals' locations. It was a fun challenge.
+
 
 
 Sources:
