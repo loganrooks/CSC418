@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
 	LightList light_list;
 	Scene scene;   
 
-	int width = 320;
-	int height = 240;
+	int width = 2560;
+	int height = 1440;
 
 	if (argc == 3) {
 		width = atoi(argv[1]);
