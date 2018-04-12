@@ -18,6 +18,7 @@ class Raytracer {
 public:
 	// Renders 3D scene to an image given camera and lights setup.
 
+	// Variables controlling how the raytracer renders the image
 	bool shadows;
 	bool antialias;
 	int max_depth;

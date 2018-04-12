@@ -437,7 +437,7 @@ void Texture::loadBitmap(const char * filename){
 
 
 Color Texture::get_colour_at_uv(Point3D uv) {
-	// Accessing the bitmap texture
+	// Accessing the bitmap texture, the repeats variables allow for repeating the texture over the same object
 	int i = int(uv[0] * repeats_x * x) % int(x);
 	int j = int(uv[1] * repeats_y * y) % int(y);
 

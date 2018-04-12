@@ -131,8 +131,9 @@ Raytracer::shadeRay by computing a refract_ray using the helper function compute
  inverse, the modelToWorld. The pair of portals is defined by specifying the normals to the surface of each respective
  portal and its location. Given the normals, we can construct a rotation matrix using axis-angle, where the axis of
  rotation is the cross product of the normals and the angle between them extracted from their dot product. Since we
- already have function to compute rotation matrices via euler angles, the axis-angle formulation was converted. The
- translation portion was computed using the difference of the portals' locations. It was a fun challenge.
+ already have function to compute rotation matrices via euler angles, the axis-angle formulation was converted using a
+ conversion function already implemented [7]. The translation portion was computed using the difference of the portals'
+ locations. It was a fun challenge.
 
 
 
@@ -145,6 +146,8 @@ https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector?ut
 [4] https://en.wikipedia.org/wiki/UV_mapping
 [5] http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
 [6] https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/reflection-refraction-fresnel
+[7] Conversion of axis-angle to euler angles
+http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToEuler/index.htm
 
 Texture Sources:
 [1] ApertureCraft - Minecraft Portal Texture Pack: https://www.planetminecraft.com/texture_pack/aperturecraft---a-high-res-portal-2-pack/

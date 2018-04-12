@@ -31,6 +31,8 @@ void Raytracer::traverseScene(Scene& scene, Ray3D& ray)  {
 
 		if (node->obj->intersect(ray, node->worldToModel, node->modelToWorld)) {
 			ray.intersection.mat = node->mat;
+			// Check the properties of the node and transfer them to the intersection object of the ray to assist
+			// with its shading
 				if (node->has_texture) {
 					addTextureInfo(node, ray);
 				}
@@ -96,6 +98,7 @@ Vector3D Raytracer::computeReflection(Vector3D normal, Vector3D incident) {
 
 Vector3D Raytracer::computeRefraction(Vector3D normal, Vector3D incident, double n1, double n2)
 {
+	// Implemented using Snell's law
 	normal.normalize();
 	incident.normalize();
 	double cosAlpha = normal.dot(incident);
@@ -134,14 +137,17 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 		Vector3D incidentVec = ray.dir;
 		incidentVec.normalize();
 
-		if(depth < max_depth){
+		if(depth < max_depth){ // To prevent infinite recursion
+			// Portals
 		    if (ray.intersection.is_portal) {
+		    	// Transport the ray using the transformation matrix and then continue with shading
 		    	Vector3D transportedVec = ray.intersection.portalTrans * incidentVec;
 		    	Ray3D transported_ray(Point3D(ray.intersection.portalTrans.getColumn(3)) + ray.intersection.point +
 									  EPSILON * transportedVec, transportedVec);
 		    	ray.col = shadeRay(transported_ray, scene, light_list, depth + 1);
 		    	ray.col.clamp();
 		    }
+		    // Refraction
 			if (refractIndex > 1) {
 
 				double n1 = 1;
@@ -153,6 +159,7 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 				ray.col = shadeRay(refract_ray, scene, light_list, depth + 1);
 				ray.col.clamp();
 			}
+			// Reflection
             if (reflectIndex > 0) {
                 //get reflection vector
                 Vector3D reflectVec = computeReflection(normal, incidentVec);
@@ -188,6 +195,7 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 	viewToWorld = camera.initInvViewMatrix();
 
 	if(use_envmap) {
+		// If desired, then the cube map is initialized
 		envmap = new CubeMap;
 		envmap->set_face_images();
 	}
@@ -216,7 +224,6 @@ void Raytracer::render(Camera& camera, Scene& scene, LightList& light_list, Imag
 			}
 			else {
 				Ray3D ray;
-				// TODO: Convert ray to world space
 				//define ray using origin, direction vector.
 				// Logan's contribution begins
 				ray.origin = viewToWorld * origin;

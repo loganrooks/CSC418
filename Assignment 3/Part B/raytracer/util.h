@@ -172,8 +172,8 @@ struct Intersection {
 	double t_value;	
 	// Set to true when no intersection has occured.
 	bool none;
-	Point3D uv;
 	// Properties inherent to the intersected node
+	Point3D uv;
 	bool has_texture;
 	Color texture_col;
 	bool is_portal;
@@ -305,13 +305,17 @@ private:
 };
 
 struct Texture {
-	// define the size of the .bmp file
 
+	// Initialize the texture object with the desired number of times you want the texture to repeat itself in either
+	// direction
 	Texture(int r_x, int r_y){
 		repeats_x = r_x;
 		repeats_y = r_y;
 	}
+	void loadBitmap(const char* filename);
+	Color get_colour_at_uv(Point3D uv);
 
+	// define the size of the .bmp file
 	unsigned long int x;
 	long int y;
 
@@ -319,24 +323,20 @@ struct Texture {
 	int repeats_y;
 
 	// arrays of dimension (x,y)
-	// defining the RGB value of the texture
+	// containing the texture's RGB value
 	unsigned char* rarray = nullptr;
 	unsigned char* garray = nullptr;
-	unsigned char* barray = NULL;
+	unsigned char* barray = nullptr;
 
-	void loadBitmap(const char* filename);
 
-	Color get_colour_at_uv(Point3D uv);
 };
 
 struct CubeMap {
 	Point3D direction_to_cube_map_uv(Vector3D direction, int* face);
-
-	// For the environment maps that use bmp files
-	// We define an image for every face of the cube;
 	void set_face_images();
 	Color query_bmp_cube_map(Vector3D direction);
 
+	// Define a texture for each of the faces
 	Texture * face0;
 	Texture * face1;
 	Texture * face2;
