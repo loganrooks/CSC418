@@ -119,12 +119,7 @@ Color Raytracer::shadeRay(Ray3D& ray, Scene& scene, LightList& light_list, int d
 	traverseScene(scene, ray); 
 
 	// You'll want to call shadeRay recursively (with a different ray, 
-	// of course) here to implement reflection/refraction effects.  
-
-	//Chris's contribution begins
-	//recursive call:
-
-
+	// of course) here to implement reflection/refraction effects.
 
 	if (!ray.intersection.none && !ray.wormhole){
 		computeShading(ray, scene, light_list, shadows);

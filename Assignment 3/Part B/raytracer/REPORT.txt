@@ -94,15 +94,27 @@ iv) Extended light sources (Christopher Sheedy)
 v) Environment Mapping (Logan Rooks)
     The environment mapping was implemented by mapping rays that did not intersect with any object to one of the faces'
     textures by using UV coordinates. Wikipedia was used to help with the mapping from the rays direction to UV
-    coordinates. In Raytracer::shadeRay, an else clause is added for rays that don't intersect with anything to do this
-    mapping. The CubeMap is a structure in util.cpp that stores the required variables and functions to implement this.
-    Two sets of images were procured, one showing both the environment and its reflection in a sphere and one where only
-     the reflection of the environment is visible. The second set, with only the reflection, was done by creating a
+    coordinates [3]. In Raytracer::shadeRay, an else clause is added for rays that don't intersect with anything to do
+    this mapping. The CubeMap is a structure in util.cpp that stores the required variables and functions to implement
+    this. Two sets of images were procured, one showing both the environment and its reflection in a sphere and one
+    where only the reflection of the environment is visible. The second set, with only the reflection, was done by creating a
      special material called "wormhole" that the sphere would be made of. With this setting on, only the rays that first
       reflected off the sphere and into the environment would be colored.
 
-vi) Texture Mapping
-    
+vi) Texture Mapping (Logan Rooks)
+To start, a struct called Texture was created in util.cpp to provide functioTexture Mapping, similar to Environment
+Mapping,
+was
+implemented using UV coordinates.
+
+vii) Refraction (Logan Rooks)
+Implemented using Snell's law, equations were taken from both the lecture slides and a tutorial on implementing
+refraction in OpenGL (which we did not do but the math was helpful) []. The main piece of code added is in
+Raytracer::shadeRay by computing a refract_ray using the helper function computeRefraction to determine the direction of
+ the ray. The computeRefraction takes both the normal of the surface, the incident vector and the index of refraction
+ for the two materials and returns the direction of the refracted ray. The variable refractIndex was added to each
+ material.
+
 
 
 Sources:
