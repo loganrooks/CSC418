@@ -104,14 +104,20 @@ v) Environment Mapping (Logan Rooks)
       reflected off the sphere and into the environment would be colored.
 
 vi) Texture Mapping (Logan Rooks)
-To start, a struct called Texture was created in util.cpp to provide functioTexture Mapping, similar to Environment
-Mapping,
-was
-implemented using UV coordinates.
+To start, a struct called Texture was created in util.cpp to store variables and functions pertaining to any
+specific texture including the width and height of the texture, the RGB arrays, a loading function to actually
+retrieve the .bmp file and a function that returns the pixel color given UV coordinates. Since the uv coordinates used
+to query the texture are unique to where the ray intersects a textured material, the UV coordinate information is
+calculated in each objects intersect function and stored in the Intersection structure to be accessed by the shaders.
+The equations used to do this mapping were taken from Wikipedia [4]. Textures are added by initializing them in
+SceneNodes and adding that information to the rays if a ray intersects with an object that has a texture. Sources were
+also used in determining how to properly read from .bmp files and their format [5]. In the scenes, I texture map onto
+planes (walls, portals), spheres (planet, earth at night, moon) and a cube (companion cube).
+
 
 vii) Refraction (Logan Rooks)
 Implemented using Snell's law, equations were taken from both the lecture slides and a tutorial on implementing
-refraction in OpenGL (which we did not do but the math was helpful) []. The main piece of code added is in
+refraction in OpenGL (which we did not do but the math was helpful) [6]. The main piece of code added is in
 Raytracer::shadeRay by computing a refract_ray using the helper function computeRefraction to determine the direction of
  the ray. The computeRefraction takes both the normal of the surface, the incident vector and the index of refraction
  for the two materials and returns the direction of the refracted ray. The variable refractIndex was added to each
@@ -125,6 +131,9 @@ Sources:
 https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 [2] https://en.wikipedia.org/wiki/Supersampling
 [3] https://en.wikipedia.org/wiki/Cube_mapping
+[4] https://en.wikipedia.org/wiki/UV_mapping
+[5] http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
+[6] https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/reflection-refraction-fresnel
 
 Texture Sources:
 [1] ApertureCraft - Minecraft Portal Texture Pack: https://www.planetminecraft.com/texture_pack/aperturecraft---a-high-res-portal-2-pack/
