@@ -80,7 +80,7 @@ ii) Hard Shadows (Logan Rooks)
 
 iii) Anti-Aliasing (Christopher Sheedy)
 	For this section we implemented 8x anti-aliasing by creating a new function, Raytracer::antiAliasRender8x in raytracer.cpp.
-	This was done by Christopher Sheedy. Much of the function is exactly the same as in Raytracer::render, except for the creation of rays.
+	This was done by Christopher Sheedy. Much of the function is exactly the same as in Raytracer::render, except for the creation 		of rays.
 	In render, each pixel gets a single ray through the center of that pixel on the image plane. In antiAliasRender8x,
 	we split the pixel on the image plane into 8 quadrants, and then select two random points in each quadrant.
 	The idea for this came from wikipedia, it is similar to "Jittering" from [2]. Each ray is shaded, and then the average
@@ -88,8 +88,10 @@ iii) Anti-Aliasing (Christopher Sheedy)
 
 iv) Extended light sources (Christopher Sheedy)
 	For this section we added an extended light source in main.cpp.
-	This was done by Christopher Sheedy.
-	We approximated the light source by adding a large number of point light sources.
+	This was done by Christopher Sheedy.We approximated the light source by adding a large number of point light sources.
+	The light sources were added by randomnly placing lights in a circle centered around a single point. This was done
+	by randomnly selecting an angle between 0 and 2pi, and randomnly selecting a radius between 0 and some pre-determined
+	radius r.
 
 v) Environment Mapping (Logan Rooks)
     The environment mapping was implemented by mapping rays that did not intersect with any object to one of the faces'
