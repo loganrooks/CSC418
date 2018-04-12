@@ -92,14 +92,26 @@ iv) Extended light sources (Christopher Sheedy)
 	We approximated the light source by adding a large number of point light sources.
 
 v) Environment Mapping (Logan Rooks)
-    The environment mapping was implemented by mapping rays that did not intersect with any object t
+    The environment mapping was implemented by mapping rays that did not intersect with any object to one of the faces'
+    textures by using UV coordinates. Wikipedia was used to help with the mapping from the rays direction to UV
+    coordinates. In Raytracer::shadeRay, an else clause is added for rays that don't intersect with anything to do this
+    mapping. The CubeMap is a structure in util.cpp that stores the required variables and functions to implement this.
+    Two sets of images were procured, one showing both the environment and its reflection in a sphere and one where only
+     the reflection of the environment is visible. The second set, with only the reflection, was done by creating a
+     special material called "wormhole" that the sphere would be made of. With this setting on, only the rays that first
+      reflected off the sphere and into the environment would be colored.
+
+vi) Texture Mapping
+    
+
 
 Sources:
 
 [1] Reflection vector equation
 https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-
 [2] https://en.wikipedia.org/wiki/Supersampling
+[3] https://en.wikipedia.org/wiki/Cube_mapping
 
 Texture Sources:
-8k earth and
+[1] ApertureCraft - Minecraft Portal Texture Pack: https://www.planetminecraft.com/texture_pack/aperturecraft---a-high-res-portal-2-pack/
+[2] Portal Illustrating Tutorial: https://design.tutsplus.com/tutorials/create-a-portal-without-a-portal-gun-in-adobe-illustrator--vector-13240
