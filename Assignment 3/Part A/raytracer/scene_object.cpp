@@ -68,6 +68,8 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 	// to simplify the intersection test.
 	
 	//Chris's contribution begins
+	//Formula derived in lecture slides
+	
 	Ray3D transformedRay (worldToModel * ray.origin, worldToModel * ray.dir);
 	
 	Vector3D eToC = transformedRay.origin - Point3D(0.0,0.0,0.0);
@@ -79,26 +81,32 @@ bool UnitSphere::intersect(Ray3D& ray, const Matrix4x4& worldToModel,
 
 	double discr = B * B - 4*A * C;
 
+	// Check if intersection is imaginary
 	if (discr < 0.0){
 		return false;
 	}
-
+	
+	// If there is only one solution (ray hits side of sphere)
 	else if (discr == 0){
 		t = -B/(2.0*A);
 	}
-
+	
+	// If there are two solutions, choose the solution that has the smaller t-value
 	else {
 		t = std::min( (-B + sqrt(discr))/(2.0 * A), (-B - sqrt(discr))/(2.0 * A) );
 	}
 	
+	// If the solution is behind the viewing plane
 	if (t <= 0) return false;
-
+	
+	// Check if t is less than the existing t-value
 	if (!ray.intersection.none && ray.intersection.t_value < t) return false;
 
 	Point3D point = (transformedRay.origin + t * transformedRay.dir);
 	Vector3D normal = (point - Point3D(0.0, 0.0, 0.0));
 	normal.normalize();
-
+	
+	// Set all values
 	ray.intersection.point = modelToWorld * point;
 	ray.intersection.normal = transNorm(worldToModel, normal);
 	ray.intersection.normal.normalize();
